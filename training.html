@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Самозанятость в Германии по шагам — тренинг Анны Леоненко</title>
+<meta name="description" content="2-месячный онлайн-тренинг: самозанятость в Германии по шагам — от хаоса к ясному плану. Старт 6 августа. / 2-monatiges Online-Training zur Selbstständigkeit in Deutschland." />
+<style>
+  :root{
+    --bg:#FAF4EF; --surface:#FFFFFF; --ink:#35454E; --muted:#7C8A91;
+    --primary:#517E96; --primary-dark:#3F6679; --accent:#6E9DB5; --accent-dark:#517E96;
+    --peach:#F0D3BC; --peach-soft:#F6E6D8; --blue:#AECEDD; --powder:#C9D2D4;
+    --line:#DCE3E5; --ok:#517E96; --maxw:1080px;
+    --serif:Georgia,"Times New Roman",serif;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  h1,h2,h3{font-family:var(--serif);line-height:1.2;letter-spacing:-.01em;font-weight:700}
+  h1,h2{font-size:clamp(1.7rem,3.2vw,2.4rem)}
+  h2{margin-bottom:.35em;color:var(--ink)}
+  p{color:var(--ink)}
+  .lead{color:var(--muted)}
+  /* language visibility */
+  .de{display:none}
+  html[lang="de"] .ru{display:none}
+  html[lang="de"] .de{display:revert}
+  /* header */
+  header{position:sticky;top:0;z-index:50;background:rgba(250,244,239,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;gap:14px;height:64px}
+  .brand{font-family:var(--serif);font-weight:700;color:var(--ink);text-decoration:none;font-size:1.2rem;letter-spacing:.01em}
+  .brand small{font-weight:500;font-size:.7rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;display:none}
+  html[lang="ru"] .brand small.ru{display:block}
+  html[lang="de"] .brand small.de{display:block}
+  .nav-right{display:flex;align-items:center;gap:10px}
+  .nav-link{color:var(--ink);text-decoration:none;font-size:.84rem;border:1.5px solid var(--ink);border-radius:999px;padding:8px 16px;transition:.2s}
+  .nav-link:hover{background:var(--ink);color:#fff}
+  .lang{display:flex;gap:2px;border:1.5px solid var(--ink);border-radius:999px;padding:3px;background:transparent}
+  .lang button{border:0;background:none;cursor:pointer;font:inherit;font-size:.8rem;font-weight:700;padding:5px 11px;border-radius:999px;color:var(--ink)}
+  .lang button.active{background:var(--ink);color:#fff}
+  /* buttons */
+  .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:13px 26px;border-radius:999px;font-weight:600;transition:.2s;border:1.5px solid var(--accent-dark);cursor:pointer;font-size:1rem;text-align:center}
+  .btn:hover{background:var(--accent-dark)}
+  .btn-sm{padding:9px 18px;font-size:.9rem}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:#fff}
+  /* hero */
+  .hero{padding:clamp(40px,7vw,80px) 0 clamp(32px,5vw,52px)}
+  .hero .kicker{display:inline-block;background:var(--peach-soft);color:var(--accent-dark);font-weight:700;font-size:.78rem;letter-spacing:.04em;padding:7px 15px;border-radius:999px;margin-bottom:18px}
+  .hero h1{max-width:18ch;margin-bottom:14px}
+  .hero .slogan{font-family:var(--serif);font-style:italic;font-size:clamp(1.1rem,2.2vw,1.45rem);font-weight:600;color:var(--accent-dark);margin-bottom:16px}
+  .hero .sub{font-size:clamp(1rem,1.7vw,1.15rem);color:var(--muted);max-width:60ch;margin-bottom:26px}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+  .facts{display:flex;gap:10px;flex-wrap:wrap}
+  .fact{background:var(--surface);border:1px solid var(--line);padding:10px 14px;font-size:.88rem;font-weight:600;display:flex;gap:8px;align-items:center}
+  .fact .e{font-size:1.05rem}
+  /* hero image + trainer */
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+  .hero-media img{width:100%;object-fit:cover;aspect-ratio:4/5;max-height:560px;display:block}
+  .hero .facts{margin-top:30px}
+  .trainer{display:grid;grid-template-columns:280px 1fr;gap:34px;align-items:center;background:var(--surface);border:1px solid var(--line);padding:28px}
+  .trainer img{width:100%;object-fit:cover;aspect-ratio:1/1;display:block}
+  .trainer h3{font-size:1.3rem;margin:4px 0 6px}
+  .trainer p{color:var(--muted);margin-bottom:14px}
+  .role-tag{display:inline-block;background:var(--peach-soft);color:var(--accent-dark);font-weight:700;font-size:.78rem;padding:5px 12px;border-radius:999px}
+  @media(max-width:760px){ .hero-grid{grid-template-columns:1fr} .hero-media{order:-1} .trainer{grid-template-columns:1fr;text-align:center} .trainer img{max-width:240px;margin:0 auto} }
+  /* sections */
+  section{padding:clamp(44px,6vw,76px) 0}
+  .sec-alt{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .sec-head{max-width:62ch;margin-bottom:34px}
+  .sec-head h2{margin-bottom:.35em}
+  /* audience grid */
+  .grid{display:grid;gap:0;border:1px solid var(--line)}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--surface);border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px}
+  .sec-alt .card{background:var(--bg)}
+  .card h3{font-size:1.1rem;margin:6px 0 8px;color:var(--ink)}
+  .card .tag{font-size:.72rem;font-weight:700;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.05em}
+  .card p{color:var(--muted);font-size:.94rem}
+  /* checklist */
+  .checks{list-style:none;display:grid;gap:12px;max-width:62ch}
+  .checks li{padding-left:30px;position:relative;color:var(--ink)}
+  .checks li::before{content:"✓";position:absolute;left:0;top:0;color:var(--accent-dark);font-weight:800}
+  /* program steps */
+  .steps{display:grid;gap:12px}
+  .step{display:grid;grid-template-columns:48px 1fr;gap:16px;background:var(--surface);border:1px solid var(--line);padding:18px 20px}
+  .sec-alt .step{background:var(--bg)}
+  .step .n{width:40px;height:40px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:1.05rem}
+  .step h3{font-size:1.02rem;margin-bottom:4px}
+  .step p{color:var(--muted);font-size:.92rem}
+  /* pricing */
+  .prices{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .price{background:var(--surface);border:1px solid var(--line);padding:24px;display:flex;flex-direction:column}
+  .price.feat{border:2px solid var(--accent)}
+  .price .badge{align-self:flex-start;background:var(--accent);color:#fff;font-size:.7rem;font-weight:800;padding:3px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+  .price h3{font-size:1.2rem;margin-bottom:6px}
+  .price .amt{font-family:var(--serif);font-size:1.8rem;font-weight:700;color:var(--accent-dark);margin:6px 0 2px}
+  .price .amt small{font-family:var(--font);font-size:.8rem;font-weight:600;color:var(--muted)}
+  .price .rate{font-size:.82rem;color:var(--muted);margin-bottom:12px}
+  .price p{font-size:.9rem;color:var(--muted);flex:1;margin-bottom:16px}
+  .price .btn{margin-top:auto}
+  /* schedule */
+  .cal{display:grid;gap:4px;max-width:680px}
+  .cal .row{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:9px 12px;font-size:.92rem}
+  .cal .row:nth-child(odd){background:var(--surface)}
+  .sec-alt .cal .row:nth-child(odd){background:var(--bg)}
+  .cal .d{font-weight:700;color:var(--accent-dark)}
+  .cal .mm{color:var(--muted)}
+  /* facts list */
+  .kv{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .kv .item{background:var(--surface);border:1px solid var(--line);padding:14px 16px}
+  .sec-alt .kv .item{background:var(--bg)}
+  .kv .k{font-weight:700;font-size:.88rem;margin-bottom:3px}
+  .kv .v{color:var(--muted);font-size:.9rem}
+  .kv a{color:var(--accent-dark)}
+  /* CTA band */
+  .cta{background:var(--blue);color:var(--ink);padding:clamp(34px,5vw,60px);text-align:center}
+  .cta h2{color:var(--ink);margin-bottom:10px}
+  .cta p{color:var(--ink);opacity:.85;max-width:52ch;margin:0 auto 22px}
+  .cta .btn{background:var(--accent);border-color:var(--accent-dark)}
+  .cta .pay{margin-top:16px;font-size:.85rem;color:var(--ink);opacity:.8}
+  .cta .pay a{color:var(--accent-dark);font-weight:700}
+  /* footer */
+  footer{background:var(--ink);color:#cdd7db;padding:clamp(32px,5vw,52px) 0;font-size:.84rem}
+  footer a{color:var(--blue);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  footer .imp{margin-bottom:8px;color:#cdd7db}
+  footer .imp strong{color:#fff}
+  @media(max-width:760px){ .grid-2,.grid-3{grid-template-columns:1fr} }
+  @media(max-width:640px){
+    .cal .row{grid-template-columns:96px 1fr}
+    .step{grid-template-columns:40px 1fr;gap:12px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="index.html" class="brand">Anna Leonenko<small class="ru">Самозанятость в Германии</small><small class="de">Selbstständigkeit in Deutschland</small></a>
+      <div class="nav-right">
+        <a href="index.html" class="nav-link"><span class="ru">← Об Анне</span><span class="de">← Über Anna</span></a>
+        <div class="lang" role="group" aria-label="Язык / Sprache">
+          <button data-lang="ru" class="active">РУ</button>
+          <button data-lang="de">DE</button>
+        </div>
+        <a href="anmeldung.html" class="btn btn-sm"><span class="ru">Записаться</span><span class="de">Anmelden</span></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+      <div class="hero-text">
+      <span class="kicker"><span class="ru">Онлайн-тренинг · старт 6 августа</span><span class="de">Online-Training · Start 6. August</span></span>
+      <h1>
+        <span class="ru">Самозанятость в Германии по шагам: от хаоса к ясному плану</span>
+        <span class="de">Selbstständigkeit in Deutschland Schritt für Schritt: vom Chaos zum klaren Plan</span>
+      </h1>
+      <p class="slogan"><span class="ru">«Тренинг по самозанятости: теперь мне всё ясно!»</span><span class="de">„Das Training zur Selbstständigkeit: Jetzt ist mir alles klar!"</span></p>
+      <!-- Untertitel "За 2 месяца…" entfernt (Annas Wunsch) — Einleitungstext steht unten als eigener Block -->
+      <div class="hero-actions">
+        <a href="anmeldung.html" class="btn"><span class="ru">Записаться</span><span class="de">Anmelden</span></a>
+        <a href="#programm" class="btn btn-ghost"><span class="ru">Программа курса</span><span class="de">Zum Programm</span></a>
+      </div>
+      </div><!-- /hero-text -->
+      <div class="hero-media"><img src="assets/anna-portrait.jpg" alt="Anna Leonenko" /></div>
+      </div><!-- /hero-grid -->
+      <!-- Icons verschoben: jetzt nach dem Einleitungstext -->
+    </div>
+  </section>
+
+  <!-- ANNA INTRO -->
+  <section>
+    <div class="wrap">
+      <div style="background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);padding:clamp(20px,4vw,32px);max-width:780px;margin:0 auto;font-size:1.05rem;line-height:1.75">
+        <span class="ru">Друзья, я запускаю тренинг по самозанятости в Германии — по девяти ключевым темам и шагам.<br><br>Формат простой: каждую неделю одно групповое занятие, домашние задания и один мастермайнд, где мы вместе разбираем вопросы, задания и реальные ситуации, поддерживаем и мотивируем друг друга.<br><br>Во время тренинга мы не собираем ещё больше информации — её у вас и так уже предостаточно. Мы раскладываем по порядку то, что накопилось: идея, клиенты, деньги, регистрация, налоги, бухгалтерия, документы и следующие шаги. Каждую тему вы сразу применяете к себе и своему делу — прямо по ходу тренинга.<br><br>Результат — не хаос противоречивых советов из чатов, интернета и ИИ, а понятная личная стратегия. А у самых активных — первые реальные шаги: цены, первые клиенты, порядок в счетах, документах и контрактах.</span>
+        <span class="de">Liebe Freundinnen und Freunde, ich starte ein Training zur Selbstständigkeit in Deutschland — entlang neun zentraler Themen und Schritte.<br><br>Das Format ist einfach: jede Woche ein Gruppentreffen, Hausaufgaben und ein Mastermind, in dem wir gemeinsam Fragen, Aufgaben und echte Situationen besprechen, uns gegenseitig unterstützen und motivieren.<br><br>Im Training sammeln wir nicht noch mehr Informationen — davon haben Sie längst genug. Wir bringen Ordnung in das, was sich angesammelt hat: Idee, Kundschaft, Geld, Anmeldung, Steuern, Buchhaltung, Unterlagen und die nächsten Schritte. Jedes Thema wenden Sie sofort auf sich und Ihr Vorhaben an — direkt während des Trainings.<br><br>Das Ergebnis ist kein Chaos widersprüchlicher Ratschläge aus Chats, Internet und KI, sondern eine klare persönliche Strategie. Und die Aktivsten machen erste echte Schritte: Preise, erste Kund:innen, Ordnung in Rechnungen, Unterlagen und Verträgen.</span>
+      </div>
+      <div class="facts" style="margin-top:22px;justify-content:center">
+        <span class="fact"><span class="e">🗓️</span><span class="ru">9 занятий · 2 месяца</span><span class="de">9 Module · 2 Monate</span></span>
+        <span class="fact"><span class="e">💻</span><span class="ru">Zoom + Telegram + Google Drive</span><span class="de">Zoom + Telegram + Google Drive</span></span>
+        <span class="fact"><span class="e">🗣️</span><span class="ru">На русском языке</span><span class="de">Auf Russisch</span></span>
+        <span class="fact"><span class="e">🎓</span><span class="ru">5 тарифов: от 95 €</span><span class="de">5 Tarife: ab 95 €</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIENCE -->
+  <section id="fuer-wen" class="sec-alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span class="ru">Для кого эта программа</span><span class="de">Für wen ist dieses Programm</span></h2>
+        <p class="lead"><span class="ru">Для тех, кто хочет начать, оформить, развивать или перезапустить своё дело в Германии — в любой форме самостоятельной деятельности.</span><span class="de">Für alle, die in Deutschland ihr eigenes Business starten, anmelden, weiterentwickeln oder neu aufstellen wollen — in jeder Form der Selbstständigkeit.</span></p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card">
+          <span class="tag">Gewerbe</span>
+          <h3><span class="ru">ИП / ФОП</span><span class="de">Gewerbe (Einzelunternehmen)</span></h3>
+          <p><span class="ru">Например: бьюти-мастера, SMM и маркетинг, консультанты и коучи, маклеры, организаторы мероприятий, продавцы товаров и услуг.</span><span class="de">Zum Beispiel: Beauty, SMM & Marketing, Beratung & Coaching, Makler/in, Eventorganisation, Verkauf von Waren und Dienstleistungen.</span></p>
+        </div>
+        <div class="card">
+          <span class="tag">Freiberufliche Tätigkeit</span>
+          <h3><span class="ru">Свободные профессии</span><span class="de">Freie Berufe</span></h3>
+          <p><span class="ru">Например: педагоги и репетиторы, дизайнеры, копирайтеры, журналисты, переводчики, программисты, творческие и интеллектуальные специалисты.</span><span class="de">Zum Beispiel: Lehrende & Nachhilfe, Design, Text, Journalismus, Übersetzung, Programmierung, kreative und intellektuelle Berufe.</span></p>
+        </div>
+        <div class="card">
+          <span class="tag">GmbH / UG</span>
+          <h3><span class="ru">Компания / юр. лицо</span><span class="de">Firma / Gesellschaft</span></h3>
+          <p><span class="ru">Например: агентство, студия, магазин, онлайн-проект, сервис, платформа или образовательный продукт.</span><span class="de">Zum Beispiel: Agentur, Studio, Shop, Online-Projekt, Service, Plattform oder Bildungsprodukt.</span></p>
+        </div>
+        <div class="card">
+          <span class="tag">e.V. / gGmbH</span>
+          <h3><span class="ru">Некоммерческая организация</span><span class="de">Gemeinnützige Organisation</span></h3>
+          <p><span class="ru">Например: социальные, культурные, образовательные или интеграционные проекты (Verein, gUG, gGmbH).</span><span class="de">Zum Beispiel: soziale, kulturelle, Bildungs- oder Integrationsprojekte (Verein, gUG, gGmbH).</span></p>
+        </div>
+      </div>
+      <p class="lead" style="margin-top:22px;max-width:70ch">
+        <span class="ru">Неважно, начинаете ли вы с нуля, уже что-то делаете «потихоньку» или хотите вывести своё дело на профессиональный уровень. Главное — собрать ясную картину: что у вас уже есть, куда вы хотите идти и какие шаги нужны дальше.</span>
+        <span class="de">Egal ob Sie bei Null anfangen, schon „nebenbei" etwas tun oder Ihr Business auf ein professionelles Level heben wollen — wichtig ist ein klares Bild: was Sie schon haben, wohin Sie wollen und welche Schritte als Nächstes kommen.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ERGEBNIS / Что будет в результате -->
+  <section id="versprechen" class="sec-alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span class="ru">Что будет в результате</span><span class="de">Was am Ende dabei herauskommt</span></h2>
+        <p class="lead"><span class="ru">Вы перестанете тонуть в разрозненной информации из чатов, интернета, советов знакомых и ИИ — и соберёте свою систему действий по самозанятости в Германии.</span><span class="de">Sie hören auf, in verstreuten Informationen aus Chats, Internet, Bekannten-Tipps und KI zu versinken — und bauen Ihr eigenes Handlungssystem für die Selbstständigkeit in Deutschland auf.</span></p>
+      </div>
+      <img src="assets/ergebnis.png" alt="" loading="lazy" style="width:100%;max-width:760px;display:block;margin:0 0 22px">
+      <p style="max-width:75ch;color:var(--muted);margin-bottom:18px"><span class="ru">Во время программы мы разбираем самые частые вопросы на практике: как понять, сработает ли бизнес-идея, где искать клиентов, как планировать развитие, как считать деньги, где брать финансирование, какие страховки заключать, как вести бухгалтерию, что делать с налогами, регистрацией и документами.</span><span class="de">Während des Programms besprechen wir die häufigsten Fragen ganz praktisch: wie man erkennt, ob die Geschäftsidee trägt, wo man Kundschaft findet, wie man die Entwicklung plant, wie man rechnet, wo man Förderung bekommt, welche Versicherungen man braucht, wie man Buchhaltung führt und was mit Steuern, Anmeldung und Unterlagen zu tun ist.</span></p>
+      <p style="font-weight:700;margin-bottom:10px"><span class="ru">К концу программы у вас будет:</span><span class="de">Am Ende des Programms haben Sie:</span></p>
+      <ul class="checks">
+        <li><span class="ru">понятная точка старта;</span><span class="de">einen klaren Startpunkt;</span></li>
+        <li><span class="ru">рабочая формулировка идеи и предложения;</span><span class="de">eine tragfähige Formulierung Ihrer Idee und Ihres Angebots;</span></li>
+        <li><span class="ru">схема поиска клиентов;</span><span class="de">ein Schema zur Kundengewinnung;</span></li>
+        <li><span class="ru">первые расчёты по деньгам, ценам и расходам;</span><span class="de">erste Berechnungen zu Geld, Preisen und Kosten;</span></li>
+        <li><span class="ru">порядок в счетах, Belege, документах и контрактах;</span><span class="de">Ordnung in Rechnungen, Belegen, Unterlagen und Verträgen;</span></li>
+        <li><span class="ru">понимание базовой логики налогов — без паники и мифов;</span><span class="de">Verständnis der Steuer-Grundlogik — ohne Panik und Mythen;</span></li>
+        <li><span class="ru">список вопросов к Steuerberater, Finanzamt, страховкам или другим специалистам;</span><span class="de">eine Liste von Fragen an Steuerberater, Finanzamt, Versicherungen o.a. Fachleute;</span></li>
+        <li><span class="ru">to-do-лист на ближайшие 30–90 дней.</span><span class="de">eine To-do-Liste für die nächsten 30–90 Tage.</span></li>
+      </ul>
+      <p style="max-width:75ch;margin-top:18px"><span class="ru">То, что раньше выглядело как огромный объём работы, превращается в понятный маршрут. Не «когда-нибудь начну», а «я понимаю, что делать дальше».</span><span class="de">Was vorher wie ein riesiger Berg Arbeit aussah, wird zu einem klaren Fahrplan. Nicht „irgendwann fange ich an", sondern „ich weiß, was als Nächstes zu tun ist".</span></p>
+      <div style="background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--accent);padding:18px 20px;margin-top:20px;max-width:75ch"><span class="ru"><strong>Практический результат для самых активных:</strong> во время тренинга можно разработать готовый бизнес-план, который при необходимости пригодится для получения субсидий Jobcenter, ВНЖ для самозанятых, льготных кредитов, привлечения инвесторов, партнёров или обращения в Торгово-промышленную палату (IHK).</span><span class="de"><strong>Praktisches Ergebnis für die Aktivsten:</strong> Während des Trainings kann ein fertiger Businessplan entstehen, der bei Bedarf für Jobcenter-Zuschüsse, einen Aufenthaltstitel für Selbstständige, günstige Kredite, die Gewinnung von Investor/innen und Partnern oder die Industrie- und Handelskammer (IHK) nützlich ist.</span></div>
+    </div>
+  </section>
+
+  <div class="wrap" style="text-align:center;padding-bottom:4px"><a href="anmeldung.html" class="btn"><span class="ru">Записаться на тренинг</span><span class="de">Zum Anmeldeformular</span></a></div>
+
+  <!-- PROGRAM -->
+  <section id="programm">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span class="ru">Программа: 9 занятий</span><span class="de">Programm: 9 Module</span></h2>
+        <p class="lead"><span class="ru">Каждое занятие — новая тема, практика и домашнее задание. Шаг за шагом из частей собирается ваш план.</span><span class="de">Jedes Modul — ein neues Thema, Praxis und eine Hausaufgabe. Schritt für Schritt entsteht aus den Teilen Ihr Plan.</span></p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="n">1</div><div><h3><span class="ru">Я, моя идея и точка старта</span><span class="de">Ich, meine Idee und der Startpunkt</span></h3><p><span class="ru">Начинаем с человека и его идеи: личная готовность, мотивация, ресурсы, сильные и слабые стороны, страхи, ограничения и первая версия идеи. Результат: выбранная идея запуска или развития и заряд мотивации.</span><span class="de">Wir starten beim Menschen und seiner Idee: Bereitschaft, Motivation, Ressourcen, Stärken/Schwächen, Ängste, Grenzen und die erste Version der Idee. Ergebnis: eine gewählte Start- oder Ausbau-Idee und neue Motivation.</span></p></div></div>
+        <div class="step"><div class="n">2</div><div><h3><span class="ru">Ценность, клиенты, партнёры и рынок</span><span class="de">Wert, Kundschaft, Partner und Markt</span></h3><p><span class="ru">Переводим идею в рабочую структуру: для кого предложение, какую проблему решает, в чём ценность, через какие каналы дойти до клиента и где появляются деньги. Результат: первая бизнес-канва.</span><span class="de">Wir bringen die Idee in eine Struktur: für wen das Angebot ist, welches Problem es löst, worin der Wert liegt, über welche Kanäle Sie Kundschaft erreichen und wo das Geld entsteht. Ergebnis: die erste Business-Canvas.</span></p></div></div>
+        <div class="step"><div class="n">3</div><div><h3><span class="ru">Маркетинг, позиционирование и первые клиенты</span><span class="de">Marketing, Positionierung und erste Kundschaft</span></h3><p><span class="ru">Смотрим на дело глазами клиента: позиционирование, УТП, отличие от конкурентов, оффер, каналы, сайт/страница, соцсети, первые продажи и проверка идеи в реальных разговорах. Результат: первая формулировка оффера и шаги к первым клиентам.</span><span class="de">Wir sehen Ihr Business mit den Augen der Kundschaft: Positionierung, USP, Abgrenzung, Angebot, Kanäle, Website/Seite, Social Media, erste Verkäufe und Idee-Test in echten Gesprächen. Ergebnis: erste Angebots-Formulierung und Schritte zu ersten Kund:innen.</span></p></div></div>
+        <div class="step"><div class="n">4</div><div><h3><span class="ru">Финансовое планирование: цена, расходы, выручка</span><span class="de">Finanzplanung: Preis, Kosten, Umsatz, Realität</span></h3><p><span class="ru">Считаем расходы, цену, выручку, личные потребности, инвестиции, ликвидность и рентабельность. Цифры отрезвляют: кому, за сколько и в каком объёме продавать. Результат: первая финансовая логика проекта.</span><span class="de">Wir rechnen Kosten, Preis, Umsatz, persönlichen Bedarf, Investitionen, Liquidität und Rentabilität. Zahlen ernüchtern: an wen, zu welchem Preis und in welcher Menge verkaufen. Ergebnis: die erste finanzielle Logik des Projekts.</span></p></div></div>
+        <div class="step"><div class="n">5</div><div><h3><span class="ru">Структура бизнес-плана: собираем то, что есть</span><span class="de">Aufbau des Businessplans: zusammenführen, was da ist</span></h3><p><span class="ru">Разбираем структуру бизнес-плана и заполняем её собранным: идея, продукт, клиент, рынок, конкуренты, ценность, маркетинг, финансы, риски и шаги. Результат: черновая структура плана запуска и развития.</span><span class="de">Wir gehen die Struktur des Businessplans durch und füllen sie mit dem Erarbeiteten: Idee, Produkt, Kundschaft, Markt, Wettbewerb, Wert, Marketing, Finanzen, Risiken und Schritte. Ergebnis: ein Entwurf des Start- und Aufbauplans.</span></p></div></div>
+        <div class="step"><div class="n">6</div><div><h3><span class="ru">Регистрация, правовая форма, документы и страховки</span><span class="de">Anmeldung, Rechtsform, Unterlagen und Versicherungen</span></h3><p><span class="ru">Какие формы есть в Германии: Einzelunternehmen (Freiberufler/Gewerbe), GbR, UG/GmbH. Регистрация, Finanzamt, Gewerbeamt, договоры, счета, AGB, DSGVO, документы и страховки. Результат: ясность, какие шаги нужны и что уточнить у специалистов.</span><span class="de">Welche Formen es in Deutschland gibt: Einzelunternehmen (Freiberufler/Gewerbe), GbR, UG/GmbH. Anmeldung, Finanzamt, Gewerbeamt, Verträge, Rechnungen, AGB, DSGVO, Unterlagen und Versicherungen. Ergebnis: Klarheit über nötige Schritte und offene Fragen an Fachleute.</span></p></div></div>
+        <div class="step"><div class="n">7</div><div><h3><span class="ru">Бухгалтерия: как не утонуть в счетах и сроках</span><span class="de">Buchhaltung: nicht in Rechnungen und Fristen untergehen</span></h3><p><span class="ru">Кому нужна двойная бухгалтерия, кому простая; счета, Belege, выписки, касса. Покажу программы (напр. Lexware) и потренируемся: выписать счёт, загрузить Beleg, связать оплату с выпиской. Результат: понимание нормального порядка в бухгалтерии.</span><span class="de">Wer doppelte Buchführung braucht und wer einfache; Rechnungen, Belege, Kontoauszüge, Kasse. Ich zeige Programme (z.B. Lexware), und wir üben: Rechnung schreiben, Beleg hochladen, Zahlung mit Auszug verknüpfen. Ergebnis: Verständnis für eine normale Buchhaltung.</span></p></div></div>
+        <div class="step"><div class="n">8</div><div><h3><span class="ru">Налоги: мифы, реальность и что важно понимать</span><span class="de">Steuern: Mythen, Realität und was wirklich zählt</span></h3><p><span class="ru">Развенчиваем мифы («всё заберут», «42%»). Доходы, расходы, прибыль, необлагаемые суммы, семья, дети, авансы, декларация. Результат: налоги — не чудовище, а система, в которой можно разобраться.</span><span class="de">Wir entzaubern Mythen („alles weg", „42%"). Einnahmen, Ausgaben, Gewinn, Freibeträge, Familie, Kinder, Vorauszahlungen, Steuererklärung. Ergebnis: Steuern sind kein Monster, sondern ein verständliches System.</span></p></div></div>
+        <div class="step"><div class="n">9</div><div><h3><span class="ru">Финальная сборка и план 30–90 дней</span><span class="de">Finale und 30–90-Tage-Plan</span></h3><p><span class="ru">Собираем всё вместе: бизнес-канва, финансы, бизнес-план, административка, налоги, бухгалтерия, клиенты, маркетинг. С помощью тайм-менеджмента разбиваем на понятные шаги. Результат: маршрут на 30–90 дней и чувство «теперь мне всё ясно».</span><span class="de">Wir fügen alles zusammen: Business-Canvas, Finanzen, Businessplan, Administratives, Steuern, Buchhaltung, Kundschaft, Marketing. Mit Zeitmanagement in klare Schritte zerlegt. Ergebnis: ein Fahrplan für 30–90 Tage und das Gefühl „jetzt ist mir alles klar".</span></p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="tarife" class="sec-alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span class="ru">Тарифы — цены первого потока</span><span class="de">Tarife — Preise des ersten Durchlaufs</span></h2>
+        <p class="lead"><span class="ru">Все цены включают 19% НДС. Рассрочка — начиная со «Стандарта».</span><span class="de">Alle Preise inkl. 19% MwSt. Ratenzahlung — ab „Standard".</span></p>
+      </div>
+      <div class="prices">
+        <div class="price">
+          <h3><span class="ru">База</span><span class="de">Basis</span></h3>
+          <div class="amt">95 € <small class="ru">/ далее 195 €</small><small class="de">/ danach 195 €</small></div>
+          <div class="rate">&nbsp;</div>
+          <p><span class="ru">Для самостоятельного изучения. Доступ к лекциям, материалам, шаблонам, чек-листам и заданиям на Google Drive. Без живых встреч и обратной связи.</span><span class="de">Zum eigenständigen Durcharbeiten. Zugang zu Lektionen, Materialien, Vorlagen, Checklisten und Aufgaben auf Google Drive. Ohne Live-Treffen und Feedback.</span></p>
+          <a href="anmeldung.html?tarif=Basis" class="btn btn-ghost btn-sm"><span class="ru">Записаться</span><span class="de">Anmelden</span></a>
+        </div>
+        <div class="price">
+          <h3><span class="ru">Стандарт</span><span class="de">Standard</span></h3>
+          <div class="amt">495 €</div>
+          <div class="rate"><span class="ru">рассрочка 2 × 255 €</span><span class="de">Ratenzahlung 2 × 255 €</span></div>
+          <p><span class="ru">Живой формат с группой, 2 месяца: 9 занятий, домашние задания, все материалы и еженедельные мастермайнды, где вы получаете обратную связь по домашним заданиям и ответы на вопросы в группе. Я лично провожу занятия — не запись!</span><span class="de">Live mit Gruppe, 2 Monate: 9 Module, Hausaufgaben, alle Materialien und wöchentliche Masterminds — mit Feedback zu den Hausaufgaben und Antworten auf Fragen in der Gruppe. Ich leite die Termine persönlich — keine Aufzeichnung!</span></p>
+          <a href="anmeldung.html?tarif=Standard" class="btn btn-ghost btn-sm"><span class="ru">Записаться</span><span class="de">Anmelden</span></a>
+        </div>
+        <div class="price feat">
+          <span class="badge"><span class="ru">Популярный</span><span class="de">Beliebt</span></span>
+          <h3><span class="ru">Премиум</span><span class="de">Premium</span></h3>
+          <div class="amt">850 €</div>
+          <div class="rate"><span class="ru">рассрочка 2 × 440 €</span><span class="de">Ratenzahlung 2 × 440 €</span></div>
+          <p><span class="ru">Всё из «Стандарта» + моя обратная связь по домашним заданиям: голосовые в Telegram или короткий звонок. Внимательный взгляд со стороны, который не даёт бросить на середине.</span><span class="de">Alles aus „Standard" + mein Feedback zu den Hausaufgaben: Sprachnachrichten in Telegram oder kurzes Telefonat. Ein aufmerksamer Blick von außen, der hilft, nicht auf halbem Weg aufzugeben.</span></p>
+          <a href="anmeldung.html?tarif=Premium" class="btn btn-sm"><span class="ru">Записаться</span><span class="de">Anmelden</span></a>
+        </div>
+        <div class="price">
+          <h3>VIP</h3>
+          <div class="amt">1.785 €</div>
+          <div class="rate">&nbsp;</div>
+          <p><span class="ru">Индивидуальное сопровождение под вашу ситуацию. Продаётся только после бесплатного собеседования — идём туда, где вам нужнее всего.</span><span class="de">Individuelle Begleitung für Ihre Situation. Nur nach kostenlosem Vorgespräch — wir gehen dorthin, wo Sie es am meisten brauchen.</span></p>
+          <a href="mailto:avleonenko@yahoo.de?subject=VIP%20Anfrage%20Training" class="btn btn-ghost btn-sm"><span class="ru">Запросить</span><span class="de">Anfragen</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ERSTER DURCHLAUF (Annas Text, blaues Band) -->
+  <section style="background:var(--blue)">
+    <div class="wrap" style="max-width:800px;text-align:center;padding:clamp(34px,5vw,56px) 22px">
+      <h2 style="color:var(--ink)"><span class="ru">Почему стоит зайти именно в первый поток?</span><span class="de">Warum gerade der erste Durchlauf?</span></h2>
+      <p style="margin-top:12px;color:var(--ink)"><span class="ru">Первый поток — живой. Я провожу тренинг сама, встречаюсь с группой каждую неделю, отвечаю на вопросы и помогаю не «слиться» после первых материалов. Это больше мотивации, дисциплины и поддержки. А ещё для первой группы действуют специальные стартовые цены — ниже, чем будут в следующих потоках.</span><span class="de">Der erste Durchlauf ist live. Ich leite das Training selbst, treffe die Gruppe jede Woche, beantworte Fragen und helfe, nach den ersten Materialien nicht „abzuspringen". Mehr Motivation, Disziplin und Unterstützung. Außerdem gelten für die erste Gruppe besondere Startpreise — günstiger als in den nächsten Durchläufen.</span></p>
+    </div>
+  </section>
+
+  <!-- LIZENZ (separat, am Ende, horizontale Rahmen) -->
+  <section>
+    <div class="wrap">
+      <div style="border:1px solid var(--line);border-left:4px solid var(--accent);padding:clamp(20px,3vw,28px);display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+        <div style="flex:1;min-width:260px">
+          <h3 style="margin-bottom:6px"><span class="ru">Предложение для тренеров и коучей</span><span class="de">Angebot für Trainer/innen &amp; Coaches</span></h3>
+          <p style="color:var(--muted);font-size:.94rem"><span class="ru">Право использовать материалы и структуру программы в своей работе — простая, неисключительная, непередаваемая лицензия по договору. От 3000 евро.</span><span class="de">Recht zur Nutzung der Materialien und Struktur in der eigenen Arbeit — einfache, nicht-exklusive, nicht übertragbare Lizenz per Vertrag. Ab 3000 €.</span></p>
+        </div>
+        <a href="mailto:avleonenko@yahoo.de?subject=Lizenz%20Anfrage%20Training" class="btn btn-ghost btn-sm"><span class="ru">Запросить</span><span class="de">Anfragen</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section id="zeitplan">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span class="ru">Расписание</span><span class="de">Zeitplan</span></h2>
+        <p class="lead"><span class="ru">Живой формат в Zoom. Ссылки, записи и организация — в Telegram. Старт: 6 августа.</span><span class="de">Live in Zoom. Links, Aufzeichnungen und Orga — in Telegram. Start: 6. August.</span></p>
+      </div>
+      <p style="margin-bottom:18px;color:var(--muted)"><span class="ru"><strong>Ритм:</strong> каждую субботу 10:00–12:00 — модуль; каждый четверг 10:00–12:00 — мастермайнд (вопросы и ответы). Домашнее задание: с субботы до четверга.</span><span class="de"><strong>Rhythmus:</strong> jeden Samstag 10:00–12:00 — Modul; jeden Donnerstag 10:00–12:00 — Mastermind (Fragen & Antworten). Hausaufgabe: von Samstag bis Donnerstag.</span></p>
+      <div class="cal">
+        <div class="row"><span class="d">06.08 <span class="ru">чт</span><span class="de">Do</span></span><span class="mm"><span class="ru">Вводная встреча</span><span class="de">Auftakt / Einführung</span></span></div>
+        <div class="row"><span class="d">08.08 <span class="ru">сб</span><span class="de">Sa</span></span><span class="mm"><span class="ru">Модуль 1 — Я, моя идея и точка старта</span><span class="de">Modul 1 — Ich, meine Idee und der Startpunkt</span></span></div>
+        <div class="row"><span class="d">15.08 <span class="ru">сб</span><span class="de">Sa</span></span><span class="mm"><span class="ru">Модуль 2 — Ценность, клиенты, партнёры и рынок</span><span class="de">Modul 2 — Wert, Kundschaft, Partner und Markt</span></span></div>
+        <div class="row"><span class="d">22.08 <span class="ru">сб</span><span class="de">Sa</span></span><span class="mm"><span class="ru">Модуль 3 — Маркетинг и первые клиенты</span><span class="de">Modul 3 — Marketing und erste Kundschaft</span></span></div>
+        <div class="row"><span class="d">29.08 <span class="ru">сб</span><span class="de">Sa</span></span><span class="mm"><span class="ru">Модуль 4 — Финансовое планирование</span><span class="de">Modul 4 — Finanzplanung</span></span></div>
+        <div class="row"><span class="d">05.09 <span class="ru">сб</span><span class="de">Sa</span></span><span class="mm"><span class="ru">Модуль 5 — Структура бизнес-плана</span><span class="de">Modul 5 — Aufbau des Businessplans</span></span></div>
+        <div class="row"><span class="d">12.09 <span class="ru">сб</span><span class="de">Sa</span></span><span class="mm"><span class="ru">Модуль 6 — Регистрация, форма, документы, страховки</span><span class="de">Modul 6 — Anmeldung, Rechtsform, Unterlagen, Versicherungen</span></span></div>
+        <div class="row"><span class="d">19.09 <span class="ru">сб</span><span class="de">Sa</span></span><span class="mm"><span class="ru">Модуль 7 — Бухгалтерия</span><span class="de">Modul 7 — Buchhaltung</span></span></div>
+        <div class="row"><span class="d">26.09 <span class="ru">сб</span><span class="de">Sa</span></span><span class="mm"><span class="ru">Модуль 8 — Налоги</span><span class="de">Modul 8 — Steuern</span></span></div>
+        <div class="row"><span class="d">03.10 <span class="ru">сб</span><span class="de">Sa</span></span><span class="mm"><span class="ru">Модуль 9 — Финальная сборка и план 30–90 дней</span><span class="de">Modul 9 — Finale und 30–90-Tage-Plan</span></span></div>
+        <div class="row"><span class="d">08.10 <span class="ru">чт</span><span class="de">Do</span></span><span class="mm"><span class="ru">Финальный мастермайнд — вопросы, следующие шаги</span><span class="de">Abschluss-Mastermind — Fragen, nächste Schritte</span></span></div>
+      </div>
+      <p style="margin-top:14px;font-size:.86rem;color:var(--muted)"><span class="ru">Мастермайнды проходят по четвергам между модулями (если входят в ваш тариф).</span><span class="de">Masterminds finden donnerstags zwischen den Modulen statt (sofern in Ihrem Tarif enthalten).</span></p>
+      <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px">
+        <img src="assets/zeitplan1.jpg" alt="" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block">
+        <img src="assets/zeitplan2.jpg" alt="" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block">
+        <img src="assets/zeitplan3.jpg" alt="" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block">
+        <img src="assets/zeitplan4.jpg" alt="" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block">
+        <img src="assets/zeitplan5.jpg" alt="" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block">
+        <img src="assets/zeitplan6.jpg" alt="" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block">
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap" style="text-align:center;padding-bottom:4px"><a href="anmeldung.html" class="btn"><span class="ru">Записаться на тренинг</span><span class="de">Zum Anmeldeformular</span></a></div>
+
+  <!-- KEY FACTS -->
+  <section class="sec-alt">
+    <div class="wrap">
+      <div class="sec-head"><h2><span class="ru">Коротко о главном</span><span class="de">Kurz & klar</span></h2></div>
+      <div class="kv">
+        <div class="item"><div class="k"><span class="ru">Даты</span><span class="de">Termine</span></div><div class="v"><span class="ru">6 августа – 8 октября</span><span class="de">6. August – 8. Oktober</span></div></div>
+        <div class="item"><div class="k"><span class="ru">Регистрация</span><span class="de">Anmeldung</span></div><div class="v"><span class="ru"><a href="anmeldung.html">через форму на сайте</a></span><span class="de"><a href="anmeldung.html">über das Formular auf der Website</a></span></div></div>
+        <div class="item"><div class="k"><span class="ru">Оплата</span><span class="de">Zahlung</span></div><div class="v">PayPal — <a href="mailto:avleonenko@yahoo.de">avleonenko@yahoo.de</a> · IBAN DE55 1005 0000 0780 2068 27 <span class="ru">(Berliner Sparkasse · получатель: Anna Leonenko)</span><span class="de">(Berliner Sparkasse · Empfänger: Anna Leonenko)</span></div></div>
+        <div class="item"><div class="k"><span class="ru">Счёт-фактура</span><span class="de">Rechnung</span></div><div class="v"><span class="ru">с тарифа «Стандарт» по запросу. Возможность налогового вычета проверяется отдельно.</span><span class="de">ab Tarif „Standard" auf Anfrage. Steuerliche Absetzbarkeit wird separat geprüft.</span></div></div>
+        <div class="item"><div class="k"><span class="ru">Доступ</span><span class="de">Zugang</span></div><div class="v"><span class="ru">после оплаты пришлите подтверждение в ЛС @Anna_Leonenko_Expatscoach — и я отправлю ссылку на группу в Telegram или Google Drive по вашему тарифу</span><span class="de">nach Zahlung Bestätigung per DM an @Anna_Leonenko_Expatscoach — ich schicke den Link zur Telegram-Gruppe bzw. Google Drive je nach Tarif</span></div></div>
+        <div class="item"><div class="k"><span class="ru">Площадка</span><span class="de">Plattform</span></div><div class="v"><span class="ru">Zoom — с чатом и поддержкой в Telegram</span><span class="de">Zoom — mit Chat und Support in Telegram</span></div></div>
+        <div class="item"><div class="k"><span class="ru">Домашние задания</span><span class="de">Hausaufgaben</span></div><div class="v"><span class="ru">выполняем с субботы до четверга; обратная связь — см. тарифы «Стандарт» и «Премиум»</span><span class="de">von Samstag bis Donnerstag; Feedback — siehe Tarife „Standard" und „Premium"</span></div></div>
+        <div class="item"><div class="k"><span class="ru">НДС</span><span class="de">MwSt</span></div><div class="v"><span class="ru">все цены включают 19% НДС</span><span class="de">alle Preise inkl. 19% MwSt</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap" style="text-align:center;padding-bottom:4px"><a href="anmeldung.html" class="btn"><span class="ru">Записаться на тренинг</span><span class="de">Zum Anmeldeformular</span></a></div>
+
+  <!-- TRAINER TEASER -->
+  <section>
+    <div class="wrap">
+      <div class="trainer">
+        <img src="assets/anna-portrait.jpg" alt="Anna Leonenko" />
+        <div>
+          <span class="role-tag"><span class="ru">Ваш тренер</span><span class="de">Ihre Trainerin</span></span>
+          <h3>Anna Leonenko</h3>
+          <p><span class="ru">Помогаю русскоязычным людям уверенно начать и развивать своё дело в Германии — без хаоса, шаг за шагом.</span><span class="de">Ich begleite russischsprachige Menschen dabei, in Deutschland ihr eigenes Business aufzubauen — ohne Chaos, Schritt für Schritt.</span></p>
+          <a href="index.html" class="btn btn-sm btn-ghost"><span class="ru">Подробнее об Анне</span><span class="de">Mehr über Anna</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / REGISTRATION -->
+  <section id="anmeldung">
+    <div class="wrap">
+      <div class="cta">
+        <h2><span class="ru">Готовы внести ясность?</span><span class="de">Bereit für Klarheit?</span></h2>
+        <p><span class="ru">Запишитесь на первый поток. Старт 6 августа — вводная встреча в Zoom. Места первого потока ограничены.</span><span class="de">Melden Sie sich für den ersten Durchlauf an. Start 6. August — Auftakt in Zoom. Die Plätze des ersten Durchlaufs sind begrenzt.</span></p>
+        <a href="anmeldung.html" class="btn"><span class="ru">Записаться на тренинг</span><span class="de">Zum Anmeldeformular</span></a>
+        <div class="pay"><span class="ru">Регистрация — через форму на сайте · оплата после заявки (PayPal или перевод)</span><span class="de">Anmeldung — über das Formular auf der Website · Zahlung nach der Anmeldung (PayPal oder Überweisung)</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="imp">
+      <strong>Impressum</strong> — <span class="ru">Анна Леоненко, фрилансер (Freiberuflerin)</span><span class="de">Anna Leonenko, Freiberuflerin</span> · Zionskirchstr. 45, 10119 Berlin · St.Nr. 14/417/04148 · <a href="mailto:avleonenko@yahoo.de">avleonenko@yahoo.de</a><br><span class="ru">© Фото: Mediaost Events und Kommunikation GmbH, Kultur- und Bildungsprojekte e.V.</span><span class="de">© Fotos: Mediaost Events und Kommunikation GmbH, Kultur- und Bildungsprojekte e.V.</span>
+    </div>
+    <div style="margin:6px 0"><a href="datenschutz.html"><span class="ru">Конфиденциальность и ИИ-прозрачность</span><span class="de">Datenschutz & KI-Transparenz</span></a> · <a href="agb.pdf" target="_blank">AGB (DE · RU)</a> · <a href="index.html"><span class="ru">О тренере</span><span class="de">Über Anna</span></a></div>
+    <div>© <span id="year"></span> Anna Leonenko · <span class="ru">Все права на программу, материалы и методику защищены.</span><span class="de">Alle Rechte an Programm, Materialien und Methodik vorbehalten.</span></div>
+  </div>
+</footer>
+
+<script>
+  var langBtns = document.querySelectorAll('.lang button');
+  function setLang(l){
+    document.documentElement.lang = l;
+    langBtns.forEach(function(b){ b.classList.toggle('active', b.dataset.lang===l); });
+    try{ localStorage.setItem('alc_lang', l); }catch(e){}
+  }
+  langBtns.forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.lang); }); });
+  try{ var s = localStorage.getItem('alc_lang'); if(s){ setLang(s); } }catch(e){}
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<script defer src="kostja.js"></script>
+</body>
+</html>

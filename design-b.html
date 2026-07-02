@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Design B — Anna Leonenko (Vorschau)</title>
+<style>
+  :root{
+    --bg:#EEF3F5; --card:#FFFFFF; --ink:#2C3E46; --muted:#73818A;
+    --accent:#D99B33; --accent-d:#BE8326; --blue:#8FB9CC; --blue-d:#5E93AC; --peach:#F1D6C1; --powder:#BCC7CB; --line:#DCE6EA;
+    --serif:"Palatino Linotype",Palatino,Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.65}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.18}
+  h1{font-size:clamp(2.3rem,6vw,4rem);letter-spacing:-.01em}
+  h2{font-size:clamp(1.6rem,3.4vw,2.3rem)}
+  .demobar{background:var(--blue-d);color:#fff;text-align:center;font-size:.85rem;padding:7px}
+  .demobar b{color:#fff;text-decoration:underline}
+  header{position:absolute;top:0;left:0;right:0;z-index:5;padding:18px 0}
+  nav{display:flex;justify-content:space-between;align-items:center;color:#fff}
+  .brand{font-family:var(--serif);font-size:1.4rem;font-weight:700;letter-spacing:.02em}
+  .navlinks{display:flex;gap:24px;font-size:.92rem;opacity:.95}
+  .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:13px 28px;border-radius:6px;font-weight:600;letter-spacing:.02em;transition:.2s}
+  .btn:hover{background:var(--accent-d)}
+  /* photo placeholder */
+  .ph{position:relative;background:linear-gradient(140deg,var(--blue),var(--powder));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:.9rem;letter-spacing:.05em;min-height:120px;overflow:hidden;border-radius:4px}
+  .ph::after{content:"📷 ФОТО / FOTO";opacity:.92;text-shadow:0 1px 4px rgba(0,0,0,.25)}
+  /* full-width hero */
+  .hero{position:relative;min-height:90vh;display:flex;align-items:center;background:linear-gradient(135deg,var(--blue-d),var(--blue) 55%,var(--peach));color:#fff;overflow:hidden}
+  .hero::before{content:"📷  HERO-FOTO / здесь большое фото";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.45);font-size:1rem;letter-spacing:.08em}
+  .hero .wrap{position:relative;z-index:2}
+  .hero .kicker{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;opacity:.9}
+  .hero h1{margin:14px 0;max-width:16ch;text-shadow:0 2px 16px rgba(0,0,0,.25)}
+  .hero p{font-size:1.15rem;max-width:46ch;margin-bottom:30px;opacity:.96}
+  section{padding:64px 0}
+  .lead{color:var(--muted)}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .split .ph{min-height:340px;border-radius:0}
+  .split .txt{padding:clamp(26px,4vw,48px);display:flex;flex-direction:column;justify-content:center}
+  .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+  .row .offer{padding:0;border-right:1px solid var(--line)}
+  .row .offer:last-child{border-right:0}
+  .offer .ph{min-height:150px;border-radius:0}
+  .offer .body{padding:24px}
+  .offer h3{font-size:1.2rem;margin-bottom:6px}
+  .offer p{color:var(--muted);font-size:.93rem;margin-bottom:8px}
+  .offer .price{font-family:var(--serif);font-weight:700;color:var(--accent-d);font-size:1.15rem}
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+  .gallery .ph{aspect-ratio:1/1}
+  .cta{text-align:center;background:var(--card);border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:8px;padding:clamp(34px,6vw,60px)}
+  .cta p{max-width:48ch;margin:10px auto 24px;color:var(--muted)}
+  footer{padding:34px 0;color:var(--muted);font-size:.85rem;text-align:center}
+  @media(max-width:760px){.split{grid-template-columns:1fr}.split .ph{min-height:220px}.gallery{grid-template-columns:1fr 1fr}.navlinks{display:none}}
+</style>
+</head>
+<body>
+<div class="demobar">Дизайн-вариант <b>B</b> — превью (Небо &amp; Сафран · большой Hero · кулер-тон) · фото-плейсхолдеры для ваших снимков</div>
+<header><div class="wrap"><nav>
+  <div class="brand">Anna Leonenko</div>
+  <div class="navlinks"><span>Обо мне</span><span>Услуги</span><span>Тренинг</span><span>Контакт</span></div>
+</nav></div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="kicker">Expat Coach · Германия</div>
+  <h1>Ваш опыт — не с нуля, а заново.</h1>
+  <p>Профессиональная реализация, самозанятость и сопровождение в Германии — для русскоязычных людей.</p>
+  <a href="#k" class="btn">Записаться на консультацию</a>
+</div></section>
+
+<main class="wrap">
+  <section><div class="split">
+    <div class="ph"></div>
+    <div class="txt">
+      <h2>Обо мне</h2>
+      <p class="lead" style="margin-top:12px">Я приехала в Германию больше двадцати лет назад уже взрослым человеком и построила здесь карьеру, компанию и проекты. Сегодня я помогаю другим переводить свой опыт, образование и идеи в новую реальность — не обнуляясь.</p>
+    </div>
+  </div></section>
+
+  <section style="padding-top:0">
+    <h2 style="margin-bottom:6px">Что я предлагаю</h2>
+    <p class="lead" style="margin-bottom:24px">Консультация, сопровождение и тренинги.</p>
+    <div class="row">
+      <div class="offer"><div class="ph"></div><div class="body"><h3>Консультация</h3><p>Разобраться в конкретном вопросе за 1,5 часа.</p><div class="price">200 €</div></div></div>
+      <div class="offer"><div class="ph"></div><div class="body"><h3>Сопровождение</h3><p>Цель, план и движение вместе.</p><div class="price">1.900 € / год</div></div></div>
+      <div class="offer"><div class="ph"></div><div class="body"><h3>Тренинг</h3><p>«Самозанятость по шагам», 9 модулей.</p><div class="price">от 95 €</div></div></div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <h2>Моменты работы</h2>
+    <p class="lead">Здесь будут ваши «знаковые» фото.</p>
+    <div class="gallery"><div class="ph"></div><div class="ph"></div><div class="ph"></div></div>
+  </section>
+
+  <section id="k" style="padding-top:0"><div class="cta">
+    <h2>Записаться на консультацию</h2>
+    <p>Начнём с одной стратегической консультации — а дальше станет ясно, какой путь действительно ваш.</p>
+    <a href="#" class="btn">Telegram: @anna_leonenko_expatcoach</a>
+  </div></section>
+</main>
+<footer class="wrap">Дизайн-превью B · Anna Leonenko · Expat Coach</footer>
+</body>
+</html>

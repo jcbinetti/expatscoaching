@@ -1,0 +1,21 @@
+RewriteEngine On
+
+# Alte Coach-Unterseite -> Startseite (Struktur-Umstellung)
+RewriteRule ^anna\.html$ /index.html [R=301,L]
+
+# www.expatscoaching.de -> expatscoaching.de (kanonisch, via HTTPS)
+RewriteCond %{HTTP_HOST} ^www\.expatscoaching\.de$ [NC]
+RewriteRule ^ https://expatscoaching.de%{REQUEST_URI} [L,R=301]
+
+# HTTP -> HTTPS erzwingen, aber NUR fuer die Live-Domain.
+# Die Staging-Subdomain training.expatslifecoaching.de bleibt unberuehrt.
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} (^|\.)expatscoaching\.de$ [NC]
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Kein Caching fuer HTML/JS, damit Aenderungen sofort sichtbar sind
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|js)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>

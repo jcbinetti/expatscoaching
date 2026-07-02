@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Запись на тренинг · Anmeldung</title>
+<style>
+  :root{
+    --bg:#FAF4EF; --card:#FFFFFF; --ink:#35454E; --muted:#7C8A91;
+    --accent:#6E9DB5; --accent-d:#517E96; --peach:#F0D3BC; --peach-soft:#F6E6D8; --blue:#AECEDD; --line:#DCE3E5;
+    --serif:Georgia,"Times New Roman",serif; --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6}
+  .de{display:none} html[lang="de"] .ru{display:none} html[lang="de"] .de{display:revert}
+  h1{font-family:var(--serif);font-weight:700;font-size:clamp(1.5rem,3.2vw,2.1rem);margin-bottom:6px}
+  header{display:flex;justify-content:space-between;align-items:center;padding:16px clamp(18px,4vw,40px);border-bottom:1px solid var(--line)}
+  .brand{font-family:var(--serif);font-weight:700;font-size:1.25rem;color:var(--ink);text-decoration:none}
+  .nav-right{display:flex;gap:10px;align-items:center}
+  .back{text-decoration:none;color:var(--ink);font-size:.84rem;border:1.5px solid var(--ink);border-radius:999px;padding:7px 15px}
+  .lang{display:flex;gap:2px;border:1.5px solid var(--ink);border-radius:999px;padding:3px}
+  .lang button{border:0;background:none;cursor:pointer;font:inherit;font-size:.8rem;font-weight:700;padding:5px 11px;border-radius:999px;color:var(--ink)}
+  .lang button.active{background:var(--ink);color:#fff}
+  .wrap{max-width:620px;margin:0 auto;padding:clamp(24px,5vw,48px) 20px}
+  .lead{color:var(--muted);margin-bottom:22px}
+  .card{background:var(--card);border:1px solid var(--line);padding:clamp(20px,4vw,32px)}
+  label{display:block;font-weight:600;font-size:.86rem;margin:14px 0 5px}
+  input,select,textarea{width:100%;border:1px solid #cdd6dd;border-radius:8px;padding:11px 13px;font:15px var(--sans);outline:none;background:#fff}
+  input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+  textarea{min-height:90px;resize:vertical}
+  .req{color:#c0392b}
+  .check{display:flex;gap:9px;align-items:flex-start;margin-top:14px;font-size:.9rem}
+  .check input{width:auto;margin-top:3px;flex:0 0 auto}
+  .rg{display:none}
+  .rg.show{display:block}
+  .btn{margin-top:22px;width:100%;background:var(--accent);color:#fff;border:1.5px solid var(--accent-d);border-radius:999px;padding:14px;font-weight:600;font-size:1rem;cursor:pointer}
+  .btn:hover{background:var(--accent-d)} .btn:disabled{opacity:.55}
+  .msg{margin-top:16px;padding:14px 16px;border-radius:8px;font-size:.92rem;display:none}
+  .msg.ok{display:block;background:#e7f1ee;color:#2f6b54;border:1px solid #bfe0d2}
+  .msg.err{display:block;background:#fbeaea;color:#c0392b;border:1px solid #f1c6c6}
+  .hint{font-size:.78rem;color:var(--muted);margin-top:5px}
+  a{color:var(--accent-d)}
+  footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var(--muted);font-size:.8rem}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="brand">Anna Leonenko</a>
+  <div class="nav-right">
+    <a href="training.html" class="back"><span class="ru">← К тренингу</span><span class="de">← Zum Training</span></a>
+    <div class="lang"><button data-lang="ru" class="active">РУ</button><button data-lang="de">DE</button></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <h1><span class="ru">Запись на тренинг</span><span class="de">Anmeldung zum Training</span></h1>
+  <p class="lead"><span class="ru">«Самозанятость в Германии по шагам». Заполните форму — и я пришлю письмо с подтверждением и инструкцией по оплате.</span><span class="de">„Selbstständigkeit in Deutschland Schritt für Schritt". Fülle das Formular aus — du bekommst eine Bestätigung und die Zahlungsinfos per E-Mail.</span></p>
+
+  <div style="background:#fff;border:1px solid var(--line);border-left:3px solid var(--accent);padding:12px 15px;margin-bottom:22px;font-size:.9rem;color:var(--muted)">
+    <span class="ru"><b style="color:var(--ink)">Как проходит запись:</b> 1) заполните форму → 2) на почту придёт письмо с оплатой (PayPal или перевод + QR-код) → 3) оплатите и пришлите чек → 4) получите счёт и доступы. <b style="color:var(--ink)">Если письма нет — проверьте папку «Спам» / «Промоакции».</b></span>
+    <span class="de"><b style="color:var(--ink)">So läuft die Anmeldung:</b> 1) Formular ausfüllen → 2) du bekommst eine E-Mail mit Zahlung (PayPal oder Überweisung + QR-Code) → 3) zahlen und Beleg senden → 4) Rechnung und Zugänge erhalten. <b style="color:var(--ink)">Falls keine Mail kommt — bitte den Spam-/Werbung-Ordner prüfen.</b></span>
+  </div>
+
+  <div class="card" id="formCard">
+    <label><span class="ru">Имя</span><span class="de">Vorname</span> <span class="req">*</span></label>
+    <input id="vorname" type="text" autocomplete="given-name" />
+
+    <label><span class="ru">Фамилия (латиницей)</span><span class="de">Nachname</span> <span class="req">*</span></label>
+    <input id="nachname" type="text" autocomplete="family-name" />
+
+    <label>E-Mail <span class="req">*</span></label>
+    <input id="email" type="email" autocomplete="email" />
+
+    <label>Telegram</label>
+    <input id="telegram" type="text" placeholder="@..." />
+
+    <label><span class="ru">Тариф</span><span class="de">Tarif</span> <span class="req">*</span></label>
+    <select id="tarif">
+      <option value="">—</option>
+      <option value="Basis">База / Basis — 95 €</option>
+      <option value="Standard">Стандарт / Standard — 495 €</option>
+      <option value="Premium">Премиум / Premium — 850 €</option>
+    </select>
+    <div class="hint"><span class="ru">VIP и Лицензия — по запросу: avleonenko@yahoo.de</span><span class="de">VIP und Lizenz — auf Anfrage: avleonenko@yahoo.de</span></div>
+
+    <div class="check"><input id="rechnung" type="checkbox" /><label for="rechnung" style="margin:0;font-weight:600"><span class="ru">Нужен счёт (Rechnung)</span><span class="de">Ich brauche eine Rechnung</span></label></div>
+    <div class="rg" id="rgBox">
+      <label><span class="ru">Улица и дом</span><span class="de">Straße und Nr.</span></label>
+      <input id="strasse" type="text" />
+      <div style="display:flex;gap:10px">
+        <div style="flex:0 0 35%"><label><span class="ru">Индекс</span><span class="de">PLZ</span></label><input id="plz" type="text" /></div>
+        <div style="flex:1"><label><span class="ru">Город</span><span class="de">Ort</span></label><input id="ort" type="text" /></div>
+      </div>
+      <label><span class="ru">Налоговый номер (если нужен в счёте)</span><span class="de">Steuernummer (falls auf Rechnung gewünscht)</span></label>
+      <input id="steuernummer" type="text" />
+    </div>
+
+    <label><span class="ru">Сообщение (необязательно)</span><span class="de">Nachricht (optional)</span></label>
+    <textarea id="message"></textarea>
+
+    <div class="check"><input id="agb" type="checkbox" /><label for="agb" style="margin:0;font-weight:400"><span class="ru">Я принимаю <a href="agb.pdf" target="_blank">AGB / условия</a></span><span class="de">Ich akzeptiere die <a href="agb.pdf" target="_blank">AGB</a></span> <span class="req">*</span></label></div>
+    <div class="check"><input id="consent" type="checkbox" /><label for="consent" style="margin:0;font-weight:400"><span class="ru">Я согласен(а) с <a href="datenschutz.html" target="_blank">политикой конфиденциальности</a></span><span class="de">Ich stimme der <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> zu</span> <span class="req">*</span></label></div>
+
+    <button class="btn" id="send"><span class="ru">Отправить заявку</span><span class="de">Anmeldung senden</span></button>
+    <div class="msg" id="msg"></div>
+  </div>
+</div>
+
+<footer>
+  Anna Leonenko · Karrierecoaching · Zionskirchstr. 45 · 10119 Berlin · St.Nr. 14/417/04148 · <a href="agb.pdf" target="_blank">AGB</a> · <a href="datenschutz.html">Datenschutz</a>
+</footer>
+
+<script>
+  var L=(localStorage.getItem('alc_lang')==='de')?'de':'ru';
+  function applyLang(){document.documentElement.lang=L;document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('active',b.dataset.lang===L);});}
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){L=b.dataset.lang;localStorage.setItem('alc_lang',L);applyLang();});});
+  applyLang();
+
+  // Tarif aus URL (?tarif=Standard)
+  var qp=new URLSearchParams(location.search); var qt=qp.get('tarif');
+  if(qt){var sel=document.getElementById('tarif');for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===qt){sel.selectedIndex=i;break;}}}
+
+  var rechnung=document.getElementById('rechnung'),rgBox=document.getElementById('rgBox');
+  rechnung.addEventListener('change',function(){rgBox.classList.toggle('show',rechnung.checked);});
+
+  function T(ru,de){return L==='de'?de:ru;}
+  var msg=document.getElementById('msg'),send=document.getElementById('send');
+  function show(k,t){msg.className='msg '+k;msg.textContent=t;}
+  send.addEventListener('click',function(){
+    var v=function(id){return document.getElementById(id).value.trim();};
+    if(!v('vorname')||!v('nachname')){show('err',T('Укажите имя и фамилию.','Bitte Vor- und Nachname angeben.'));return;}
+    var email=v('email'); if(!email||email.indexOf('@')<1){show('err',T('Укажите корректный e-mail.','Bitte gültige E-Mail angeben.'));return;}
+    if(!v('tarif')){show('err',T('Выберите тариф.','Bitte Tarif wählen.'));return;}
+    if(!document.getElementById('agb').checked){show('err',T('Подтвердите AGB.','Bitte AGB bestätigen.'));return;}
+    if(!document.getElementById('consent').checked){show('err',T('Подтвердите политику конфиденциальности.','Bitte Datenschutz bestätigen.'));return;}
+    var rech=document.getElementById('rechnung').checked;
+    if(rech&&(!v('strasse')||!v('plz')||!v('ort'))){show('err',T('Для счёта укажите адрес, индекс и город.','Für die Rechnung bitte Adresse, PLZ und Ort angeben.'));return;}
+    var payload={vorname:v('vorname'),nachname:v('nachname'),email:email,telegram:v('telegram'),tarif:v('tarif'),rechnung:rech,strasse:v('strasse'),plz:v('plz'),ort:v('ort'),steuernummer:v('steuernummer'),message:v('message'),agb:true,consent:true};
+    send.disabled=true; show('','');
+    fetch('register.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+      .then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j};});})
+      .then(function(res){
+        if(res.ok&&res.j.ok){
+          var steps=T(
+            '<ol style="margin:12px 0 0 18px;padding:0;line-height:1.6"><li>На вашу почту пришло письмо с подтверждением и оплатой (PayPal или перевод + QR-код).</li><li><b>⚠️ Проверьте папку «Спам» / «Промоакции»</b> — иногда письмо попадает туда.</li><li>Оплатите и пришлите подтверждение (скрин или PDF) на <a href="mailto:training@expatscoaching.de">training@expatscoaching.de</a>.</li><li>После проверки оплаты вы получите счёт и доступы.</li></ol>',
+            '<ol style="margin:12px 0 0 18px;padding:0;line-height:1.6"><li>Du hast eine E-Mail mit Bestätigung und Zahlung (PayPal oder Überweisung + QR-Code) bekommen.</li><li><b>⚠️ Bitte den Ordner „Spam" / „Werbung" prüfen</b> — manchmal landet die Mail dort.</li><li>Zahle und sende den Beleg (Screenshot oder PDF) an <a href="mailto:training@expatscoaching.de">training@expatscoaching.de</a>.</li><li>Nach Zahlungsprüfung erhältst du Rechnung und Zugänge.</li></ol>');
+          document.getElementById('formCard').innerHTML='<h2 style="font-family:var(--serif)">'+T('Спасибо! Заявка отправлена ✅','Danke! Anmeldung gesendet ✅')+'</h2><p style="margin-top:8px;font-weight:600">'+T('Что дальше:','So geht es weiter:')+'</p>'+steps+'<p style="margin-top:14px;color:var(--muted);font-size:.9rem">'+T('Номер заявки: ','Anmelde-Nr.: ')+(res.j.id||'')+'</p>';
+          window.scrollTo(0,0);
+        } else { show('err',(res.j&&res.j.error)?res.j.error:T('Ошибка. Попробуйте ещё раз.','Fehler. Bitte erneut versuchen.')); send.disabled=false; }
+      }).catch(function(){show('err',T('Ошибка сети. Попробуйте ещё раз.','Netzwerkfehler. Bitte erneut versuchen.'));send.disabled=false;});
+  });
+</script>
+</body>
+</html>

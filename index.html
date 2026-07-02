@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anna Leonenko — Expat Coach</title>
+<meta name="description" content="Anna Leonenko — Expat-Coach für berufliche Verwirklichung, Selbstständigkeit und Begleitung in Deutschland (für russischsprachige Menschen)." />
+<style>
+  :root{
+    --bg:#FAF4EF; --card:#FFFFFF; --ink:#35454E; --muted:#7C8A91;
+    --accent:#6E9DB5; --accent-d:#517E96; --peach:#F0D3BC; --peach-soft:#F6E6D8; --blue:#AECEDD; --powder:#C9D2D4; --line:#DCE3E5;
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.65}
+  h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.2;letter-spacing:-.01em}
+  h1,h2{font-size:clamp(1.7rem,3.2vw,2.4rem)}
+  h3{font-size:1.2rem}
+  .lead{color:var(--muted)}
+  .accent{font-style:italic;color:var(--accent-d)}
+  .kicker{display:block;font-family:var(--sans);font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-d);margin-bottom:14px}
+  em{font-style:italic}
+  /* bilingual */
+  .de{display:none}
+  html[lang="de"] .ru{display:none}
+  html[lang="de"] .de{display:revert}
+  /* header */
+  header{position:sticky;top:0;z-index:50;background:rgba(250,244,239,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px clamp(20px,4vw,56px)}
+  .brand{font-family:var(--serif);font-weight:700;color:var(--ink);text-decoration:none;font-size:1.3rem}
+  .nav-right{display:flex;align-items:center;gap:10px}
+  .back{text-decoration:none;color:var(--ink);font-size:.84rem;border:1.5px solid var(--ink);border-radius:999px;padding:8px 16px;transition:.2s}
+  .back:hover{background:var(--ink);color:#fff}
+  .lang{display:flex;gap:2px;border:1.5px solid var(--ink);border-radius:999px;padding:3px;background:transparent}
+  .lang button{border:0;background:none;cursor:pointer;font:inherit;font-size:.8rem;font-weight:700;padding:5px 11px;border-radius:999px;color:var(--ink)}
+  .lang button.active{background:var(--ink);color:#fff}
+  .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:13px 28px;border:1.5px solid var(--accent-d);border-radius:999px;font-weight:600;transition:.2s}
+  .btn:hover{background:var(--accent-d)}
+  .btn-o{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn-o:hover{background:var(--ink);color:#fff}
+  /* band backgrounds + padding */
+  .band{padding:clamp(46px,6vw,92px) clamp(20px,5vw,56px)}
+  .bg-cream{background:var(--bg)} .bg-white{background:var(--card)} .bg-peach{background:var(--peach-soft)} .bg-blue{background:var(--blue)}
+  .inner{max-width:1080px;margin:0 auto}
+  .prose{max-width:720px;margin:0 auto}
+  .prose p{margin-bottom:1em}
+  .center{text-align:center}
+  /* 1 HERO: portrait + text, full-height image, sharp */
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;min-height:80vh}
+  .hero .txt{display:flex;flex-direction:column;justify-content:center;padding:clamp(34px,5vw,84px)}
+  .hero img{width:100%;height:100%;object-fit:cover;min-height:340px;display:block}
+  .hero h1{margin-bottom:14px}
+  .hero p{margin-bottom:.8em}
+  .hero .strong{font-weight:700;color:var(--ink)}
+  .hero .btn{align-self:flex-start;margin-top:20px}
+  /* clean list */
+  ul.clean{list-style:none;display:grid;gap:10px;max-width:72ch;margin-top:10px}
+  ul.clean li{padding-left:26px;position:relative}
+  ul.clean li::before{content:"—";position:absolute;left:0;color:var(--accent-d);font-weight:700}
+  /* offers */
+  .offers{display:grid;gap:0;grid-template-columns:repeat(3,1fr);margin-top:30px;border:1px solid var(--line)}
+  .offer{padding:28px;display:flex;flex-direction:column;border-right:1px solid var(--line);background:var(--card)}
+  .offer:last-child{border-right:0}
+  .offer .n{font-size:.74rem;font-weight:800;color:var(--accent-d);letter-spacing:.08em}
+  .offer h3{margin:8px 0 8px}
+  .offer p{color:var(--muted);font-size:.94rem;margin-bottom:14px}
+  .offer .price{margin-top:auto;font-family:var(--serif);font-weight:700;color:var(--accent-d);font-size:1.1rem;padding-top:12px;border-top:1px solid var(--line)}
+  .offer .price small{display:block;font-family:var(--sans);font-weight:600;color:var(--muted);font-size:.8rem;margin-top:3px}
+  /* credentials */
+  .creds{columns:2;column-gap:40px;max-width:80ch;margin-top:14px}
+  .creds li{break-inside:avoid;margin-bottom:9px;padding-left:24px;position:relative;list-style:none;font-size:.95rem}
+  .creds li::before{content:"✓";position:absolute;left:0;color:var(--accent-d);font-weight:800}
+  /* statement (approach) */
+  .statement{text-align:center}
+  .statement p{max-width:760px;margin:0 auto;font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2.4vw,1.7rem);line-height:1.45}
+  /* cta */
+  .cta-band{text-align:center}
+  .cta-band p{max-width:52ch;margin:12px auto 24px;color:var(--muted)}
+  /* about with photo */
+  .about-band{display:grid;grid-template-columns:.82fr 1.18fr;align-items:stretch;background:var(--peach-soft)}
+  .about-band .about-photo{width:100%;height:100%;object-fit:cover;min-height:360px;display:block}
+  .about-band .about-txt{padding:clamp(34px,5vw,72px);display:flex;flex-direction:column;justify-content:center}
+  .about-band .about-txt p{margin-bottom:1em}
+  /* important */
+  .important{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);padding:18px 22px;color:var(--muted);font-size:.92rem;max-width:80ch;margin:0 auto}
+  /* footer */
+  footer{background:var(--ink);color:#cdd7db;font-size:.85rem;padding:clamp(34px,5vw,56px) clamp(20px,4vw,56px)}
+  footer .fwrap{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;max-width:1100px;margin:0 auto}
+  footer h4{color:#fff;font-family:var(--serif);font-size:1.05rem;margin-bottom:10px;font-weight:700}
+  footer a{color:var(--blue);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  footer .fine{margin:22px auto 0;font-size:.78rem;color:#8fa0a7;max-width:1100px}
+  @media(max-width:820px){
+    .hero{grid-template-columns:1fr}
+    .hero img{min-height:300px;order:-1}
+    .offers{grid-template-columns:1fr}
+    .offer{border-right:0;border-bottom:1px solid var(--line)}
+    .offer:last-child{border-bottom:0}
+    .creds{columns:1}
+    .about-band{grid-template-columns:1fr}
+    .about-band .about-photo{min-height:300px;order:-1}
+    .back{display:none}
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="index.html" class="brand">Anna Leonenko</a>
+    <div class="nav-right">
+      <a href="training.html" class="back"><span class="ru">Тренинг →</span><span class="de">Training →</span></a>
+      <div class="lang" role="group" aria-label="Язык / Sprache">
+        <button data-lang="ru" class="active">РУ</button>
+        <button data-lang="de">DE</button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- 1 · INTRO (EIN Block, ganzer Text, KEIN Foto) -->
+  <section class="band bg-cream">
+    <div class="prose">
+      <span class="kicker"><span class="ru">Консультации · Сопровождение · Коучинг</span><span class="de">Beratung · Begleitung · Coaching</span></span>
+      <h1 style="margin-bottom:16px">Anna Leonenko</h1>
+      <p style="margin-bottom:1em">
+        <span class="ru">Я помогаю русскоязычным людям в Германии найти свою профессиональную опору через карьерный коучинг, консультации по самозанятости и практическое сопровождение.</span>
+        <span class="de">Ich helfe russischsprachigen Menschen in Deutschland, ihre berufliche Basis zu finden: durch Karriere-Coaching, Beratung zur Selbstständigkeit und praktische Begleitung.</span>
+      </p>
+      <p style="margin-bottom:1em">
+        <span class="ru">Ко мне приходят, когда внутри много вопросов: куда двигаться дальше, искать работу или открывать самозанятость, как запустить социальный проект и найти на него финансирование, как совместить несколько видов деятельности, написать бизнес-план, да или просто разобраться в бухгалтерии. Я не даю универсальных рецептов. Мы разбираем именно вашу ситуацию: работу, самозанятость, деньги, документы, налоги, клиентов, риски, страхи и первые конкретные шаги.</span>
+        <span class="de">Zu mir kommen Menschen, wenn viele Fragen im Inneren sind: wohin als Nächstes, Arbeit suchen oder selbstständig werden, wie man ein soziales Projekt startet und dafür Förderung findet, wie man mehrere Tätigkeiten verbindet, einen Businessplan schreibt oder einfach die Buchhaltung versteht. Ich gebe keine universellen Rezepte. Wir schauen uns genau Ihre Situation an: Arbeit, Selbstständigkeit, Geld, Unterlagen, Steuern, Kundschaft, Risiken, Ängste und die ersten konkreten Schritte.</span>
+      </p>
+      <p style="margin-bottom:1em">
+        <span class="ru">Переезд не обнуляет всё, что было до этого. У вас уже есть опыт, образование, идеи и сильные стороны. Мы смотрим, как это можно использовать здесь, что нужно адаптировать под Германию, а где, и правда, начинается новый этап.</span>
+        <span class="de">Ein Umzug setzt nicht alles auf Null, was vorher war. Sie bringen Erfahrung, Bildung, Ideen und Stärken bereits mit. Wir schauen, wie sich das hier nutzen lässt, was an Deutschland angepasst werden muss und wo wirklich ein neuer Abschnitt beginnt.</span>
+      </p>
+      <p>
+        <span class="ru accent">Мои любимые темы: профессиональная реализация, самозанятость, некоммерческие и творческие проекты, бизнес-планы, помощь с документами для самозанятых, ПМЖ и гражданство.</span>
+        <span class="de accent">Meine Lieblingsthemen: berufliche Verwirklichung, Selbstständigkeit, gemeinnützige und kreative Projekte, Businesspläne, Hilfe mit Unterlagen für Selbstständige, Niederlassungserlaubnis und Einbürgerung.</span>
+      </p>
+      <a href="#kontakt" class="btn" style="margin-top:24px"><span class="ru">Записаться на консультацию</span><span class="de">Beratung anfragen</span></a>
+    </div>
+  </section>
+
+  <!-- 3b · APPROACH (blaue Streifen, vor den Angeboten) -->
+  <section class="band bg-blue statement">
+    <div class="inner">
+      <span class="kicker"><span class="ru">Мой подход</span><span class="de">Mein Ansatz</span></span>
+      <p><span class="ru">Мы не копируем чужие дорожные карты, а собираем вашу: понимаем, где вы сейчас, определяем, куда хотите прийти, и переводим это в стратегию, документы, решения и конкретные шаги.</span><span class="de">Wir kopieren keine fremden Roadmaps, sondern bauen Ihre: Wir verstehen, wo Sie stehen, bestimmen, wohin Sie wollen, und übersetzen das in Strategie, Unterlagen, Entscheidungen und konkrete Schritte.</span></p>
+    </div>
+  </section>
+
+  <!-- 4 · OFFERS -->
+  <section class="band bg-cream">
+    <div class="inner">
+      <h2><span class="ru">Что я предлагаю</span><span class="de">Was ich anbiete</span></h2>
+      <div class="offers">
+        <div class="offer">
+          <span class="n">01</span>
+          <h3><span class="ru">Стратегическая консультация</span><span class="de">Strategische Beratung</span></h3>
+          <p><span class="ru">Для тех, кому нужно быстро разобраться, как всё устроено и какие варианты есть именно в вашей ситуации. Практический ликбез по самозанятости и смежным вопросам: регистрация, выход из Jobcenter, программы поддержки, некоммерческие проекты, базовый учет и общая логика налоговой системы. Сопровождение в сложных стратегических вопросах тоже начинается с консультации. За 1,5 часа раскладываем всё по полочкам и намечаем следующие шаги.</span><span class="de">Für alle, die schnell verstehen wollen, wie alles funktioniert und welche Optionen es genau in ihrer Situation gibt. Praktischer Überblick zur Selbstständigkeit und zu angrenzenden Themen: Anmeldung, Ausstieg aus dem Jobcenter, Förderprogramme, gemeinnützige Projekte, Grundlagen der Buchhaltung und die allgemeine Logik des Steuersystems. Auch die Begleitung bei komplexen strategischen Fragen beginnt mit einer Beratung. In 1,5 Stunden ordnen wir alles und legen die nächsten Schritte fest.</span></p>
+          <div class="price">200 € <small><span class="ru">за 1,5 часа · плюс НДС</span><span class="de">für 1,5 Std. · zzgl. MwSt</span></small></div>
+        </div>
+        <div class="offer">
+          <span class="n">02</span>
+          <h3><span class="ru">Сопровождение</span><span class="de">Begleitung</span></h3>
+          <p><span class="ru">Регулярная поддержка для тех, кто уже начал процесс и не хочет разбираться в одиночку. Подходит, если вы оформляете или уже ведете самозанятость, пишете бизнес-план, готовите заявку на проект, ищете финансирование или продумываете следующие шаги. На встречах работаем с конкретными вопросами, которые возникают по ходу. Это формат для движения с опорой и мотивацией: не один большой разбор, а регулярные встречи по мере развития вашей ситуации.</span><span class="de">Regelmäßige Unterstützung für alle, die den Prozess schon begonnen haben und sich nicht allein durchkämpfen wollen. Passt, wenn Sie sich selbstständig machen oder es bereits sind, einen Businessplan schreiben, einen Projektantrag vorbereiten, Förderung suchen oder die nächsten Schritte durchdenken. In den Treffen arbeiten wir an den konkreten Fragen, die unterwegs auftauchen. Ein Format für Bewegung mit Halt und Motivation: keine einmalige große Analyse, sondern regelmäßige Treffen im Takt Ihrer Entwicklung.</span></p>
+          <div class="price">1.900 € <small><span class="ru">12 встреч в год · плюс НДС (вместо 2.400 €)</span><span class="de">12 Termine/Jahr · zzgl. MwSt (statt 2.400 €)</span></small></div>
+        </div>
+        <div class="offer">
+          <span class="n">03</span>
+          <h3><span class="ru">Коучинг</span><span class="de">Coaching</span></h3>
+          <p><span class="ru">Серия встреч для тех, кому важно разобраться, куда двигаться дальше. Мы анализируем вашу ситуацию, проясняем запрос, выбираем направление, подбираем конкретные шаги, ищем возможности и ресурсы. Подходит, если нужно определиться с профессией, карьерным путем, целями в жизни или сделать важный выбор; возможна работа по лицензированной методике ценностно-ориентированного коучинга.</span><span class="de">Eine Reihe von Treffen für alle, denen es wichtig ist zu klären, wohin es weitergeht. Wir analysieren Ihre Situation, klären das Anliegen, wählen eine Richtung, legen konkrete Schritte fest und suchen Möglichkeiten und Ressourcen. Passt, wenn Sie sich beruflich, im Karriereweg oder bei Lebenszielen orientieren oder eine wichtige Entscheidung treffen möchten; möglich ist auch die Arbeit nach einer lizenzierten Methode des werteorientierten Coachings.</span></p>
+          <div class="price">100 € <small><span class="ru">в час · плюс НДС · длительность индивидуально</span><span class="de">pro Stunde · zzgl. MwSt · Dauer individuell</span></small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4b · TRAINING (Werbung) -->
+  <section class="band bg-white">
+    <div class="inner" style="text-align:center;max-width:780px">
+      <span class="kicker"><span class="ru">Тренинг</span><span class="de">Training</span></span>
+      <h2>«<span class="ru">Самозанятость в Германии по шагам: от хаоса к ясному плану</span><span class="de">Selbstständigkeit in Deutschland Schritt für Schritt: vom Chaos zum klaren Plan</span>»</h2>
+      <p class="lead" style="margin:14px auto 0"><span class="ru">Групповая программа из 9 модулей: как упорядочить идеи, выстроить понятный план, привлекать клиентов и разобраться с организационными и налоговыми вопросами. Понятно, по шагам, на русском языке.</span><span class="de">Gruppenprogramm aus 9 Modulen: Ideen ordnen, einen klaren Plan aufbauen, Kundschaft gewinnen und organisatorische sowie steuerliche Fragen klären. Verständlich, Schritt für Schritt, auf Russisch.</span></p>
+      <div style="font-family:var(--serif);font-weight:700;color:var(--accent-d);font-size:1.25rem;margin-top:16px"><span class="ru">от 95 €</span><span class="de">ab 95 €</span></div>
+      <a href="training.html" class="btn" style="margin-top:18px"><span class="ru">Подробнее и записаться</span><span class="de">Mehr erfahren &amp; anmelden</span></a>
+    </div>
+  </section>
+
+  <!-- 5 · ABOUT (mit Foto) -->
+  <section class="about-band">
+    <img src="assets/anna-portrait.jpg" alt="Anna Leonenko" class="about-photo">
+    <div class="about-txt">
+      <h2><span class="ru">Обо мне</span><span class="de">Über mich</span></h2>
+      <p style="margin-top:12px"><span class="ru">Я приехала в Германию больше двадцати лет назад уже взрослым человеком: с пятилетней дочерью, дипломом университета и тринадцатилетним профессиональным опытом. Я не хотела начинать жизнь с нуля — и, по большому счёту, не начинала. Я училась адаптировать то, что уже было.</span><span class="de">Ich bin vor über zwanzig Jahren als erwachsener Mensch nach Deutschland gekommen: mit einer fünfjährigen Tochter, einem Universitätsabschluss und dreizehn Jahren Berufserfahrung. Ich wollte mein Leben nicht bei Null beginnen — und habe es im Grunde auch nicht. Ich habe gelernt, das anzupassen, was schon da war.</span></p>
+      <p><span class="ru">На этой основе я построила в Германии карьеру, открыла компанию Mediaost Events und Kommunikation GmbH и инициировала некоммерческую организацию Kultur- und Bildungsprojekte e.V. Много лет я занималась международными культурными, образовательными, социальными и творческими проектами. Со временем мой опыт адаптации, предпринимательства и жизни между культурами перешёл в наставничество, коучинг и консультационную работу.</span><span class="de">Auf dieser Basis habe ich in Deutschland eine Karriere aufgebaut, die Firma Mediaost Events und Kommunikation GmbH gegründet und den Verein Kultur- und Bildungsprojekte e.V. initiiert. Viele Jahre habe ich internationale kulturelle, bildungsbezogene, soziale und kreative Projekte umgesetzt. Mit der Zeit ist meine eigene Erfahrung aus Anpassung, Unternehmertum und dem Leben zwischen Kulturen in Mentoring, Coaching und Beratung übergegangen.</span></p>
+      <p style="color:var(--ink)"><span class="ru">Сегодня я помогаю другим делать то, что когда-то пришлось делать мне: не обнуляться, а переводить свой опыт, образование, идеи и таланты в новую реальность. И я хорошо понимаю русскоязычных людей в эмиграции — не теоретически, а изнутри.</span><span class="de">Heute helfe ich anderen, das zu tun, was ich selbst einmal tun musste: sich nicht auf Null zu setzen, sondern Erfahrung, Bildung, Ideen und Talente in eine neue Realität zu übertragen. Und ich verstehe russischsprachige Menschen in der Migration gut — nicht theoretisch, sondern von innen.</span></p>
+    </div>
+  </section>
+
+  <!-- 6 · CREDENTIALS -->
+  <section class="band bg-cream">
+    <div class="inner" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;align-items:start">
+      <div>
+        <h2><span class="ru">Опыт и квалификация</span><span class="de">Erfahrung & Qualifikation</span></h2>
+        <ul class="creds" style="columns:1;max-width:none;margin-top:10px">
+          <li>M.A. in Kommunikationsmanagement</li>
+          <li><span class="ru">специалистка по международным креативным проектам (с 2005)</span><span class="de">Spezialistin für internationale Kreativprojekte (seit 2005)</span></li>
+          <li><span class="ru">основательница Mediaost Events und Kommunikation GmbH (с 2014)</span><span class="de">Gründerin der Mediaost Events und Kommunikation GmbH (seit 2014)</span></li>
+          <li><span class="ru">инициаторка Kultur- und Bildungsprojekte e.V. (с 2016)</span><span class="de">Initiatorin von Kultur- und Bildungsprojekte e.V. (seit 2016)</span></li>
+          <li><span class="ru">экспертка по привлечению финансирования (с 2020)</span><span class="de">Expertin für Fördermittel-Akquise (seit 2020)</span></li>
+          <li><span class="ru">консультантка по самозанятости и интеграции (с 2021)</span><span class="de">Beraterin für Selbstständigkeit & Integration (seit 2021)</span></li>
+          <li><span class="ru">карьерный коуч для Jobcenter (с 2022)</span><span class="de">Karriere-Coach für das Jobcenter (seit 2022)</span></li>
+          <li><span class="ru">сертифицированный системный коуч (с 2023)</span><span class="de">zertifizierter systemischer Coach (seit 2023)</span></li>
+          <li><span class="ru">преподавательница в программах повышения квалификации (с 2025)</span><span class="de">Dozentin in Weiterbildungsprogrammen (seit 2025)</span></li>
+          <li><span class="ru">сертифицированная IHK-Ausbilderin / AEVO IHK (с 2026)</span><span class="de">zertifizierte IHK-Ausbilderin / AEVO IHK (seit 2026)</span></li>
+        </ul>
+      </div>
+      <div style="display:grid;gap:10px">
+        <img src="assets/qual1.jpg" alt="" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block">
+        <img src="assets/qual2.jpg" alt="" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block">
+        <div style="width:100%;aspect-ratio:4/3;background:var(--peach-soft);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;text-align:center;padding:10px"><span class="ru">📷 фото скоро</span><span class="de">📷 Foto folgt</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="band bg-peach statement">
+    <div class="inner">
+      <img src="assets/zitat.jpg" alt="" loading="lazy" style="width:92px;height:92px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 18px">
+      <p><span class="ru">«Теперь мне всё ясно. Я наконец понимаю, с чего начать и куда иду.»</span><span class="de">„Jetzt ist mir alles klar. Ich verstehe endlich, womit ich anfange und wohin ich gehe."</span></p>
+      <div style="font-family:var(--sans);font-style:normal;font-size:.9rem;color:var(--accent-d);margin-top:16px"><span class="ru">— участница программы</span><span class="de">— Teilnehmerin des Programms</span></div>
+    </div>
+  </section>
+
+  <!-- 8 · CONTACT -->
+  <section id="kontakt" class="band bg-cream cta-band">
+    <div class="inner">
+      <h2><span class="ru">Записаться на консультацию</span><span class="de">Beratung anfragen</span></h2>
+      <p><span class="ru">Начнём с одной стратегической консультации, а дальше станет ясно, какой путь действительно ваш.</span><span class="de">Wir starten mit einer strategischen Beratung, danach wird klar, welcher Weg wirklich Ihrer ist.</span></p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:6px">
+        <a href="https://t.me/Anna_Leonenko_Expatscoach" target="_blank" rel="noopener" class="btn">Telegram: @Anna_Leonenko_Expatscoach</a>
+        <a href="https://t.me/+tmvc0E4obwQwZTU6" target="_blank" rel="noopener" class="btn btn-o"><span class="ru">Вступить в мою группу в Telegram</span><span class="de">Meiner Telegram-Gruppe beitreten</span></a>
+      </div>
+      <p style="max-width:none;margin-top:14px;font-size:.9rem"><span class="ru">Подпишитесь на мою группу в Telegram, чтобы не потеряться.</span><span class="de">Treten Sie meiner Telegram-Gruppe bei, damit Sie nichts verpassen.</span></p>
+      <div style="margin-top:16px"><img src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&margin=0&data=https%3A%2F%2Ft.me%2F%2Btmvc0E4obwQwZTU6" alt="QR Telegram-Gruppe" width="150" height="150" style="border:1px solid var(--line);background:#fff;padding:6px"><br><span style="font-size:.82rem;color:var(--muted)"><span class="ru">QR на мою группу в Telegram</span><span class="de">QR zu meiner Telegram-Gruppe</span></span></div>
+    </div>
+  </section>
+
+  <!-- IMPORTANT -->
+  <section class="band bg-white" style="padding-top:0">
+    <div class="important"><span class="ru"><strong>Важно:</strong> моя работа — это коучинг, карьерная ориентация, образовательная и организационная поддержка. Я не оказываю юридические, налоговые, финансовые или страховые консультации. В сложных случаях рекомендую обращаться к адвокату, Steuerberater или другим профильным специалистам.</span><span class="de"><strong>Wichtig:</strong> Meine Arbeit ist Coaching, berufliche Orientierung sowie bildungsbezogene und organisatorische Unterstützung. Ich biete keine rechtliche, steuerliche, finanzielle oder versicherungsbezogene Beratung. In komplexen Fällen empfehle ich, eine Anwältin/einen Anwalt, eine:n Steuerberater:in oder andere Fachleute hinzuzuziehen.</span></div>
+  </section>
+</main>
+
+<footer>
+  <div class="fwrap">
+    <div>
+      <h4>Anna Leonenko</h4>
+      <span class="ru">Анна Леоненко, фрилансер (Freiberuflerin)</span><span class="de">Anna Leonenko, Freiberuflerin</span><br>
+      Zionskirchstr. 45 · 10119 Berlin · St.Nr. 14/417/04148
+    </div>
+    <div>
+      <h4><span class="ru">Контакт</span><span class="de">Kontakt</span></h4>
+      <a href="https://t.me/Anna_Leonenko_Expatscoach" target="_blank" rel="noopener">Telegram: @Anna_Leonenko_Expatscoach</a><br>
+      <a href="mailto:avleonenko@yahoo.de">avleonenko@yahoo.de</a>
+    </div>
+    <div>
+      <h4><span class="ru">Правовое</span><span class="de">Rechtliches</span></h4>
+      <a href="datenschutz.html"><span class="ru">Конфиденциальность и ИИ</span><span class="de">Datenschutz & KI-Transparenz</span></a><br>
+      <a href="agb.pdf" target="_blank">AGB (DE · RU)</a>
+    </div>
+  </div>
+  <div class="fine"><span class="ru">Услуги оказываются Анной Леоненко (Freiberuflerin) или в рамках проектов Mediaost Events und Kommunikation GmbH. © Фото: Mediaost Events und Kommunikation GmbH, Kultur- und Bildungsprojekte e.V.</span><span class="de">Leistungen erbracht durch Anna Leonenko (Freiberuflerin) oder im Rahmen von Projekten der Mediaost Events und Kommunikation GmbH. © Fotos: Mediaost Events und Kommunikation GmbH, Kultur- und Bildungsprojekte e.V.</span></div>
+</footer>
+
+<script>
+  var langBtns=document.querySelectorAll('.lang button');
+  function setLang(l){document.documentElement.lang=l;langBtns.forEach(function(b){b.classList.toggle('active',b.dataset.lang===l);});try{localStorage.setItem('alc_lang',l);}catch(e){}}
+  langBtns.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang);});});
+  try{var s=localStorage.getItem('alc_lang');if(s){setLang(s);}}catch(e){}
+</script>
+<script defer src="kostja.js"></script>
+</body>
+</html>
