@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anna — Foto-Übersicht</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#faf4ef;color:#35454e;font:15px/1.5 system-ui,sans-serif;padding:22px}
+  h1{margin:0 0 4px;font-size:22px}
+  p.sub{margin:0 0 20px;color:#5b626e}
+  .hint{background:#fff;border:1px solid #e1d8ce;border-radius:12px;padding:12px 16px;margin:0 0 22px;font-size:14px}
+  .hint code{background:#f0e6dc;padding:1px 6px;border-radius:5px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+  .card{background:#fff;border:1px solid #e1d8ce;border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+  .card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#eee}
+  .card .body{padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+  .card .name{font-weight:700;font-size:15px}
+  .card .url{font-size:11px;color:#8a93a0;word-break:break-all;line-height:1.35}
+  .card button{background:#517e96;color:#fff;border:none;border-radius:8px;padding:7px 10px;font-size:13px;font-weight:600;cursor:pointer}
+  .card button:hover{background:#3f6577}
+  .card button.copied{background:#1b7f43}
+</style>
+</head>
+<body>
+<h1>📸 Anna — deine <span id="cnt"></span> Fotos</h1>
+<p class="sub">Zum Einsetzen in Claude Design: <b>„URL kopieren"</b> klicken → in Claude Design ins Prompt-Feld: <i>„Setze hier das Bild [URL] ein."</i></p>
+<div class="hint">Diese Übersicht zeigt die Bilder aus deinem lokalen Repo. Die kopierte URL zeigt auf die öffentliche GitHub-Version — genau die, die Claude Design lädt.</div>
+<div class="grid" id="grid"></div>
+<script>
+  var BASE="https://raw.githubusercontent.com/jcbinetti/expatscoaching/main/assets/";
+  var FILES=[
+    ["anna-hero.jpg","Hero-Bild (groß)"],
+    ["anna-portrait.jpg","Porträt Anna"],
+    ["anna-seminar.jpg","Seminar"],
+    ["gruppe.jpg","Gruppe"],
+    ["qual1.jpg","Qualifikation 1"],
+    ["qual2.jpg","Qualifikation 2"],
+    ["zitat.jpg","Zitat-Bild"],
+    ["ergebnis.png","Ergebnis / Grafik"],
+    ["zeitplan1.jpg","Zeitplan 1"],
+    ["zeitplan2.jpg","Zeitplan 2"],
+    ["zeitplan3.jpg","Zeitplan 3"],
+    ["zeitplan4.jpg","Zeitplan 4"],
+    ["zeitplan5.jpg","Zeitplan 5"],
+    ["zeitplan6.jpg","Zeitplan 6"],
+    ["anna-tuer.jpg","Anna in der Tür (mit Laptop)"],
+    ["motto-working.jpg","Motto: Working on myself"],
+    ["ziele-notizbuch.jpg","Notizbuch: My Main Life Goals"],
+    ["portrait-placeholder.svg","Platzhalter (SVG)"]
+  ];
+  var g=document.getElementById("grid");
+  document.getElementById("cnt").textContent=FILES.length;
+  FILES.forEach(function(f){
+    var name=f[0], label=f[1], url=BASE+name;
+    var card=document.createElement("div"); card.className="card";
+    card.innerHTML='<img src="assets/'+name+'" loading="lazy" alt="'+name+'">'+
+      '<div class="body"><div class="name">'+label+'</div>'+
+      '<div class="url">'+name+'</div>'+
+      '<button type="button">URL kopieren</button></div>';
+    var btn=card.querySelector("button");
+    btn.addEventListener("click",function(){
+      navigator.clipboard.writeText(url).then(function(){
+        btn.textContent="✓ kopiert"; btn.className="copied";
+        setTimeout(function(){btn.textContent="URL kopieren"; btn.className="";},1500);
+      });
+    });
+    g.appendChild(card);
+  });
+</script>
+</body>
+</html>
