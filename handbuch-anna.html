@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ru" data-lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Anna — Handbuch / Руководство</title>
+<style>
+  :root{--bg:#faf4ef;--card:#fff;--ink:#35454e;--muted:#7c8a91;--blue:#517e96;--line:#e1d8ce;--soft:#f4ece3;--ok:#1b7f43}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,sans-serif;padding:0 0 60px}
+  header{position:sticky;top:0;background:rgba(250,244,239,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  header h1{font-size:19px;margin:0;flex:1}
+  .lang button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 14px;font-weight:700;cursor:pointer;font-size:14px}
+  .lang button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+  main{max-width:820px;margin:0 auto;padding:22px 20px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin:0 0 18px}
+  .step h2{margin:0 0 8px;font-size:19px;display:flex;align-items:center;gap:10px}
+  .num{background:var(--blue);color:#fff;width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:15px;flex:none}
+  .step p{margin:6px 0}
+  code{background:var(--soft);padding:1px 7px;border-radius:5px;font-size:14px}
+  .shot{border:2px dashed var(--line);border-radius:12px;background:var(--soft);color:var(--muted);text-align:center;padding:26px 12px;margin:10px 0;font-size:14px}
+  .warn{background:#fff6e9;border:1px solid #f0d9b0;border-radius:12px;padding:12px 15px;margin:10px 0}
+  .ok{background:#e8f4ec;border:1px solid #bfe0cc;border-radius:12px;padding:12px 15px;margin:10px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin-top:12px}
+  .pic{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .pic img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#eee}
+  .pic .b{padding:8px 10px;display:flex;flex-direction:column;gap:5px}
+  .pic .nm{font-weight:700;font-size:14px}
+  .pic button{background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px;font-size:12px;font-weight:600;cursor:pointer}
+  .pic button.c{background:var(--ok)}
+  .exlabel{font-weight:700;font-size:14px;margin:14px 0 4px}
+  pre.ex{background:#1e2a30;color:#e8eef1;border-radius:10px;padding:12px 14px;font-size:13px;line-height:1.5;white-space:pre-wrap;word-break:break-word;margin:0;font-family:ui-monospace,Consolas,monospace}
+  .excopy{margin-top:6px;background:var(--blue);color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;cursor:pointer}
+  .excopy.c{background:var(--ok)}
+  [data-lang="ru"] .de,[data-lang="de"] .ru{display:none}
+</style>
+</head>
+<body>
+<header>
+  <h1><span class="ru">📘 Руководство для Анны</span><span class="de">📘 Handbuch für Anna</span></h1>
+  <div class="lang">
+    <button data-l="ru" class="on">RU</button>
+    <button data-l="de">DE</button>
+  </div>
+</header>
+<main>
+
+  <div class="ok">
+    <span class="ru"><b>Главное:</b> здесь ты меняешь <b>внешний вид</b> сайта. Ты <b>не публикуешь</b> сама — когда готово, пиши администратору (JC), он проверяет и выкладывает на сайт.</span>
+    <span class="de"><b>Wichtig:</b> Hier änderst du das <b>Aussehen</b> der Website. Du <b>veröffentlichst nicht</b> selbst — wenn fertig, schreib dem Administrator (JC), er prüft und stellt es online.</span>
+  </div>
+
+  <div class="step">
+    <h2><span class="num">🖥</span><span class="ru">Обзор: как устроен Claude Design</span><span class="de">Überblick: so ist Claude Design aufgebaut</span></h2>
+    <p><b><span class="ru">Вверху справа — режимы:</span><span class="de">Oben rechts — Modi:</span></b></p>
+    <p style="margin:4px 0 0">
+      <span class="ru">• <b>Edit</b> — редактировать (здесь ты меняешь текст и фото)<br>• <b>Comments</b> — заметки для JC (это НЕ изменения)<br>• <b>Mark up</b> — нарисовать/показать на элементе<br>• <b>Present</b> — просмотр без правок (выглядит как настоящий сайт — вернее, чем Edit)<br>• <b>Share</b> — поделиться</span>
+      <span class="de">• <b>Edit</b> — bearbeiten (hier änderst du Text &amp; Fotos)<br>• <b>Comments</b> — Notizen an JC (das sind KEINE Änderungen)<br>• <b>Mark up</b> — draufzeichnen/auf ein Element zeigen<br>• <b>Present</b> — Vorschau ohne Bearbeiten (sieht aus wie die echte Seite — echter als Edit)<br>• <b>Share</b> — teilen</span>
+    </p>
+    <p style="margin:12px 0 0">
+      <span class="ru"><b>Вверху по центру:</b> переключатель страниц («… ⌄ · N pages»).<br><b>Внизу слева:</b> поле ввода — пишешь, что изменить.<br><b>Вверху слева (стрелка):</b> назад к списку всех файлов.</span>
+      <span class="de"><b>Oben Mitte:</b> Seiten-Umschalter („… ⌄ · N pages").<br><b>Unten links:</b> Prompt-Feld — schreib, was du ändern willst.<br><b>Oben links (Pfeil):</b> zurück zur Liste aller Dateien.</span>
+    </p>
+    <div class="warn">
+      <span class="ru">🔄 <b>Обновление:</b> если что-то выглядит не так или не обновилось — обнови страницу: <code>Strg+Shift+R</code>. Режим «Present» показывает вернее, чем «Edit».</span>
+      <span class="de">🔄 <b>Refresh:</b> wenn etwas nicht stimmt oder nicht aktuell ist — Seite neu laden: <code>Strg+Shift+R</code>. Der „Present"-Modus zeigt echter als „Edit".</span>
+    </div>
+    <div class="warn">
+      <span class="ru">✏️ <b>Как менять:</b> кликни прямо на элемент, чтобы выбрать — ИЛИ напиши в поле ввода внизу слева, что сделать.</span>
+      <span class="de">✏️ <b>Wie ändern:</b> klick direkt auf ein Element zum Auswählen — ODER schreib unten links ins Prompt-Feld, was zu tun ist.</span>
+    </div>
+    <div class="shot">📷 <span class="ru">Скриншот: верхняя панель (режимы + переключатель страниц)</span><span class="de">Screenshot: obere Leiste (Modi + Seiten-Umschalter)</span></div>
+  </div>
+
+  <div class="step">
+    <h2><span class="num">1</span><span class="ru">Открыть проект</span><span class="de">Projekt öffnen</span></h2>
+    <p><span class="ru">Открой свою ссылку в браузере:</span><span class="de">Öffne deinen Link im Browser:</span></p>
+    <p><code>claude.ai/design/p/6b595c1f-6d0c-4ca9-a3e6-b001ff78fbd9</code></p>
+    <div class="shot">📷 <span class="ru">Скриншот: открытый проект «anna»</span><span class="de">Screenshot: geöffnetes Projekt „anna"</span></div>
+  </div>
+
+  <div class="step">
+    <h2><span class="num">2</span><span class="ru">Изменить текст</span><span class="de">Text ändern</span></h2>
+    <p><span class="ru">Внизу слева есть поле для ввода. Напиши обычными словами, что изменить, например: «Сделай заголовок больше» или «Измени этот текст на …».</span><span class="de">Unten links ist ein Eingabefeld. Schreib in normalen Worten, was du ändern willst, z. B. „Mach die Überschrift größer" oder „Ändere diesen Text zu …".</span></p>
+    <div class="warn">
+      <span class="ru">⚠️ <b>Два языка!</b> Сайт двуязычный (RU + DE). Если меняешь русский текст, добавь в промт: <i>«и обнови немецкую версию тоже»</i> — иначе немецкий останется старым.</span>
+      <span class="de">⚠️ <b>Zwei Sprachen!</b> Die Seite ist zweisprachig (RU + DE). Wenn du den russischen Text änderst, schreib in den Prompt: <i>„und aktualisiere auch die deutsche Version"</i> — sonst bleibt Deutsch alt.</span>
+    </div>
+    <div class="warn">
+      <span class="ru">📄 Сначала <b>открой нужную страницу</b>, потом пиши промт — активная страница и есть контекст. И называй страницу в промте, например «На странице „Конфиденциальность", в разделе 4 …».</span>
+      <span class="de">📄 Öffne zuerst die <b>richtige Seite</b>, dann schreib den Prompt — die aktive Seite ist der Kontext. Und nenne die Seite im Prompt, z. B. „Auf der Seite „Datenschutz", im Abschnitt 4 …".</span>
+    </div>
+    <div class="shot">📷 <span class="ru">Скриншот: поле ввода внизу слева</span><span class="de">Screenshot: Prompt-Feld unten links</span></div>
+  </div>
+
+  <div class="step">
+    <h2><span class="num">3</span><span class="ru">Вставить фото</span><span class="de">Foto einsetzen</span></h2>
+    <p><span class="ru">Выбери фото ниже → нажми <b>«Копировать URL»</b> → в поле ввода напиши: <i>«Вставь сюда это фото: [вставить URL]».</i></span><span class="de">Wähle unten ein Foto → klick <b>„URL kopieren"</b> → ins Eingabefeld: <i>„Setze hier dieses Bild ein: [URL einfügen]".</i></span></p>
+    <div class="warn"><span class="ru">Вставляй именно <b>URL</b> (ссылку), а не название файла.</span><span class="de">Füge immer die <b>URL</b> (Link) ein, nicht den Dateinamen.</span></div>
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <div class="step">
+    <h2><span class="num">★</span><span class="ru">Примеры промтов (можно копировать)</span><span class="de">Prompt-Beispiele (zum Kopieren)</span></h2>
+    <p><span class="ru">Замени части в […] на своё. Всегда сначала открой нужную страницу.</span><span class="de">Ersetze die Teile in […] durch deins. Öffne immer zuerst die richtige Seite.</span></p>
+
+    <div class="exlabel"><span class="ru">1) Изменить текст (двуязычно)</span><span class="de">1) Text ändern (zweisprachig)</span></div>
+    <div class="ru"><pre class="ex">На странице „[…]", измени заголовок „[…]" на „[…]". Обнови обе языковые версии — русскую и немецкую. Больше ничего не меняй.</pre><button class="excopy" type="button">Копировать</button></div>
+    <div class="de"><pre class="ex">Auf der Seite „[…]", ändere die Überschrift „[…]" zu „[…]". Aktualisiere beide Sprachversionen — Russisch und Deutsch. Sonst nichts ändern.</pre><button class="excopy" type="button">Kopieren</button></div>
+
+    <div class="exlabel"><span class="ru">2) Вставить фото</span><span class="de">2) Foto einsetzen</span></div>
+    <div class="ru"><pre class="ex">На странице „[…]", в разделе „[…]", вставь это фото: [URL из галереи]. Тот же стиль, что у соседних фото.</pre><button class="excopy" type="button">Копировать</button></div>
+    <div class="de"><pre class="ex">Auf der Seite „[…]", im Abschnitt „[…]", setze dieses Foto ein: [URL aus der Galerie]. Gleicher Stil wie die Nachbarfotos.</pre><button class="excopy" type="button">Kopieren</button></div>
+
+    <div class="exlabel"><span class="ru">3) Перевести (после правки RU)</span><span class="de">3) Übersetzen (nach RU-Änderung)</span></div>
+    <div class="ru"><pre class="ex">Я изменила русский текст в этом разделе. Переведи его на немецкий и обнови немецкую версию.</pre><button class="excopy" type="button">Копировать</button></div>
+    <div class="de"><pre class="ex">Ich habe den russischen Text in diesem Abschnitt geändert. Übersetze ihn ins Deutsche und aktualisiere die deutsche Version.</pre><button class="excopy" type="button">Kopieren</button></div>
+
+    <div class="exlabel"><span class="ru">4) Точный пример</span><span class="de">4) Präzises Beispiel</span></div>
+    <div class="ru"><pre class="ex">На странице „Конфиденциальность", в разделе „4. ИИ-чат-бот «KOSTJA»": измени поставщика с «OpenAI» на «Mistral (EU-провайдер, обработка данных в ЕС)». ВАЖНО: в ОБЕИХ языковых версиях — русской И немецкой. Больше ничего не меняй.</pre><button class="excopy" type="button">Копировать</button></div>
+    <div class="de"><pre class="ex">Auf der Seite „Datenschutz", im Abschnitt „4. KI-Chatbot KOSTJA — Transparenz": ändere den Anbieter von „OpenAI" auf „Mistral (EU-Anbieter, Datenverarbeitung in der EU)". WICHTIG: in BEIDEN Sprachversionen — Russisch UND Deutsch. Sonst nichts ändern.</pre><button class="excopy" type="button">Kopieren</button></div>
+  </div>
+
+  <div class="step">
+    <h2><span class="num">4</span><span class="ru">Перейти на другую страницу</span><span class="de">Andere Seite wechseln</span></h2>
+    <p><span class="ru">Вверху по центру — переключатель страниц («… ⌄ · 6 pages»). Там выбираешь: главная, тренинг, запись, конфиденциальность.</span><span class="de">Oben in der Mitte ist der Seiten-Umschalter („… ⌄ · 6 pages"). Dort wählst du: Start, Training, Anmeldung, Datenschutz.</span></p>
+    <div class="shot">📷 <span class="ru">Скриншот: переключатель страниц вверху</span><span class="de">Screenshot: Seiten-Umschalter oben</span></div>
+  </div>
+
+  <div class="step">
+    <h2><span class="num">5</span><span class="ru">Чего НЕ делать</span><span class="de">Was du NICHT machst</span></h2>
+    <p><span class="ru">• «Comments» (комментарии) — это заметки для JC, а не изменения. Для изменений используй поле ввода.<br>• Твой рабочий кабинет (Cockpit) — это <b>отдельно</b>, не здесь.<br>• Не публикуй сама.</span><span class="de">• „Comments" sind Notizen an JC, keine Änderungen. Für Änderungen das Eingabefeld nutzen.<br>• Dein Cockpit (Verwaltung) ist <b>separat</b>, nicht hier.<br>• Nicht selbst veröffentlichen.</span></p>
+  </div>
+
+  <div class="step">
+    <h2><span class="num">6</span><span class="ru">Публикация на сайт</span><span class="de">Veröffentlichung auf die Website</span></h2>
+    <p><span class="ru">Когда всё готово → напиши <b>JC</b>. Он проверит и выложит изменения на <code>expatscoaching.de</code>. Ты сама ничего не загружаешь.</span><span class="de">Wenn alles passt → schreib <b>JC</b>. Er prüft und stellt die Änderungen auf <code>expatscoaching.de</code> live. Du lädst nichts selbst hoch.</span></p>
+  </div>
+
+</main>
+<script>
+  // Sprach-Umschalter
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.documentElement.setAttribute('data-lang',b.dataset.l);
+      document.querySelectorAll('.lang button').forEach(function(x){x.classList.toggle('on',x===b);});
+    });
+  });
+  // Foto-Galerie (GitHub-raw URLs → funktioniert überall)
+  var BASE="https://raw.githubusercontent.com/jcbinetti/expatscoaching/main/assets/";
+  var F=[["anna-hero.jpg","Hero","Главное фото"],["anna-portrait.jpg","Porträt","Портрет"],["anna-seminar.jpg","Seminar","Семинар"],["gruppe.jpg","Gruppe","Группа"],["qual1.jpg","Qualifikation 1","Квалификация 1"],["qual2.jpg","Qualifikation 2","Квалификация 2"],["zitat.jpg","Zitat","Цитата"],["ergebnis.png","Ergebnis","Результат"],["zeitplan1.jpg","Zeitplan 1","План 1"],["zeitplan2.jpg","Zeitplan 2","План 2"],["zeitplan3.jpg","Zeitplan 3","План 3"],["zeitplan4.jpg","Zeitplan 4","План 4"],["zeitplan5.jpg","Zeitplan 5","План 5"],["zeitplan6.jpg","Zeitplan 6","План 6"]];
+  var g=document.getElementById("grid");
+  F.forEach(function(f){
+    var url=BASE+f[0];
+    var d=document.createElement("div"); d.className="pic";
+    d.innerHTML='<img src="'+url+'" loading="lazy" alt="'+f[0]+'"><div class="b"><div class="nm">'+f[1]+'</div><button type="button">URL</button></div>';
+    var bt=d.querySelector("button");
+    bt.addEventListener("click",function(){navigator.clipboard.writeText(url).then(function(){bt.textContent="✓";bt.className="c";setTimeout(function(){bt.textContent="URL";bt.className="";},1400);});});
+    g.appendChild(d);
+  });
+  // Beispiel-Prompts kopieren
+  document.querySelectorAll('.excopy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=b.previousElementSibling.textContent;
+      navigator.clipboard.writeText(t).then(function(){
+        var o=b.textContent; b.textContent="✓"; b.classList.add("c");
+        setTimeout(function(){b.textContent=o; b.classList.remove("c");},1400);
+      });
+    });
+  });
+</script>
+</body>
+</html>

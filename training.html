@@ -5,15 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Самозанятость в Германии по шагам — тренинг Анны Леоненко</title>
 <meta name="description" content="2-месячный онлайн-тренинг: самозанятость в Германии по шагам — от хаоса к ясному плану. Старт 6 августа. / 2-monatiges Online-Training zur Selbstständigkeit in Deutschland." />
+<link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
   :root{
     --bg:#FAF4EF; --surface:#FFFFFF; --ink:#35454E; --muted:#7C8A91;
     --primary:#517E96; --primary-dark:#3F6679; --accent:#6E9DB5; --accent-dark:#517E96;
     --peach:#F0D3BC; --peach-soft:#F6E6D8; --blue:#AECEDD; --powder:#C9D2D4;
     --line:#DCE3E5; --ok:#517E96; --maxw:1080px;
-    --serif:Georgia,"Times New Roman",serif;
-    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --serif:'Manrope',system-ui,sans-serif;
+    --font:'Manrope',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
   }
+  /* typography variants (tweakable) */
+  html[data-type="editorial"]{--serif:'Literata',Georgia,serif;--font:'Manrope',system-ui,sans-serif}
+  html[data-type="modern"]{--serif:'Manrope',system-ui,sans-serif;--font:'Manrope',system-ui,sans-serif}
+  html[data-type="warm"]{--serif:'Lora',Georgia,serif;--font:'Manrope',system-ui,sans-serif}
+  html[data-type="classic"]{--serif:Georgia,"Times New Roman",serif;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+  html[data-type="modern"] h1,html[data-type="modern"] h2,html[data-type="modern"] h3{letter-spacing:-.02em;font-weight:700}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
@@ -47,17 +54,20 @@
   .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
   .btn-ghost:hover{background:var(--ink);color:#fff}
   /* hero */
-  .hero{padding:clamp(40px,7vw,80px) 0 clamp(32px,5vw,52px)}
+  .hero{position:relative;padding:clamp(48px,8vw,104px) 0;min-height:clamp(440px,46vw,600px);display:flex;align-items:center;background:#fff url('assets/hero-bg.jpg') no-repeat;background-size:cover;background-position:center right;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.86) 34%,rgba(255,255,255,.4) 54%,rgba(255,255,255,0) 68%);pointer-events:none}
+  .hero .wrap{position:relative;z-index:1;width:100%}
+  .hero-text{max-width:560px}
   .hero .kicker{display:inline-block;background:var(--peach-soft);color:var(--accent-dark);font-weight:700;font-size:.78rem;letter-spacing:.04em;padding:7px 15px;border-radius:999px;margin-bottom:18px}
   .hero h1{max-width:18ch;margin-bottom:14px}
   .hero .slogan{font-family:var(--serif);font-style:italic;font-size:clamp(1.1rem,2.2vw,1.45rem);font-weight:600;color:var(--accent-dark);margin-bottom:16px}
   .hero .sub{font-size:clamp(1rem,1.7vw,1.15rem);color:var(--muted);max-width:60ch;margin-bottom:26px}
   .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
   .facts{display:flex;gap:10px;flex-wrap:wrap}
-  .fact{background:var(--surface);border:1px solid var(--line);padding:10px 14px;font-size:.88rem;font-weight:600;display:flex;gap:8px;align-items:center}
-  .fact .e{font-size:1.05rem}
+  .fact{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px 8px 9px;font-size:.9rem;font-weight:600;color:var(--ink);display:flex;gap:9px;align-items:center;box-shadow:0 1px 2px rgba(53,69,78,.05)}
+  .fact .e{display:inline-flex;width:28px;height:28px;border-radius:50%;background:var(--peach-soft);color:var(--accent-dark);align-items:center;justify-content:center;flex-shrink:0}
+  .fact .e svg{width:15px;height:15px;display:block}
   /* hero image + trainer */
-  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
   .hero-media img{width:100%;object-fit:cover;aspect-ratio:4/5;max-height:560px;display:block}
   .hero .facts{margin-top:30px}
   .trainer{display:grid;grid-template-columns:280px 1fr;gap:34px;align-items:center;background:var(--surface);border:1px solid var(--line);padding:28px}
@@ -65,7 +75,7 @@
   .trainer h3{font-size:1.3rem;margin:4px 0 6px}
   .trainer p{color:var(--muted);margin-bottom:14px}
   .role-tag{display:inline-block;background:var(--peach-soft);color:var(--accent-dark);font-weight:700;font-size:.78rem;padding:5px 12px;border-radius:999px}
-  @media(max-width:760px){ .hero-grid{grid-template-columns:1fr} .hero-media{order:-1} .trainer{grid-template-columns:1fr;text-align:center} .trainer img{max-width:240px;margin:0 auto} }
+  @media(max-width:760px){ .hero{background-position:78% center} .hero::before{background:linear-gradient(180deg,rgba(255,255,255,.92) 0%,rgba(255,255,255,.82) 46%,rgba(255,255,255,.5) 100%)} .hero-text{max-width:none} .trainer{grid-template-columns:1fr;text-align:center} .trainer img{max-width:240px;margin:0 auto} }
   /* sections */
   section{padding:clamp(44px,6vw,76px) 0}
   .sec-alt{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -115,6 +125,35 @@
   .sec-alt .kv .item{background:var(--bg)}
   .kv .k{font-weight:700;font-size:.88rem;margin-bottom:3px}
   .kv .v{color:var(--muted);font-size:.9rem}
+  /* user cases */
+  .cases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .case{background:var(--surface);border:1px solid var(--line);padding:22px 22px 0;display:flex;flex-direction:column;gap:13px}
+  .case-head{display:flex;align-items:center;gap:14px}
+  .case-ava{width:58px;height:58px;flex-shrink:0}
+  .case-id{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .case-name{font-family:var(--serif);font-weight:700;font-size:1.1rem;color:var(--ink);line-height:1.15}
+  .case-tag{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-dark);text-wrap:balance}
+  .case-problem{color:var(--muted);font-size:.92rem;line-height:1.6;margin:0}
+  .case-out{background:var(--peach-soft);border-left:3px solid var(--accent);padding:13px 15px;font-size:.9rem;line-height:1.55;color:var(--ink);margin:auto -22px 0}
+  .case-out .lbl{display:block;font-weight:700;font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:var(--accent-dark);margin-bottom:5px}
+  .case-out .ref{display:block;margin-top:6px;font-style:italic;color:var(--accent-dark);font-size:.84rem}
+  @media(max-width:760px){ .cases{grid-template-columns:1fr} }
+  /* full-width important statement band */
+  .statement-band{background:var(--ink);color:#F3EBE3;padding:clamp(48px,7vw,88px) 0;text-align:center}
+  .statement-band .wrap{max-width:820px}
+  .statement-band .eyebrow{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--peach);margin-bottom:22px}
+  .statement-band p{font-family:var(--serif);font-style:italic;color:#F7F1EA;font-size:clamp(1.5rem,3.4vw,2.15rem);line-height:1.4;text-wrap:balance}
+  .statement-band .who{margin-top:20px;font-family:var(--font);font-style:normal;font-size:.9rem;letter-spacing:.02em;color:#AEC0C9}
+  .statement-band.prose p{font-style:normal;font-size:clamp(1.15rem,2.1vw,1.5rem);line-height:1.5}
+  /* full-width photo band (hero-style header over image) */
+  .photo-band{position:relative;min-height:clamp(440px,50vw,640px);display:flex;align-items:flex-end;background:#20262e no-repeat;background-size:cover;background-position:center;overflow:hidden}
+  .photo-band::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,26,30,.86) 0%,rgba(20,26,30,.55) 26%,rgba(20,26,30,.08) 52%,rgba(20,26,30,0) 70%);pointer-events:none}
+  .photo-band .wrap{position:relative;z-index:1;width:100%;padding-bottom:clamp(30px,4vw,56px)}
+  .photo-band .inner{max-width:600px}
+  .photo-band .eyebrow{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--peach);margin-bottom:16px}
+  .photo-band h2{color:#fff;max-width:16ch;margin-bottom:14px}
+  .photo-band p{color:rgba(255,255,255,.92);max-width:54ch;font-size:clamp(1rem,1.5vw,1.12rem);line-height:1.6}
+  @media(max-width:760px){ .photo-band{min-height:420px;background-position:60% center} .photo-band::before{background:linear-gradient(0deg,rgba(20,26,30,.9) 0%,rgba(20,26,30,.6) 40%,rgba(20,26,30,.15) 100%)} }
   .kv a{color:var(--accent-dark)}
   /* CTA band */
   .cta{background:var(--blue);color:var(--ink);padding:clamp(34px,5vw,60px);text-align:center}
@@ -123,6 +162,19 @@
   .cta .btn{background:var(--accent);border-color:var(--accent-dark)}
   .cta .pay{margin-top:16px;font-size:.85rem;color:var(--ink);opacity:.8}
   .cta .pay a{color:var(--accent-dark);font-weight:700}
+  /* typography tweaks panel */
+  .tw-fab{position:fixed;left:18px;bottom:18px;z-index:200;width:46px;height:46px;border-radius:50%;border:1.5px solid var(--ink);background:var(--surface);color:var(--ink);cursor:pointer;font-family:Georgia,serif;font-size:1.15rem;font-weight:700;box-shadow:0 6px 20px rgba(53,69,78,.16);transition:.2s}
+  .tw-fab:hover{background:var(--ink);color:#fff}
+  .tw-panel{position:fixed;left:18px;bottom:74px;z-index:200;width:250px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 40px rgba(53,69,78,.22);padding:16px;display:none}
+  .tw-panel.open{display:block}
+  .tw-panel h4{font-family:var(--font);font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .tw-opt{display:flex;flex-direction:column;gap:7px}
+  .tw-opt button{display:flex;align-items:baseline;justify-content:space-between;gap:10px;width:100%;text-align:left;border:1.5px solid var(--line);background:transparent;border-radius:9px;padding:10px 12px;cursor:pointer;transition:.15s;color:var(--ink)}
+  .tw-opt button:hover{border-color:var(--accent)}
+  .tw-opt button.active{border-color:var(--accent-dark);background:var(--peach-soft)}
+  .tw-opt .nm{font-weight:700;font-size:.92rem}
+  .tw-opt .sm{font-size:.76rem;color:var(--muted)}
+  @media(max-width:520px){.tw-fab{width:42px;height:42px}}
   /* footer */
   footer{background:var(--ink);color:#cdd7db;padding:clamp(32px,5vw,52px) 0;font-size:.84rem}
   footer a{color:var(--blue);text-decoration:none}
@@ -157,7 +209,6 @@
   <!-- HERO -->
   <section class="hero">
     <div class="wrap">
-      <div class="hero-grid">
       <div class="hero-text">
       <span class="kicker"><span class="ru">Онлайн-тренинг · старт 6 августа</span><span class="de">Online-Training · Start 6. August</span></span>
       <h1>
@@ -171,8 +222,6 @@
         <a href="#programm" class="btn btn-ghost"><span class="ru">Программа курса</span><span class="de">Zum Programm</span></a>
       </div>
       </div><!-- /hero-text -->
-      <div class="hero-media"><img src="assets/anna-portrait.jpg" alt="Anna Leonenko" /></div>
-      </div><!-- /hero-grid -->
       <!-- Icons verschoben: jetzt nach dem Einleitungstext -->
     </div>
   </section>
@@ -181,15 +230,133 @@
   <section>
     <div class="wrap">
       <div style="background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);padding:clamp(20px,4vw,32px);max-width:780px;margin:0 auto;font-size:1.05rem;line-height:1.75">
-        <span class="ru">Друзья, я запускаю тренинг по самозанятости в Германии — по девяти ключевым темам и шагам.<br><br>Формат простой: каждую неделю одно групповое занятие, домашние задания и один мастермайнд, где мы вместе разбираем вопросы, задания и реальные ситуации, поддерживаем и мотивируем друг друга.<br><br>Во время тренинга мы не собираем ещё больше информации — её у вас и так уже предостаточно. Мы раскладываем по порядку то, что накопилось: идея, клиенты, деньги, регистрация, налоги, бухгалтерия, документы и следующие шаги. Каждую тему вы сразу применяете к себе и своему делу — прямо по ходу тренинга.<br><br>Результат — не хаос противоречивых советов из чатов, интернета и ИИ, а понятная личная стратегия. А у самых активных — первые реальные шаги: цены, первые клиенты, порядок в счетах, документах и контрактах.</span>
-        <span class="de">Liebe Freundinnen und Freunde, ich starte ein Training zur Selbstständigkeit in Deutschland — entlang neun zentraler Themen und Schritte.<br><br>Das Format ist einfach: jede Woche ein Gruppentreffen, Hausaufgaben und ein Mastermind, in dem wir gemeinsam Fragen, Aufgaben und echte Situationen besprechen, uns gegenseitig unterstützen und motivieren.<br><br>Im Training sammeln wir nicht noch mehr Informationen — davon haben Sie längst genug. Wir bringen Ordnung in das, was sich angesammelt hat: Idee, Kundschaft, Geld, Anmeldung, Steuern, Buchhaltung, Unterlagen und die nächsten Schritte. Jedes Thema wenden Sie sofort auf sich und Ihr Vorhaben an — direkt während des Trainings.<br><br>Das Ergebnis ist kein Chaos widersprüchlicher Ratschläge aus Chats, Internet und KI, sondern eine klare persönliche Strategie. Und die Aktivsten machen erste echte Schritte: Preise, erste Kund:innen, Ordnung in Rechnungen, Unterlagen und Verträgen.</span>
+        <span class="ru"><strong>Я собрала этот тренинг из реальных вопросов моих клиентов</strong><br><br>Меня зовут Анна Леоненко. Я автор тренинга «Самозанятость в Германии по шагам: от хаоса к ясному плану», консультант по самозанятости, карьерный коуч и разработчик образовательных программ для русскоязычных людей в Германии. За последние шесть лет я разработала и провела программы, лекции и воркшопы по открытию самозанятости, бизнес-планированию, правовым аспектам работы в Германии, бухгалтерии и налоговой системе, видам на жительство, совмещению разных видов занятости, поиску финансирования для некоммерческих проектов и бизнеса.<br><br>На консультации ко мне приходили очень разные люди. Певицы, актрисы и творческие команды, которые хотели основать Verein и при этом не переругаться ещё до первого проекта. Молодые ребята с уже живым бизнесом вокруг техно-вечеринок, которым срочно нужно было поставить на рельсы регистрацию, GbR, счета, налоги и бухгалтерию. Люди с работающим бизнесом, которым бизнес-план был нужен не «для красоты», а для перехода с §24 на §21 — и в итоге помог не только с видом на жительство, но и с самой структурой бизнеса. Приходили арт-терапевты, учителя музыки, beauty-специалисты, консультанты, коучи, программисты, видеографы, люди с первыми клиентами и люди, которые только пытались понять: «А можно ли мне вообще в Германии работать на себя?»<br><br>Ситуации разные, а внутренний вопрос часто один и тот же:<br>«Я хочу двигаться, но как сделать это правильно?»<br><br>Информации вокруг много. В какой-то момент стало понятно: вопросы повторяются. Людям нужен не ещё один набор ссылок, а маршрутная карта.<br><br>Так появился этот тренинг — из моего личного предпринимательского опыта, клиентских кейсов, образовательных материалов, методик и практических разборов.<br><br>Мы начинаем 6 августа. Формат простой: каждую неделю одно групповое занятие, домашние задания и один мастермайнд, где мы вместе разбираем вопросы, задания и реальные ситуации, поддерживаем и мотивируем друг друга. Можно просто купить материалы и начинать самостоятельный путь прямо сейчас, а можно полностью уйти в индивидуалку и работать по своему плану.<br><br>Во время тренинга мы не собираем ещё больше информации — её у вас и так уже предостаточно: чаты, советы знакомых, ответы ChatGPT, немецкие сайты, истории «у меня было вот так». Но от этого изобилия тревога только усиливается, голова идёт кругом. На тренинге мы структурируем и раскладываем по порядку то, что накопилось: идея, клиенты, деньги, регистрация, налоги, бухгалтерия, документы и следующие шаги. Каждую тему вы сразу применяете к себе и своему делу — прямо по ходу тренинга.<br><br>Результат — не хаос противоречивых советов из чатов, интернета и ИИ, а понятная личная стратегия. А у самых активных — реальные шаги: цены, офер, клиенты, порядок в счетах, документах и контрактах.</span>
+        <span class="de"><strong>Ich habe dieses Training aus den echten Fragen meiner Klientinnen und Klienten aufgebaut</strong><br><br>Mein Name ist Anna Leonenko. Ich bin Autorin des Trainings «Selbstständigkeit in Deutschland Schritt für Schritt: vom Chaos zum klaren Plan», Beraterin für Selbstständigkeit, Karriere-Coach und Entwicklerin von Bildungsprogrammen für russischsprachige Menschen in Deutschland. In den letzten sechs Jahren habe ich Programme, Vorträge und Workshops entwickelt und durchgeführt — zu Existenzgründung, Businessplanung, den rechtlichen Aspekten des Arbeitens in Deutschland, Buchhaltung und Steuersystem, Aufenthaltstiteln, der Verbindung mehrerer Tätigkeiten sowie der Fördermittel-Akquise für gemeinnützige Projekte und Unternehmen.<br><br>In die Beratung kamen sehr unterschiedliche Menschen. Sängerinnen, Schauspielerinnen und kreative Teams, die einen Verein gründen wollten, ohne sich schon vor dem ersten Projekt zu zerstreiten. Junge Leute mit einem bereits lebendigen Business rund um Techno-Partys, die dringend Anmeldung, GbR, Konten, Steuern und Buchhaltung auf die Schiene bringen mussten. Menschen mit einem laufenden Business, die einen Businessplan nicht «zur Zierde» brauchten, sondern für den Wechsel von §24 zu §21 — was am Ende nicht nur beim Aufenthaltstitel half, sondern auch bei der Struktur des Unternehmens selbst. Es kamen Kunsttherapeutinnen, Musiklehrer:innen, Beauty-Spezialistinnen, Berater:innen, Coaches, Programmierer:innen, Videograf:innen, Menschen mit den ersten Kund:innen und Menschen, die gerade erst herausfinden wollten: «Darf ich in Deutschland überhaupt für mich selbst arbeiten?»<br><br>Die Situationen sind verschieden, aber die innere Frage ist oft ein und dieselbe:<br>«Ich will vorankommen — aber wie mache ich es richtig?»<br><br>Informationen gibt es rundherum genug. Irgendwann wurde klar: Die Fragen wiederholen sich. Die Menschen brauchen nicht noch eine weitere Sammlung von Links, sondern eine Landkarte.<br><br>So ist dieses Training entstanden — aus meiner eigenen unternehmerischen Erfahrung, aus Klientenfällen, Bildungsmaterialien, Methoden und praktischen Analysen.<br><br>Wir beginnen am 6. August. Das Format ist einfach: jede Woche ein Gruppentreffen, Hausaufgaben und ein Mastermind, in dem wir gemeinsam Fragen, Aufgaben und echte Situationen besprechen, uns gegenseitig unterstützen und motivieren. Man kann auch einfach die Materialien kaufen und sofort den eigenen Weg beginnen, oder ganz auf ein Einzelformat setzen und nach dem eigenen Plan arbeiten.<br><br>Im Training sammeln wir nicht noch mehr Informationen — davon haben Sie längst mehr als genug: Chats, Ratschläge von Bekannten, Antworten von ChatGPT, deutsche Websites, Geschichten nach dem Motto «bei mir war das so». Doch diese Fülle verstärkt nur die Unruhe, und der Kopf dreht sich. Im Training strukturieren und ordnen wir, was sich angesammelt hat: Idee, Kundschaft, Geld, Anmeldung, Steuern, Buchhaltung, Unterlagen und die nächsten Schritte. Jedes Thema wenden Sie sofort auf sich und Ihr Vorhaben an — direkt während des Trainings.<br><br>Das Ergebnis ist kein Chaos widersprüchlicher Ratschläge aus Chats, Internet und KI, sondern eine klare persönliche Strategie. Und die Aktivsten machen echte Schritte: Preise, Angebot, Kund:innen, Ordnung in Rechnungen, Unterlagen und Verträgen.</span>
       </div>
       <div class="facts" style="margin-top:22px;justify-content:center">
-        <span class="fact"><span class="e">🗓️</span><span class="ru">9 занятий · 2 месяца</span><span class="de">9 Module · 2 Monate</span></span>
-        <span class="fact"><span class="e">💻</span><span class="ru">Zoom + Telegram + Google Drive</span><span class="de">Zoom + Telegram + Google Drive</span></span>
-        <span class="fact"><span class="e">🗣️</span><span class="ru">На русском языке</span><span class="de">Auf Russisch</span></span>
-        <span class="fact"><span class="e">🎓</span><span class="ru">5 тарифов: от 95 €</span><span class="de">5 Tarife: ab 95 €</span></span>
+        <span class="fact"><span class="e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v3M16 3v3"/></svg></span><span class="ru">9 занятий · 2 месяца</span><span class="de">9 Module · 2 Monate</span></span>
+        <span class="fact"><span class="e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="11" rx="1.5"/><path d="M2 20h20"/></svg></span><span class="ru">Zoom + Telegram + Google Drive</span><span class="de">Zoom + Telegram + Google Drive</span></span>
+        <span class="fact"><span class="e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4H4v11h4v4l4-4h8z"/></svg></span><span class="ru">На русском языке</span><span class="de">Auf Russisch</span></span>
+        <span class="fact"><span class="e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h7.5L20 12.5 12.5 20 4 11.5z"/><circle cx="8.5" cy="8.5" r="1.3"/></svg></span><span class="ru">5 тарифов: от 95 €</span><span class="de">5 Tarife: ab 95 €</span></span>
       </div>
+    </div>
+  </section>
+
+  <!-- USER CASES / Узнаёте себя? -->
+  <section id="faelle">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span class="ru">Узнаёте себя?</span><span class="de">Erkennen Sie sich wieder?</span></h2>
+        <p class="lead"><span class="ru">Люди приходят на тренинг с очень разными вопросами. Найдите ситуацию, которая ближе всего к вашей — и посмотрите, что даст вам тренинг.</span><span class="de">Menschen kommen mit sehr unterschiedlichen Fragen ins Training. Finden Sie die Situation, die Ihrer am nächsten kommt — und sehen Sie, was das Training Ihnen bringt.</span></p>
+      </div>
+      <div class="cases">
+
+        <div class="case">
+          <div class="case-head">
+            <img class="case-ava" src="assets/case-masha.jpg" alt="Маша" loading="lazy" style="border-radius:50%;object-fit:cover;width:100%;height:100%">
+            <div class="case-id">
+              <span class="case-name">Маша / Mascha</span>
+              <span class="case-tag"><span class="ru">Информационная перегрузка</span><span class="de">Informationsüberflutung</span></span>
+            </div>
+          </div>
+          <p class="case-problem"><span class="ru">Маша несколько месяцев читает Telegram-чаты, гуглит и проверяет всё в ChatGPT. У неё уже десятки заметок, советов знакомых и скриншотов — но они часто противоречат друг другу. Идея бизнеса у неё уже есть, проблема не в выборе, а в том, что вся собранная информация не складывается в картину: что из этого относится конкретно к её ситуации, а что нет.</span><span class="de">Mascha liest seit Monaten Telegram-Chats, googelt und prüft alles in ChatGPT. Sie hat Dutzende Notizen, Tipps von Bekannten und Screenshots — doch die widersprechen sich oft. Eine Geschäftsidee hat sie bereits; das Problem ist nicht die Wahl, sondern dass sich all die Informationen nicht zu einem Bild fügen: Was davon betrifft genau ihre Situation und was nicht?</span></p>
+          <div class="case-out"><span class="lbl"><span class="ru">На тренинге</span><span class="de">Im Training</span></span><span class="ru">Маша шаг за шагом разберёт собранную информацию и применит её именно к своей ситуации: от идеи и точки старта до финального плана на 30–90 дней.</span><span class="de">ordnet Mascha Schritt für Schritt die gesammelten Informationen und wendet sie genau auf ihre Situation an: von der Idee und dem Startpunkt bis zum finalen 30–90-Tage-Plan.</span><span class="ref"><span class="ru">Как получилось у Ирины.</span><span class="de">So wie es bei Irina geklappt hat.</span></span></div>
+        </div>
+
+        <div class="case">
+          <div class="case-head">
+            <img class="case-ava" src="assets/case-karina.jpg" alt="Карина" loading="lazy" style="border-radius:50%;object-fit:cover;width:100%;height:100%">
+            <div class="case-id">
+              <span class="case-name">Карина / Karina</span>
+              <span class="case-tag"><span class="ru">Слишком много идей</span><span class="de">Zu viele Ideen</span></span>
+            </div>
+          </div>
+          <p class="case-problem"><span class="ru">У Карины не одна идея, а сразу несколько направлений: что-то про мероприятия, что-то про консультации, ещё подработка как репетитор. Она не знает, что выбрать, можно ли всё это совместить или нужно сосредоточиться на чём-то одном.</span><span class="de">Karina hat nicht eine Idee, sondern gleich mehrere Richtungen: etwas mit Events, etwas mit Beratung, dazu ein Nebenjob als Nachhilfelehrerin. Sie weiß nicht, was sie wählen soll, ob sich alles verbinden lässt oder ob sie sich auf eine Sache konzentrieren muss.</span></p>
+          <div class="case-out"><span class="lbl"><span class="ru">На тренинге</span><span class="de">Im Training</span></span><span class="ru">Карина шаг за шагом разберёт идею, ценность и рынок и оценит каждое своё направление — что реально жизнеспособно, что можно объединить, а что стоит отбросить.</span><span class="de">analysiert Karina Schritt für Schritt Idee, Nutzen und Markt und bewertet jede ihrer Richtungen — was wirklich tragfähig ist, was sich bündeln lässt und was sie besser loslässt.</span></div>
+        </div>
+
+        <div class="case">
+          <div class="case-head">
+            <img class="case-ava" src="assets/case-olga.jpg" alt="Ольга" loading="lazy" style="border-radius:50%;object-fit:cover;width:100%;height:100%">
+            <div class="case-id">
+              <span class="case-name">Ольга / Olga</span>
+              <span class="case-tag"><span class="ru">Боится потерять Bürgergeld</span><span class="de">Angst um das Bürgergeld</span></span>
+            </div>
+          </div>
+          <p class="case-problem"><span class="ru">Ольга получает Bürgergeld и боится, что регистрация самозанятости испортит отношения с Jobcenter или она вообще потеряет пособие. Она не понимает: что можно делать параллельно с пособием, какие взносы и формальности её ждут, не говоря уже о субсидии на открытие бизнеса.</span><span class="de">Olga bezieht Bürgergeld und fürchtet, dass die Anmeldung einer Selbstständigkeit das Verhältnis zum Jobcenter belastet oder sie die Leistung ganz verliert. Ihr ist unklar: Was darf sie parallel zum Bürgergeld tun, welche Beiträge und Formalitäten kommen auf sie zu — von Gründungszuschüssen ganz zu schweigen.</span></p>
+          <div class="case-out"><span class="lbl"><span class="ru">На тренинге</span><span class="de">Im Training</span></span><span class="ru">Ольга шаг за шагом разберёт регистрацию, правовые формы и документы. Дополнительный плюс: к концу тренинга у неё будет готовый бизнес-план, который можно подать в Jobcenter — например, для получения Einstiegsgeld или субсидии на оборудование для старта.</span><span class="de">klärt Olga Schritt für Schritt Anmeldung, Rechtsformen und Unterlagen. Als Bonus hat sie am Ende einen fertigen Businessplan, den sie beim Jobcenter einreichen kann — etwa für Einstiegsgeld oder einen Zuschuss zu Ausstattung für den Start.</span><span class="ref"><span class="ru">Как сделала Оксана.</span><span class="de">So wie Oksana es gemacht hat.</span></span></div>
+        </div>
+
+        <div class="case">
+          <div class="case-head">
+            <img class="case-ava" src="assets/case-viktor.jpg" alt="Виктор" loading="lazy" style="border-radius:50%;object-fit:cover;width:100%;height:100%">
+            <div class="case-id">
+              <span class="case-name">Виктор / Viktor</span>
+              <span class="case-tag"><span class="ru">Виза §21 и план для IHK</span><span class="de">§21-Visum &amp; Plan für die IHK</span></span>
+            </div>
+          </div>
+          <p class="case-problem"><span class="ru">Виктор хочет поменять визу с §24 на §21 (самозанятость) и хочет сделать это заранее, «подстелить соломку». Для смены статуса нужен бизнес-план, который пройдёт проверку в IHK.</span><span class="de">Viktor möchte sein Visum von §24 auf §21 (Selbstständigkeit) umstellen und das rechtzeitig vorbereiten, um auf der sicheren Seite zu sein. Für den Statuswechsel braucht er einen Businessplan, der die Prüfung bei der IHK besteht.</span></p>
+          <div class="case-out"><span class="lbl"><span class="ru">На тренинге</span><span class="de">Im Training</span></span><span class="ru">Виктор шаг за шагом соберёт структуру бизнес-плана и выйдет с документом, с которым можно идти в IHK и на собеседование по виду на жительство. Этот же план пригодится и дальше — например, для льготного кредита или разговора с инвестором.</span><span class="de">baut Viktor Schritt für Schritt die Struktur seines Businessplans auf und geht mit einem Dokument heraus, mit dem er zur IHK und zum Gespräch über den Aufenthaltstitel gehen kann. Derselbe Plan hilft auch später — etwa für einen günstigen Kredit oder das Gespräch mit einem Investor.</span><span class="ref"><span class="ru">Как Елена и Юрий.</span><span class="de">So wie Elena und Juri.</span></span></div>
+        </div>
+
+        <div class="case">
+          <div class="case-head">
+            <img class="case-ava" src="assets/case-dmitri.jpg" alt="Дмитрий" loading="lazy" style="border-radius:50%;object-fit:cover;width:100%;height:100%">
+            <div class="case-id">
+              <span class="case-name">Дмитрий / Dmitri</span>
+              <span class="case-tag"><span class="ru">План от ИИ, в который не веришь</span><span class="de">KI-Plan, dem man nicht traut</span></span>
+            </div>
+          </div>
+          <p class="case-problem"><span class="ru">Дмитрий уже написал бизнес-план с помощью ИИ — но сам до конца не понимает, насколько он рабочий и реалистичный. Ему нужна не очередная генерация текста, а проверка логики.</span><span class="de">Dmitri hat seinen Businessplan bereits mit KI geschrieben — versteht aber selbst nicht ganz, wie tragfähig und realistisch er ist. Er braucht keine weitere Textgenerierung, sondern eine Prüfung der Logik.</span></p>
+          <div class="case-out"><span class="lbl"><span class="ru">На тренинге</span><span class="de">Im Training</span></span><span class="ru">Дмитрий сверит свой план со структурой, которую мы разбираем по шагам на занятиях. Он осознанно доработает план — а не «на веру» в то, что написал чат-бот.</span><span class="de">gleicht Dmitri seinen Plan mit der Struktur ab, die wir in den Modulen Schritt für Schritt durchgehen. Er überarbeitet den Plan bewusst — statt blind darauf zu vertrauen, was der Chatbot geschrieben hat.</span></div>
+        </div>
+
+        <div class="case">
+          <div class="case-head">
+            <img class="case-ava" src="assets/case-lena.jpg" alt="Лена" loading="lazy" style="border-radius:50%;object-fit:cover;width:100%;height:100%">
+            <div class="case-id">
+              <span class="case-name">Лена / Lena</span>
+              <span class="case-tag"><span class="ru">Не знает, где искать клиентов</span><span class="de">Weiß nicht, wo Kund:innen sind</span></span>
+            </div>
+          </div>
+          <p class="case-problem"><span class="ru">Лена не понимает, где искать первых клиентов и какие вообще есть каналы для её услуги. Она боится, что просто «откроет ИП» и никто не придёт.</span><span class="de">Lena weiß nicht, wo sie ihre ersten Kund:innen findet und welche Kanäle es für ihre Leistung überhaupt gibt. Sie fürchtet, sie „meldet einfach ein Gewerbe an" und dann kommt niemand.</span></p>
+          <div class="case-out"><span class="lbl"><span class="ru">На тренинге</span><span class="de">Im Training</span></span><span class="ru">Лена шаг за шагом разберёт ценность, позиционирование и маркетинг и выйдет с понятной схемой поиска клиентов.</span><span class="de">erarbeitet Lena Schritt für Schritt Nutzen, Positionierung und Marketing und geht mit einem klaren Plan zur Kundengewinnung heraus.</span></div>
+        </div>
+
+        <div class="case">
+          <div class="case-head">
+            <img class="case-ava" src="assets/case-oleg.jpg" alt="Олег" loading="lazy" style="border-radius:50%;object-fit:cover;width:100%;height:100%">
+            <div class="case-id">
+              <span class="case-name">Олег / Oleg</span>
+              <span class="case-tag"><span class="ru">Бизнес есть, но топчется на месте</span><span class="de">Business läuft, tritt auf der Stelle</span></span>
+            </div>
+          </div>
+          <p class="case-problem"><span class="ru">Олег уже зарегистрировал своё дело и какое-то время работает. Но дело «вялотекущее»: роста нет, доход нестабилен, всё держится на случайных заказах от знакомых. К тому же с документами толком не разобрался — договоры, счета, налоги, бухгалтерия делаются как получится, а цены ставились скорее случайно, чем осознанно. Всё как будто работает, но хаотично.</span><span class="de">Oleg hat sein Business bereits angemeldet und arbeitet seit einer Weile. Doch es läuft nur zäh: kein Wachstum, unregelmäßiges Einkommen, alles hängt an Zufallsaufträgen von Bekannten. Dazu sind die Unterlagen nie richtig geordnet — Verträge, Rechnungen, Steuern und Buchhaltung laufen irgendwie nebenher, die Preise wurden eher zufällig als bewusst festgelegt. Alles funktioniert scheinbar, aber chaotisch.</span></p>
+          <div class="case-out"><span class="lbl"><span class="ru">На тренинге</span><span class="de">Im Training</span></span><span class="ru">Олег шаг за шагом проведёт диагностику своего дела, наведёт порядок в документах и процессах — договоры, счета, налоги, ценообразование — и получит план, как перейти от хаотичной работы к понятной системе.</span><span class="de">macht Oleg Schritt für Schritt eine Diagnose seines Business, bringt Ordnung in Unterlagen und Abläufe — Verträge, Rechnungen, Steuern, Preisgestaltung — und bekommt einen Plan, wie er von chaotischer Zufallsarbeit zu einem klaren System kommt.</span></div>
+        </div>
+
+        <div class="case">
+          <div class="case-head">
+            <img class="case-ava" src="assets/case-vera.jpg" alt="Вера" loading="lazy" style="border-radius:50%;object-fit:cover;width:100%;height:100%">
+            <div class="case-id">
+              <span class="case-name">Вера / Vera</span>
+              <span class="case-tag"><span class="ru">Всё готово, но не начать</span><span class="de">Alles bereit, aber kein Start</span></span>
+            </div>
+          </div>
+          <p class="case-problem"><span class="ru">Вера уже проходила коучинг, всё посчитала: маркетинг продуман, цифры есть, план в голове тоже есть. Но она никак не решается начать — тревога никуда не делась, мотивации не хватает, рядом нет никого, кто бы держал её в ритме.</span><span class="de">Vera hat bereits Coaching gemacht und alles durchgerechnet: Das Marketing steht, die Zahlen sind da, den Plan hat sie auch im Kopf. Doch sie traut sich einfach nicht loszulegen — die Unruhe ist geblieben, die Motivation reicht nicht, und da ist niemand, der sie im Rhythmus hält.</span></p>
+          <div class="case-out"><span class="lbl"><span class="ru">На тренинге</span><span class="de">Im Training</span></span><span class="ru">настоящая ценность для неё — в формате: еженедельный ритм, дедлайны, группа, мастермайнды. Это помогает не отложить запуск, а реально начать прямо во время тренинга.</span><span class="de">liegt der eigentliche Wert für sie im Format: wöchentlicher Rhythmus, Deadlines, Gruppe, Masterminds. Das hilft, den Start nicht aufzuschieben, sondern wirklich schon während des Trainings zu beginnen.</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPORTANT STATEMENT BAND -->
+  <section class="statement-band">
+    <div class="wrap">
+      <span class="eyebrow"><span class="ru">Результат</span><span class="de">Das Ergebnis</span></span>
+      <p><span class="ru">«Тренинг по самозанятости: теперь мне всё ясно!»</span><span class="de">„Das Training zur Selbstständigkeit: Jetzt ist mir alles klar!"</span></p>
+      <div class="who"><span class="ru">— участница тренинга</span><span class="de">— Teilnehmerin des Trainings</span></div>
     </div>
   </section>
 
@@ -222,21 +389,29 @@
           <p><span class="ru">Например: социальные, культурные, образовательные или интеграционные проекты (Verein, gUG, gGmbH).</span><span class="de">Zum Beispiel: soziale, kulturelle, Bildungs- oder Integrationsprojekte (Verein, gUG, gGmbH).</span></p>
         </div>
       </div>
-      <p class="lead" style="margin-top:22px;max-width:70ch">
-        <span class="ru">Неважно, начинаете ли вы с нуля, уже что-то делаете «потихоньку» или хотите вывести своё дело на профессиональный уровень. Главное — собрать ясную картину: что у вас уже есть, куда вы хотите идти и какие шаги нужны дальше.</span>
-        <span class="de">Egal ob Sie bei Null anfangen, schon „nebenbei" etwas tun oder Ihr Business auf ein professionelles Level heben wollen — wichtig ist ein klares Bild: was Sie schon haben, wohin Sie wollen und welche Schritte als Nächstes kommen.</span>
-      </p>
+    </div>
+  </section>
+
+  <!-- IMPORTANT STATEMENT BAND 2 -->
+  <section class="statement-band prose">
+    <div class="wrap">
+      <p><span class="ru">Неважно, начинаете ли вы с нуля, уже что-то делаете «потихоньку» или хотите вывести своё дело на профессиональный уровень. Главное — собрать ясную картину: что у вас уже есть, куда вы хотите идти и какие шаги нужны дальше.</span><span class="de">Egal ob Sie bei Null anfangen, schon „nebenbei" etwas tun oder Ihr Business auf ein professionelles Level heben wollen — wichtig ist ein klares Bild: was Sie schon haben, wohin Sie wollen und welche Schritte als Nächstes kommen.</span></p>
     </div>
   </section>
 
   <!-- ERGEBNIS / Что будет в результате -->
+  <section class="photo-band" style="background-image:url('assets/ergebnis-hero.jpg')">
+    <div class="wrap">
+      <div class="inner">
+        <span class="eyebrow"><span class="ru">Результат</span><span class="de">Das Ergebnis</span></span>
+        <h2><span class="ru">Что будет в результате</span><span class="de">Was am Ende dabei herauskommt</span></h2>
+        <p><span class="ru">Вы перестанете тонуть в разрозненной информации из чатов, интернета, советов знакомых и ИИ — и соберёте свою систему действий по самозанятости в Германии.</span><span class="de">Sie hören auf, in verstreuten Informationen aus Chats, Internet, Bekannten-Tipps und KI zu versinken — und bauen Ihr eigenes Handlungssystem für die Selbstständigkeit in Deutschland auf.</span></p>
+      </div>
+    </div>
+  </section>
+
   <section id="versprechen" class="sec-alt">
     <div class="wrap">
-      <div class="sec-head">
-        <h2><span class="ru">Что будет в результате</span><span class="de">Was am Ende dabei herauskommt</span></h2>
-        <p class="lead"><span class="ru">Вы перестанете тонуть в разрозненной информации из чатов, интернета, советов знакомых и ИИ — и соберёте свою систему действий по самозанятости в Германии.</span><span class="de">Sie hören auf, in verstreuten Informationen aus Chats, Internet, Bekannten-Tipps und KI zu versinken — und bauen Ihr eigenes Handlungssystem für die Selbstständigkeit in Deutschland auf.</span></p>
-      </div>
-      <img src="assets/ergebnis.png" alt="" loading="lazy" style="width:100%;max-width:760px;display:block;margin:0 0 22px">
       <p style="max-width:75ch;color:var(--muted);margin-bottom:18px"><span class="ru">Во время программы мы разбираем самые частые вопросы на практике: как понять, сработает ли бизнес-идея, где искать клиентов, как планировать развитие, как считать деньги, где брать финансирование, какие страховки заключать, как вести бухгалтерию, что делать с налогами, регистрацией и документами.</span><span class="de">Während des Programms besprechen wir die häufigsten Fragen ganz praktisch: wie man erkennt, ob die Geschäftsidee trägt, wo man Kundschaft findet, wie man die Entwicklung plant, wie man rechnet, wo man Förderung bekommt, welche Versicherungen man braucht, wie man Buchhaltung führt und was mit Steuern, Anmeldung und Unterlagen zu tun ist.</span></p>
       <p style="font-weight:700;margin-bottom:10px"><span class="ru">К концу программы у вас будет:</span><span class="de">Am Ende des Programms haben Sie:</span></p>
       <ul class="checks">
@@ -251,10 +426,9 @@
       </ul>
       <p style="max-width:75ch;margin-top:18px"><span class="ru">То, что раньше выглядело как огромный объём работы, превращается в понятный маршрут. Не «когда-нибудь начну», а «я понимаю, что делать дальше».</span><span class="de">Was vorher wie ein riesiger Berg Arbeit aussah, wird zu einem klaren Fahrplan. Nicht „irgendwann fange ich an", sondern „ich weiß, was als Nächstes zu tun ist".</span></p>
       <div style="background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--accent);padding:18px 20px;margin-top:20px;max-width:75ch"><span class="ru"><strong>Практический результат для самых активных:</strong> во время тренинга можно разработать готовый бизнес-план, который при необходимости пригодится для получения субсидий Jobcenter, ВНЖ для самозанятых, льготных кредитов, привлечения инвесторов, партнёров или обращения в Торгово-промышленную палату (IHK).</span><span class="de"><strong>Praktisches Ergebnis für die Aktivsten:</strong> Während des Trainings kann ein fertiger Businessplan entstehen, der bei Bedarf für Jobcenter-Zuschüsse, einen Aufenthaltstitel für Selbstständige, günstige Kredite, die Gewinnung von Investor/innen und Partnern oder die Industrie- und Handelskammer (IHK) nützlich ist.</span></div>
+      <div style="text-align:center;margin-top:26px"><a href="anmeldung.html" class="btn"><span class="ru">Записаться на тренинг</span><span class="de">Zum Anmeldeformular</span></a></div>
     </div>
   </section>
-
-  <div class="wrap" style="text-align:center;padding-bottom:4px"><a href="anmeldung.html" class="btn"><span class="ru">Записаться на тренинг</span><span class="de">Zum Anmeldeformular</span></a></div>
 
   <!-- PROGRAM -->
   <section id="programm">
@@ -369,10 +543,10 @@
         <img src="assets/zeitplan5.jpg" alt="" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block">
         <img src="assets/zeitplan6.jpg" alt="" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block">
       </div>
+      <div style="text-align:center;margin-top:26px"><a href="anmeldung.html" class="btn"><span class="ru">Записаться на тренинг</span><span class="de">Zum Anmeldeformular</span></a></div>
     </div>
   </section>
 
-  <div class="wrap" style="text-align:center;padding-bottom:4px"><a href="anmeldung.html" class="btn"><span class="ru">Записаться на тренинг</span><span class="de">Zum Anmeldeformular</span></a></div>
 
   <!-- KEY FACTS -->
   <section class="sec-alt">
@@ -388,16 +562,16 @@
         <div class="item"><div class="k"><span class="ru">Домашние задания</span><span class="de">Hausaufgaben</span></div><div class="v"><span class="ru">выполняем с субботы до четверга; обратная связь — см. тарифы «Стандарт» и «Премиум»</span><span class="de">von Samstag bis Donnerstag; Feedback — siehe Tarife „Standard" und „Premium"</span></div></div>
         <div class="item"><div class="k"><span class="ru">НДС</span><span class="de">MwSt</span></div><div class="v"><span class="ru">все цены включают 19% НДС</span><span class="de">alle Preise inkl. 19% MwSt</span></div></div>
       </div>
+      <div style="text-align:center;margin-top:26px"><a href="anmeldung.html" class="btn"><span class="ru">Записаться на тренинг</span><span class="de">Zum Anmeldeformular</span></a></div>
     </div>
   </section>
 
-  <div class="wrap" style="text-align:center;padding-bottom:4px"><a href="anmeldung.html" class="btn"><span class="ru">Записаться на тренинг</span><span class="de">Zum Anmeldeformular</span></a></div>
 
   <!-- TRAINER TEASER -->
   <section>
     <div class="wrap">
       <div class="trainer">
-        <img src="assets/anna-portrait.jpg" alt="Anna Leonenko" />
+        <img src="assets/anna-hero.jpg" alt="Anna Leonenko" />
         <div>
           <span class="role-tag"><span class="ru">Ваш тренер</span><span class="de">Ihre Trainerin</span></span>
           <h3>Anna Leonenko</h3>
@@ -430,6 +604,36 @@
     <div>© <span id="year"></span> Anna Leonenko · <span class="ru">Все права на программу, материалы и методику защищены.</span><span class="de">Alle Rechte an Programm, Materialien und Methodik vorbehalten.</span></div>
   </div>
 </footer>
+
+<!-- Typography tweak -->
+<button class="tw-fab" id="twFab" aria-label="Schriftart / Шрифт" title="Schriftart / Шрифт">Aa</button>
+<div class="tw-panel" id="twPanel" role="dialog" aria-label="Typografie">
+  <h4><span class="ru">Шрифт</span><span class="de">Schriftart</span></h4>
+  <div class="tw-opt">
+    <button data-type="editorial"><span class="nm" style="font-family:'Literata',serif">Editorial</span><span class="sm">Literata + Manrope</span></button>
+    <button data-type="modern"><span class="nm" style="font-family:'Manrope',sans-serif">Modern</span><span class="sm">Manrope</span></button>
+    <button data-type="warm"><span class="nm" style="font-family:'Lora',serif">Warm</span><span class="sm">Lora + Manrope</span></button>
+    <button data-type="classic"><span class="nm" style="font-family:Georgia,serif">Classic</span><span class="sm">Georgia</span></button>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var fab=document.getElementById('twFab'), panel=document.getElementById('twPanel');
+    var opts=panel.querySelectorAll('.tw-opt button'), root=document.documentElement;
+    var DEFAULT='modern';
+    function apply(t){
+      root.setAttribute('data-type',t);
+      opts.forEach(function(b){ b.classList.toggle('active', b.dataset.type===t); });
+      try{ localStorage.setItem('alc_font',t); }catch(e){}
+    }
+    fab.addEventListener('click', function(e){ e.stopPropagation(); panel.classList.toggle('open'); });
+    document.addEventListener('click', function(e){ if(!panel.contains(e.target) && e.target!==fab) panel.classList.remove('open'); });
+    opts.forEach(function(b){ b.addEventListener('click', function(){ apply(b.dataset.type); }); });
+    var saved; try{ saved=localStorage.getItem('alc_font'); }catch(e){}
+    apply(saved || DEFAULT);
+  })();
+</script>
 
 <script>
   var langBtns = document.querySelectorAll('.lang button');

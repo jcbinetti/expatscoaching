@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru" data-lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Anna — Start</title>
+<style>
+  :root{--bg:#faf4ef;--card:#fff;--ink:#35454e;--muted:#7c8a91;--blue:#517e96;--line:#e1d8ce;--soft:#f4ece3;--orange:#e8932f}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,sans-serif;padding:0 0 60px}
+  header{background:rgba(250,244,239,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:14px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  header .brand{font:700 20px Georgia,serif;flex:1}
+  .lang button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 14px;font-weight:700;cursor:pointer;font-size:14px}
+  .lang button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+  main{max-width:900px;margin:0 auto;padding:26px 22px}
+  h1{font-size:24px;margin:0 0 4px}
+  p.sub{color:var(--muted);margin:0 0 26px}
+  .sec{font-weight:700;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:26px 0 12px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+  a.tile{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px;transition:transform .12s,box-shadow .12s,border-color .12s}
+  a.tile:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.09);border-color:var(--blue)}
+  a.tile .ic{font-size:30px}
+  a.tile .t{font-weight:700;font-size:17px}
+  a.tile .d{font-size:13px;color:var(--muted)}
+  a.tile.todo{opacity:.7;border-style:dashed}
+  a.tile.todo .d{color:var(--orange)}
+  [data-lang="ru"] .de,[data-lang="de"] .ru{display:none}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">Anna Leonenko</div>
+  <div class="lang"><button data-l="ru" class="on">RU</button><button data-l="de">DE</button></div>
+</header>
+<main>
+  <h1><span class="ru">👋 Привет, Анна!</span><span class="de">👋 Hallo Anna!</span></h1>
+  <p class="sub"><span class="ru">Всё в одном месте — не нужно искать ссылки.</span><span class="de">Alles an einem Ort — kein Link-Suchen mehr.</span></p>
+
+  <div class="sec"><span class="ru">Сайт</span><span class="de">Website</span></div>
+  <div class="grid">
+    <a class="tile" href="https://claude.ai/design/p/6b595c1f-6d0c-4ca9-a3e6-b001ff78fbd9" target="_blank" rel="noopener">
+      <div class="ic">✏️</div><div class="t"><span class="ru">Редактировать сайт</span><span class="de">Website bearbeiten</span></div>
+      <div class="d"><span class="ru">Claude Design — текст и фото</span><span class="de">Claude Design — Text &amp; Fotos</span></div></a>
+    <a class="tile" href="handbuch-anna.html">
+      <div class="ic">📘</div><div class="t"><span class="ru">Руководство</span><span class="de">Handbuch</span></div>
+      <div class="d"><span class="ru">Как редактировать (шаг за шагом)</span><span class="de">So bearbeitest du (Schritt für Schritt)</span></div></a>
+    <a class="tile" href="_foto_uebersicht.html">
+      <div class="ic">🖼</div><div class="t"><span class="ru">Фото-галерея</span><span class="de">Foto-Galerie</span></div>
+      <div class="d"><span class="ru">Все фото + копировать URL</span><span class="de">Alle Fotos + URL kopieren</span></div></a>
+    <a class="tile" href="index.html" target="_blank" rel="noopener">
+      <div class="ic">🌐</div><div class="t"><span class="ru">Открыть сайт</span><span class="de">Website ansehen</span></div>
+      <div class="d">expatscoaching.de</div></a>
+  </div>
+
+  <div class="sec"><span class="ru">Кабинет (управление)</span><span class="de">Cockpit (Verwaltung)</span></div>
+  <div class="grid">
+    <a class="tile todo" href="#" data-cockpit>
+      <div class="ic">📋</div><div class="t"><span class="ru">Записи</span><span class="de">Anmeldungen</span></div>
+      <div class="d"><span class="ru">⚠ ссылку добавит JC</span><span class="de">⚠ Link ergänzt JC</span></div></a>
+    <a class="tile todo" href="#" data-cockpit>
+      <div class="ic">💰</div><div class="t"><span class="ru">Оплаты</span><span class="de">Zahlungen</span></div>
+      <div class="d"><span class="ru">⚠ ссылку добавит JC</span><span class="de">⚠ Link ergänzt JC</span></div></a>
+    <a class="tile todo" href="#" data-cockpit>
+      <div class="ic">✉️</div><div class="t"><span class="ru">Шаблоны писем</span><span class="de">Mail-Vorlagen</span></div>
+      <div class="d"><span class="ru">⚠ ссылку добавит JC</span><span class="de">⚠ Link ergänzt JC</span></div></a>
+    <a class="tile todo" href="#" data-cockpit>
+      <div class="ic">📁</div><div class="t"><span class="ru">Файлы</span><span class="de">Dateien</span></div>
+      <div class="d"><span class="ru">⚠ ссылку добавит JC</span><span class="de">⚠ Link ergänzt JC</span></div></a>
+  </div>
+
+  <p class="sub" style="margin-top:30px;font-size:13px"><span class="ru">Когда что-то готово к публикации — напиши JC.</span><span class="de">Wenn etwas veröffentlicht werden soll — schreib JC.</span></p>
+</main>
+<script>
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){document.documentElement.setAttribute('data-lang',b.dataset.l);document.querySelectorAll('.lang button').forEach(function(x){x.classList.toggle('on',x===b);});});});
+</script>
+</body>
+</html>
