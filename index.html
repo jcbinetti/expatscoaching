@@ -44,15 +44,15 @@
   /* band backgrounds + padding */
   .band{padding:clamp(46px,6vw,92px) clamp(20px,5vw,56px)}
   .bg-cream{background:var(--bg)} .bg-white{background:var(--card)} .bg-peach{background:var(--peach-soft)} .bg-blue{background:var(--blue)}
-  .inner{max-width:1080px;margin:0 auto}
+  .inner{max-width:1200px;margin:0 auto}
   .prose{max-width:720px;margin:0 auto}
   .prose p{margin-bottom:1em}
   .center{text-align:center}
   /* 1 INTRO: text + portrait right, image height = content height */
-  .intro-grid{display:grid;grid-template-columns:1fr minmax(280px,360px);gap:clamp(28px,4vw,52px);align-items:stretch;max-width:1080px;margin:0 auto}
+  .intro-grid{display:grid;grid-template-columns:1fr minmax(300px,400px);gap:clamp(28px,4vw,52px);align-items:stretch;max-width:1200px;margin:0 auto}
   .intro-grid .intro-txt{min-width:0}
-  .intro-grid .intro-photo{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;border-radius:6px}
-  @media(max-width:820px){.intro-grid{grid-template-columns:1fr}.intro-grid .intro-photo{max-height:440px}}
+  .intro-grid .intro-photo{width:100%;max-width:400px;height:100%;object-fit:cover;object-position:top center;display:block;border-radius:6px}
+  @media(max-width:820px){.intro-grid{grid-template-columns:1fr}.intro-grid .intro-photo{max-height:440px;max-width:100%}}
   /* 1 HERO: portrait + text, full-height image, sharp */
   .hero{display:grid;grid-template-columns:1.05fr .95fr;min-height:80vh}
   .hero .txt{display:flex;flex-direction:column;justify-content:center;padding:clamp(34px,5vw,84px)}
@@ -85,9 +85,10 @@
   .cta-band{text-align:center}
   .cta-band p{max-width:52ch;margin:12px auto 24px;color:var(--muted)}
   /* about with photo */
-  .about-band{display:grid;grid-template-columns:.82fr 1.18fr;align-items:stretch;background:var(--peach-soft)}
-  .about-band .about-photo{width:100%;height:100%;object-fit:cover;min-height:360px;display:block}
-  .about-band .about-txt{padding:clamp(34px,5vw,72px);display:flex;flex-direction:column;justify-content:center}
+  .about-band{background:var(--peach-soft);padding:clamp(40px,5vw,80px) clamp(20px,5vw,56px)}
+  .about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(300px,460px) 1fr;gap:clamp(30px,4vw,56px);align-items:center}
+  .about-band .about-photo{width:100%;max-width:460px;aspect-ratio:4/5;object-fit:cover;border-radius:10px;display:block}
+  .about-band .about-txt{display:flex;flex-direction:column;justify-content:center}
   .about-band .about-txt p{margin-bottom:1em}
   /* important */
   .important{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);padding:18px 22px;color:var(--muted);font-size:.92rem;max-width:80ch;margin:0 auto}
@@ -105,8 +106,8 @@
     .offer{border-right:0;border-bottom:1px solid var(--line)}
     .offer:last-child{border-bottom:0}
     .creds{columns:1}
-    .about-band{grid-template-columns:1fr}
-    .about-band .about-photo{min-height:300px;order:-1}
+    .about-inner{grid-template-columns:1fr}
+    .about-band .about-photo{order:-1;max-width:340px;margin:0 auto}
     .back{display:none}
   }
 </style>
@@ -202,12 +203,14 @@
 
   <!-- 5 · ABOUT (mit Foto) -->
   <section class="about-band">
+    <div class="about-inner">
     <img src="assets/anna-portrait.jpg" alt="Anna Leonenko" class="about-photo">
     <div class="about-txt">
       <h2><span class="ru">Обо мне</span><span class="de">Über mich</span></h2>
       <p style="margin-top:12px"><span class="ru">Я приехала в Германию больше двадцати лет назад уже взрослым человеком: с пятилетней дочерью, дипломом университета и тринадцатилетним профессиональным опытом. Я не хотела начинать жизнь с нуля — и, по большому счёту, не начинала. Я училась адаптировать то, что уже было.</span><span class="de">Ich bin vor über zwanzig Jahren als erwachsener Mensch nach Deutschland gekommen: mit einer fünfjährigen Tochter, einem Universitätsabschluss und dreizehn Jahren Berufserfahrung. Ich wollte mein Leben nicht bei Null beginnen — und habe es im Grunde auch nicht. Ich habe gelernt, das anzupassen, was schon da war.</span></p>
       <p><span class="ru">На этой основе я построила в Германии карьеру, открыла компанию Mediaost Events und Kommunikation GmbH и инициировала некоммерческую организацию Kultur- und Bildungsprojekte e.V. Много лет я занималась международными культурными, образовательными, социальными и творческими проектами. Со временем мой опыт адаптации, предпринимательства и жизни между культурами перешёл в наставничество, коучинг и консультационную работу.</span><span class="de">Auf dieser Basis habe ich in Deutschland eine Karriere aufgebaut, die Firma Mediaost Events und Kommunikation GmbH gegründet und den Verein Kultur- und Bildungsprojekte e.V. initiiert. Viele Jahre habe ich internationale kulturelle, bildungsbezogene, soziale und kreative Projekte umgesetzt. Mit der Zeit ist meine eigene Erfahrung aus Anpassung, Unternehmertum und dem Leben zwischen Kulturen in Mentoring, Coaching und Beratung übergegangen.</span></p>
       <p style="color:var(--ink)"><span class="ru">Сегодня я помогаю другим делать то, что когда-то пришлось делать мне: не обнуляться, а переводить свой опыт, образование, идеи и таланты в новую реальность. И я хорошо понимаю русскоязычных людей в эмиграции — не теоретически, а изнутри.</span><span class="de">Heute helfe ich anderen, das zu tun, was ich selbst einmal tun musste: sich nicht auf Null zu setzen, sondern Erfahrung, Bildung, Ideen und Talente in eine neue Realität zu übertragen. Und ich verstehe russischsprachige Menschen in der Migration gut — nicht theoretisch, sondern von innen.</span></p>
+    </div>
     </div>
   </section>
 
@@ -231,8 +234,6 @@
       </div>
       <div style="display:grid;gap:10px">
         <img src="assets/qual1.jpg" alt="" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block">
-        <img src="assets/qual2.jpg" alt="" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block">
-        <div style="width:100%;aspect-ratio:4/3;background:var(--peach-soft);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;text-align:center;padding:10px"><span class="ru">📷 фото скоро</span><span class="de">📷 Foto folgt</span></div>
       </div>
     </div>
   </section>
