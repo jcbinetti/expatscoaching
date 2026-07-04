@@ -9,36 +9,61 @@
 <style>
   :root{
     --bg:#FAF4EF; --card:#FFFFFF; --ink:#35454E; --muted:#7C8A91;
-    --accent:#6E9DB5; --accent-d:#517E96; --peach-soft:#F6E6D8; --line:#DCE3E5;
+    --accent:#6E9DB5; --accent-d:#517E96; --peach-soft:#F6E6D8; --line:#DCE3E5; --ok:#1b7f43;
     --sans:'Manrope',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6}
   .de{display:none} html[lang="de"] .ru{display:none} html[lang="de"] .de{display:revert}
-  header{display:flex;justify-content:space-between;align-items:center;padding:16px clamp(18px,4vw,40px);border-bottom:1px solid var(--line)}
+  header{display:flex;justify-content:space-between;align-items:center;padding:16px clamp(18px,4vw,40px);border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:30}
   .brand{font-weight:700;font-size:1.25rem;color:var(--ink);text-decoration:none}
   .nav-right{display:flex;gap:10px;align-items:center}
   .back{text-decoration:none;color:var(--ink);font-size:.84rem;border:1.5px solid var(--ink);border-radius:999px;padding:7px 15px}
   .lang{display:flex;gap:2px;border:1.5px solid var(--ink);border-radius:999px;padding:3px}
   .lang button{border:0;background:none;cursor:pointer;font:inherit;font-size:.8rem;font-weight:700;padding:5px 11px;border-radius:999px;color:var(--ink)}
   .lang button.active{background:var(--ink);color:#fff}
-  .wrap{max-width:640px;margin:0 auto;padding:clamp(24px,5vw,48px) 20px}
+  .wrap{max-width:980px;margin:0 auto;padding:clamp(24px,5vw,44px) 20px}
   h1{font-weight:700;font-size:clamp(1.4rem,3vw,1.9rem);margin-bottom:6px}
   .lead{color:var(--muted);margin-bottom:22px;font-size:.95rem}
   .card{background:var(--card);border:1px solid var(--line);padding:clamp(18px,4vw,28px);margin-bottom:18px}
   label{display:block;font-weight:600;font-size:.86rem;margin:0 0 5px}
   input[type=password]{width:100%;border:1px solid #cdd6dd;border-radius:8px;padding:11px 13px;font:15px var(--sans);outline:none}
   input[type=password]:focus{border-color:var(--accent)}
-  .btn{background:var(--accent);color:#fff;border:1.5px solid var(--accent-d);border-radius:999px;padding:11px 24px;font-weight:600;font-size:.95rem;cursor:pointer}
+  .btn{background:var(--accent);color:#fff;border:1.5px solid var(--accent-d);border-radius:999px;padding:11px 24px;font-weight:600;font-size:.95rem;cursor:pointer;text-decoration:none;display:inline-block;text-align:center}
   .btn:hover{background:var(--accent-d)}
-  .file{display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid var(--line)}
-  .file:last-child{border-bottom:0}
-  .file .ico{font-size:1.5rem;flex:0 0 auto}
-  .file .nm{flex:1;min-width:0;word-break:break-word;font-weight:600}
-  .file .meta{font-size:.78rem;color:var(--muted);font-weight:400}
   .msg{margin-top:12px;padding:11px 14px;border-radius:8px;font-size:.9rem;display:none}
   .msg.err{display:block;background:#fbeaea;color:#c0392b;border:1px solid #f1c6c6}
   .hint{font-size:.82rem;color:var(--muted);margin-top:10px}
+  /* Willkommen + Tabs */
+  .hello{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+  .hello .who{background:var(--peach-soft);border:1px solid #eeddc9;border-radius:999px;padding:7px 16px;font-weight:600;font-size:.9rem}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;border-bottom:2px solid var(--line);padding-bottom:0}
+  .tab{border:0;background:none;cursor:pointer;font:inherit;font-weight:700;font-size:.95rem;color:var(--muted);padding:10px 16px;border-bottom:3px solid transparent;margin-bottom:-2px}
+  .tab.active{color:var(--ink);border-bottom-color:var(--accent)}
+  .tab .n{display:inline-block;background:var(--line);border-radius:999px;font-size:.72rem;padding:1px 8px;margin-left:6px;color:var(--ink)}
+  /* Lektions-Karten */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+  .lesson{background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden;transition:box-shadow .15s}
+  .lesson:hover{box-shadow:0 6px 22px rgba(53,69,78,.10)}
+  .thumb{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,var(--peach-soft),#eef2f5);display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+  .thumb .ph{font-size:2.4rem;opacity:.5}
+  .badge{position:absolute;top:10px;left:10px;background:var(--accent-d);color:#fff;font-weight:800;font-size:.85rem;border-radius:999px;padding:3px 11px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+  .seen{position:absolute;top:10px;right:10px;background:#e7f4ee;color:var(--ok);border:1px solid #bfe3d0;font-weight:800;font-size:.75rem;border-radius:999px;padding:3px 9px}
+  .lesson .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .lesson .ttl{font-weight:700;line-height:1.3;flex:1;word-break:break-word}
+  .lesson .btn{padding:9px 18px;font-size:.88rem}
+  /* Downloads */
+  .dl{display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid var(--line)}
+  .dl:last-child{border-bottom:0}
+  .dl .ico{font-size:1.5rem;flex:0 0 auto}
+  .dl .nm{flex:1;min-width:0;word-break:break-word;font-weight:600}
+  .dl .meta{font-size:.78rem;color:var(--muted);font-weight:400}
+  /* Video */
+  .vid{background:var(--card);border:1px solid var(--line);padding:0 0 12px;overflow:hidden}
+  .vid iframe{width:100%;aspect-ratio:16/9;border:0;display:block}
+  .vid .cap{padding:10px 14px 0;font-weight:700}
+  .empty{color:var(--muted);padding:26px 6px;text-align:center}
 </style>
 </head>
 <body>
@@ -52,21 +77,45 @@
 
 <div class="wrap">
   <h1>📚 <span class="ru">Материалы тренинга</span><span class="de">Kursmaterialien</span></h1>
-  <p class="lead"><span class="ru">Презентации и материалы курса «Самозанятость в Германии по шагам». Пароль вы получили после оплаты.</span><span class="de">Präsentationen und Materialien zum Training «Selbstständigkeit in Deutschland Schritt für Schritt». Das Passwort hast du nach der Zahlung erhalten.</span></p>
+  <p class="lead"><span class="ru">Уроки, документы и видео курса «Самозанятость в Германии по шагам».</span><span class="de">Lektionen, Dokumente und Videos zum Training «Selbstständigkeit in Deutschland Schritt für Schritt».</span></p>
 
   <div class="card" id="loginCard">
-    <label><span class="ru">Пароль курса</span><span class="de">Kurs-Passwort</span></label>
+    <label><span class="ru">Ваш личный код или персональная ссылка</span><span class="de">Dein persönlicher Code oder Magic-Link</span></label>
     <div style="display:flex;gap:10px">
       <input id="pw" type="password" autocomplete="current-password" style="flex:1" />
       <button class="btn" id="loginBtn"><span class="ru">Открыть</span><span class="de">Öffnen</span></button>
     </div>
     <div class="msg" id="loginMsg"></div>
-    <div class="hint"><span class="ru">Нет пароля? Напишите на <a href="mailto:training@expatscoaching.de">training@expatscoaching.de</a>.</span><span class="de">Kein Passwort? Schreib an <a href="mailto:training@expatscoaching.de">training@expatscoaching.de</a>.</span></div>
+    <div class="hint"><span class="ru">Код вы получили после оплаты. Нет кода? Напишите на <a href="mailto:training@expatscoaching.de">training@expatscoaching.de</a>.</span><span class="de">Den Code hast du nach der Zahlung erhalten. Kein Code? Schreib an <a href="mailto:training@expatscoaching.de">training@expatscoaching.de</a>.</span></div>
   </div>
 
-  <div class="card" id="listCard" style="display:none">
-    <div id="list"></div>
-    <div class="hint" id="viewHint" style="display:none"><span class="ru">Материалы открываются в защищённом просмотре. Скачивание и печать отключены.</span><span class="de">Die Materialien öffnen sich in der geschützten Ansicht. Download und Druck sind deaktiviert.</span></div>
+  <div id="app" style="display:none">
+    <div class="hello">
+      <div class="who" id="who"></div>
+      <div class="hint" style="margin:0"><span class="ru">Материалы открываются в защищённом просмотре с вашим именем.</span><span class="de">Die Materialien öffnen sich in der geschützten Ansicht mit deinem Namen.</span></div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-tab="lessons">📖 <span class="ru">Уроки</span><span class="de">Lektionen</span><span class="n" id="nLessons">0</span></button>
+      <button class="tab" data-tab="docs">⬇ <span class="ru">Документы</span><span class="de">Dokumente</span><span class="n" id="nDocs">0</span></button>
+      <button class="tab" data-tab="videos">🎬 <span class="ru">Видео</span><span class="de">Videos</span><span class="n" id="nVideos">0</span></button>
+    </div>
+
+    <div id="tab-lessons">
+      <div class="grid" id="lessonGrid"></div>
+      <div class="empty" id="lessonEmpty" style="display:none"><span class="ru">Уроки скоро появятся здесь.</span><span class="de">Die Lektionen erscheinen bald hier.</span></div>
+    </div>
+
+    <div id="tab-docs" style="display:none">
+      <div class="card" style="margin-bottom:0">
+        <div id="docList"></div>
+        <div class="empty" id="docEmpty" style="display:none"><span class="ru">Чек-листы и документы для скачивания скоро появятся здесь.</span><span class="de">Checklisten und Dokumente zum Herunterladen erscheinen bald hier.</span></div>
+      </div>
+    </div>
+
+    <div id="tab-videos" style="display:none">
+      <div id="videoList" style="display:grid;gap:16px"></div>
+      <div class="empty" id="videoEmpty" style="display:none"><span class="ru">Видео к урокам появятся здесь после занятий.</span><span class="de">Die Videos zu den Lektionen erscheinen hier nach den Terminen.</span></div>
+    </div>
   </div>
 </div>
 
@@ -76,6 +125,7 @@
   langBtns.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang);});});
   try{var s=localStorage.getItem('alc_lang');if(s){setLang(s);}}catch(e){}
   function T(ru,de){return document.documentElement.lang==='de'?de:ru;}
+  function esc(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
   var pwInput=document.getElementById('pw'),loginMsg=document.getElementById('loginMsg');
   try{var sp=sessionStorage.getItem('kurs_pw');if(sp){pwInput.value=sp;}}catch(e){}
@@ -87,6 +137,22 @@
 
   var ICONS={pdf:'📄',ppt:'📊',pptx:'📊',doc:'📝',docx:'📝',xls:'📈',xlsx:'📈',zip:'🗜️',png:'🖼️',jpg:'🖼️',jpeg:'🖼️',mp3:'🎧',mp4:'🎬',txt:'📄'};
   function fmtSize(b){return b>1048576?(b/1048576).toFixed(1)+' MB':Math.max(1,Math.round(b/1024))+' KB';}
+  // "01_Мой_план.pdf" -> {num:"01", title:"Мой план"}
+  function parseName(n){
+    var base=n.replace(/\.[^.]+$/,'');
+    var m=base.match(/^(\d{1,2})[\s._-]+(.*)$/);
+    var num=m?m[1]:null, t=(m?m[2]:base).replace(/[_]+/g,' ').trim();
+    return {num:num,title:t||base};
+  }
+  function isSeen(n){try{return localStorage.getItem('viewed_'+n)==='1';}catch(e){return false;}}
+
+  // Tabs
+  document.querySelectorAll('.tab').forEach(function(t){
+    t.addEventListener('click',function(){
+      document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('active',x===t);});
+      ['lessons','docs','videos'].forEach(function(k){document.getElementById('tab-'+k).style.display=(t.dataset.tab===k)?'':'none';});
+    });
+  });
 
   function open_(){
     fetch('unterlagen.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'list',password:pwInput.value})})
@@ -95,23 +161,11 @@
         if(!res.ok){loginMsg.className='msg err';loginMsg.textContent=res.j.error||T('Ошибка.','Fehler.');return;}
         try{sessionStorage.setItem('kurs_pw',pwInput.value);}catch(e){}
         loginMsg.className='msg';
-        var lc=document.getElementById('listCard'),l=document.getElementById('list');
-        lc.style.display='block';l.innerHTML='';
-        document.getElementById('viewHint').style.display=res.j.files.length?'block':'none';
-        if(!res.j.files.length){l.innerHTML='<div style="color:var(--muted)">'+T('Материалы скоро появятся здесь.','Die Materialien erscheinen bald hier.')+'</div>';return;}
-        var isAdmin=res.j.role==='admin';
-        res.j.files.forEach(function(f){
-          var ext=f.name.split('.').pop().toLowerCase();
-          var d=document.createElement('div');d.className='file';
-          var btns='';
-          if(ext==='pdf'){btns+='<a class="btn" style="padding:8px 18px;font-size:.85rem;text-decoration:none" href="viewer.html?f='+encodeURIComponent(f.name)+'">👁 <span class="ru">Смотреть</span><span class="de">Ansehen</span></a>';}
-          if(isAdmin){btns+='<button class="btn" style="padding:8px 14px;font-size:.85rem;background:transparent;color:var(--ink);border-color:var(--ink)" data-dl="'+encodeURIComponent(f.name)+'">⬇</button>';}
-          d.innerHTML='<div class="ico">'+(ICONS[ext]||'📄')+'</div>'
-            +'<div class="nm">'+f.name+'<div class="meta">'+fmtSize(f.size)+' · '+f.mtime+'</div></div>'
-            +'<div style="display:flex;gap:6px;flex-wrap:wrap">'+btns+'</div>';
-          l.appendChild(d);
-        });
-        setLang(document.documentElement.lang); // span-Sichtbarkeit in neuen Knoten
+        document.getElementById('loginCard').style.display='none';
+        document.getElementById('app').style.display='block';
+        var who=document.getElementById('who');
+        who.textContent='👋 '+(res.j.wm||'').replace(/ · expatscoaching\.de$/,'');
+        render(res.j);
       })
       .catch(function(){loginMsg.className='msg err';loginMsg.textContent=T('Ошибка сети.','Netzwerkfehler.');});
   }
@@ -119,7 +173,99 @@
   pwInput.addEventListener('keydown',function(e){if(e.key==='Enter')open_();});
   if(pwInput.value)open_();
 
-  document.getElementById('list').addEventListener('click',function(e){
+  function render(j){
+    var lessons=j.files.filter(function(f){return f.cat!=='download'&&f.name.split('.').pop().toLowerCase()==='pdf';});
+    var docs=j.files.filter(function(f){return f.cat==='download';});
+    var videos=j.videos||[];
+    document.getElementById('nLessons').textContent=lessons.length;
+    document.getElementById('nDocs').textContent=docs.length;
+    document.getElementById('nVideos').textContent=videos.length;
+
+    // Уроки: Karten
+    var g=document.getElementById('lessonGrid');g.innerHTML='';
+    document.getElementById('lessonEmpty').style.display=lessons.length?'none':'block';
+    lessons.forEach(function(f,i){
+      var p=parseName(f.name);
+      var card=document.createElement('div');card.className='lesson';
+      card.innerHTML='<div class="thumb"><span class="ph">📄</span>'
+        +'<span class="badge">'+(p.num||('0'+(i+1)).slice(-2))+'</span>'
+        +(isSeen(f.name)?'<span class="seen">✓ <span class="ru">просмотрено</span><span class="de">gesehen</span></span>':'')
+        +'</div>'
+        +'<div class="body"><div class="ttl">'+esc(p.title)+'</div>'
+        +'<a class="btn" href="viewer.html?f='+encodeURIComponent(f.name)+'"><span class="ru">Смотреть</span><span class="de">Ansehen</span></a></div>';
+      card.dataset.file=f.name;
+      g.appendChild(card);
+    });
+    setLang(document.documentElement.lang);
+    loadThumbs(lessons);
+
+    // Документы (Downloads erlaubt)
+    var dl=document.getElementById('docList');dl.innerHTML='';
+    document.getElementById('docEmpty').style.display=docs.length?'none':'block';
+    docs.forEach(function(f){
+      var ext=f.name.split('.').pop().toLowerCase();
+      var d=document.createElement('div');d.className='dl';
+      d.innerHTML='<div class="ico">'+(ICONS[ext]||'📄')+'</div>'
+        +'<div class="nm">'+esc(parseName(f.name).title)+'<div class="meta">'+fmtSize(f.size)+'</div></div>'
+        +'<button class="btn" style="padding:8px 18px;font-size:.85rem" data-dl="'+encodeURIComponent(f.name)+'">⬇ <span class="ru">Скачать</span><span class="de">Laden</span></button>';
+      dl.appendChild(d);
+    });
+
+    // Видео
+    var vl=document.getElementById('videoList');vl.innerHTML='';
+    document.getElementById('videoEmpty').style.display=videos.length?'none':'block';
+    videos.forEach(function(v){
+      if(!v.url)return;
+      var d=document.createElement('div');d.className='vid';
+      d.innerHTML='<div class="cap"></div><iframe allow="fullscreen" loading="lazy"></iframe>';
+      d.querySelector('.cap').textContent=(document.documentElement.lang==='de'?(v.t_de||v.t_ru||''):(v.t_ru||v.t_de||''));
+      d.querySelector('iframe').src=v.url;
+      vl.appendChild(d);
+    });
+    setLang(document.documentElement.lang);
+  }
+
+  // PDF-Thumbnails: Seite 1 klein rendern, in localStorage cachen (nur Dateien bis 6 MB)
+  function loadThumbs(lessons){
+    import('./assets/pdfjs/pdf.min.mjs').then(function(mod){
+      mod.GlobalWorkerOptions.workerSrc='./assets/pdfjs/pdf.worker.min.mjs';
+      var queue=lessons.slice(0);
+      (function next(){
+        if(!queue.length)return;
+        var f=queue.shift();
+        var key='thumb_'+f.name+'_'+f.mtime;
+        var cardThumb=null;
+        document.querySelectorAll('.lesson').forEach(function(c){if(c.dataset.file===f.name)cardThumb=c.querySelector('.thumb');});
+        if(!cardThumb){next();return;}
+        var cached=null;try{cached=localStorage.getItem(key);}catch(e){}
+        if(cached){setThumb(cardThumb,cached);next();return;}
+        if(f.size>6*1048576){next();return;}
+        fetch('unterlagen.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'view',password:pwInput.value,file:f.name})})
+          .then(function(r){if(!r.ok)throw 0;return r.arrayBuffer();})
+          .then(function(buf){return mod.getDocument({data:buf}).promise;})
+          .then(function(pdf){return pdf.getPage(1);})
+          .then(function(page){
+            var vp=page.getViewport({scale:1});
+            var s=360/vp.width, v2=page.getViewport({scale:s});
+            var c=document.createElement('canvas');c.width=v2.width;c.height=v2.height;
+            return page.render({canvasContext:c.getContext('2d'),viewport:v2}).promise.then(function(){return c;});
+          })
+          .then(function(c){
+            var url=c.toDataURL('image/jpeg',0.72);
+            try{localStorage.setItem(key,url);}catch(e){}
+            setThumb(cardThumb,url);next();
+          })
+          .catch(function(){next();});
+      })();
+    }).catch(function(){});
+  }
+  function setThumb(el,url){
+    var ph=el.querySelector('.ph');if(ph)ph.remove();
+    var img=document.createElement('img');img.src=url;el.insertBefore(img,el.firstChild);
+  }
+
+  // Downloads (nur Kategorie "Документы")
+  document.getElementById('tab-docs').addEventListener('click',function(e){
     var b=e.target.closest('button');if(!b||!b.dataset.dl)return;
     var f=document.createElement('form');f.method='POST';f.action='unterlagen.php';f.style.display='none';
     [['action','download'],['password',pwInput.value],['file',decodeURIComponent(b.dataset.dl)]].forEach(function(p){
@@ -127,5 +273,6 @@
     document.body.appendChild(f);f.submit();setTimeout(function(){f.remove();},2000);
   });
 </script>
+<script defer src="kostja.js"></script>
 </body>
 </html>

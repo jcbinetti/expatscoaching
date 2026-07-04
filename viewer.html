@@ -61,6 +61,7 @@
       .then(function(buf){ return pdfjsLib.getDocument({data:buf}).promise; })
       .then(async function(pdf){
         loadEl.remove();
+        try{localStorage.setItem('viewed_'+fname,'1');}catch(e){}
         document.getElementById('pg').textContent=pdf.numPages+' '+T('стр.','S.');
         var scale=Math.min(2,(Math.max(window.devicePixelRatio||1,1.5)));
         for(var n=1;n<=pdf.numPages;n++){
