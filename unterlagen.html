@@ -191,7 +191,7 @@
         +'<span class="badge">'+(p.num||('0'+(i+1)).slice(-2))+'</span>'
         +(isSeen(f.name)?'<span class="seen">✓ <span class="ru">просмотрено</span><span class="de">gesehen</span></span>':'')
         +'</div>'
-        +'<div class="body"><div class="ttl">'+esc(p.title)+'</div>'
+        +'<div class="body"><div class="ttl">'+esc((p.num?p.num+' · ':'')+p.title)+'</div>'
         +'<a class="btn" href="viewer.html?f='+encodeURIComponent(f.name)+'"><span class="ru">Смотреть</span><span class="de">Ansehen</span></a></div>';
       card.dataset.file=f.name;
       g.appendChild(card);
@@ -205,8 +205,9 @@
     docs.forEach(function(f){
       var ext=f.name.split('.').pop().toLowerCase();
       var d=document.createElement('div');d.className='dl';
+      var pn=parseName(f.name);
       d.innerHTML='<div class="ico">'+(ICONS[ext]||'📄')+'</div>'
-        +'<div class="nm">'+esc(parseName(f.name).title)+'<div class="meta">'+fmtSize(f.size)+'</div></div>'
+        +'<div class="nm">'+esc((pn.num?pn.num+' · ':'')+pn.title)+'<div class="meta">'+fmtSize(f.size)+'</div></div>'
         +'<button class="btn" style="padding:8px 18px;font-size:.85rem" data-dl="'+encodeURIComponent(f.name)+'">⬇ <span class="ru">Скачать</span><span class="de">Laden</span></button>';
       dl.appendChild(d);
     });

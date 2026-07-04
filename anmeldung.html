@@ -83,7 +83,7 @@
       <option value="Standard">Стандарт / Standard — 495 €</option>
       <option value="Premium">Премиум / Premium — 850 €</option>
     </select>
-    <div class="hint"><span class="ru">VIP и Лицензия — по запросу: avleonenko@yahoo.de</span><span class="de">VIP und Lizenz — auf Anfrage: avleonenko@yahoo.de</span></div>
+    <div class="hint"><span class="ru">Все цены включают 19 % НДС. VIP и Лицензия — по запросу: avleonenko@yahoo.de</span><span class="de">Alle Preise inkl. 19 % MwSt. VIP und Lizenz — auf Anfrage: avleonenko@yahoo.de</span></div>
 
     <div class="check"><input id="rechnung" type="checkbox" /><label for="rechnung" style="margin:0;font-weight:600"><span class="ru">Нужен счёт (Rechnung)</span><span class="de">Ich brauche eine Rechnung</span></label></div>
     <div class="rg" id="rgBox">
@@ -102,6 +102,7 @@
 
     <div class="check"><input id="agb" type="checkbox" /><label for="agb" style="margin:0;font-weight:400"><span class="ru">Я принимаю <a href="agb.pdf" target="_blank">AGB / условия</a></span><span class="de">Ich akzeptiere die <a href="agb.pdf" target="_blank">AGB</a></span> <span class="req">*</span></label></div>
     <div class="check"><input id="consent" type="checkbox" /><label for="consent" style="margin:0;font-weight:400"><span class="ru">Я согласен(а) с <a href="datenschutz.html" target="_blank">политикой конфиденциальности</a></span><span class="de">Ich stimme der <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> zu</span> <span class="req">*</span></label></div>
+    <div class="check"><input id="widerruf" type="checkbox" /><label for="widerruf" style="margin:0;font-weight:400"><span class="ru">Я прямо соглашаюсь с тем, что Анна Леоненко начнёт предоставление цифровых материалов до истечения срока отказа. Мне известно, что с началом предоставления я теряю своё право на отказ (Widerrufsrecht).</span><span class="de">Ich stimme ausdrücklich zu, dass Anna Leonenko vor Ablauf der Widerrufsfrist mit der Bereitstellung der digitalen Inhalte beginnt. Mir ist bekannt, dass ich dadurch mit Beginn der Bereitstellung mein Widerrufsrecht verliere.</span> <span class="req">*</span></label></div>
 
     <button class="btn" id="send"><span class="ru">Отправить заявку</span><span class="de">Anmeldung senden</span></button>
     <div class="msg" id="msg"></div>
@@ -135,18 +136,19 @@
     if(!v('tarif')){show('err',T('Выберите тариф.','Bitte Tarif wählen.'));return;}
     if(!document.getElementById('agb').checked){show('err',T('Подтвердите AGB.','Bitte AGB bestätigen.'));return;}
     if(!document.getElementById('consent').checked){show('err',T('Подтвердите политику конфиденциальности.','Bitte Datenschutz bestätigen.'));return;}
+    if(!document.getElementById('widerruf').checked){show('err',T('Подтвердите, пожалуйста, согласие о начале предоставления материалов.','Bitte die Zustimmung zur Bereitstellung der digitalen Inhalte bestätigen.'));return;}
     var rech=document.getElementById('rechnung').checked;
     if(rech&&(!v('strasse')||!v('plz')||!v('ort'))){show('err',T('Для счёта укажите адрес, индекс и город.','Für die Rechnung bitte Adresse, PLZ und Ort angeben.'));return;}
-    var payload={vorname:v('vorname'),nachname:v('nachname'),email:email,telegram:v('telegram'),tarif:v('tarif'),rechnung:rech,strasse:v('strasse'),plz:v('plz'),ort:v('ort'),steuernummer:v('steuernummer'),message:v('message'),agb:true,consent:true};
+    var payload={vorname:v('vorname'),nachname:v('nachname'),email:email,telegram:v('telegram'),tarif:v('tarif'),rechnung:rech,strasse:v('strasse'),plz:v('plz'),ort:v('ort'),steuernummer:v('steuernummer'),message:v('message'),agb:true,consent:true,widerruf:true};
     send.disabled=true; show('','');
     fetch('register.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
       .then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j};});})
       .then(function(res){
         if(res.ok&&res.j.ok){
-          var steps=T(
-            '<ol style="margin:12px 0 0 18px;padding:0;line-height:1.6"><li>На вашу почту пришло письмо со способами оплаты: онлайн (карта и др.), PayPal или перевод с QR-кодом.</li><li><b>⚠️ Проверьте папку «Спам» / «Промоакции»</b> — иногда письмо попадает туда.</li><li>Оплатите удобным способом. При онлайн-оплате всё подтверждается сразу; при переводе или PayPal пришлите чек на <a href="mailto:training@expatscoaching.de">training@expatscoaching.de</a>.</li><li>После подтверждения оплаты вы автоматически получите письмо с личной ссылкой на материалы. Счёт придёт отдельно.</li></ol>',
-            '<ol style="margin:12px 0 0 18px;padding:0;line-height:1.6"><li>Du hast eine E-Mail mit den Zahlwegen bekommen: online (Karte u. a.), PayPal oder Überweisung mit QR-Code.</li><li><b>⚠️ Bitte den Ordner „Spam" / „Werbung" prüfen</b> — manchmal landet die Mail dort.</li><li>Zahle bequem. Online wird sofort bestätigt; bei Überweisung oder PayPal bitte den Beleg an <a href="mailto:training@expatscoaching.de">training@expatscoaching.de</a> senden.</li><li>Nach Zahlungsbestätigung bekommst du automatisch die Mail mit deinem persönlichen Materialien-Link. Die Rechnung folgt separat.</li></ol>');
-          document.getElementById('formCard').innerHTML='<h2 style="font-family:var(--serif)">'+T('Спасибо! Заявка отправлена ✅','Danke! Anmeldung gesendet ✅')+'</h2><p style="margin-top:8px;font-weight:600">'+T('Что дальше:','So geht es weiter:')+'</p>'+steps+'<p style="margin-top:14px;color:var(--muted);font-size:.9rem">'+T('Номер заявки: ','Anmelde-Nr.: ')+(res.j.id||'')+'</p>';
+          var payBtn=res.j.pay_url?('<p style="margin:16px 0 8px"><a href="'+res.j.pay_url+'" style="display:inline-block;background:#517E96;color:#fff;text-decoration:none;padding:15px 34px;border-radius:999px;font-weight:700;font-size:1.05rem">💳 '+T('Оплатить сейчас','Jetzt bezahlen')+'</a></p><p style="color:var(--muted);font-size:.88rem;margin:0 0 6px">'+T('Карта, Apple/Google Pay и др. Или выберите другой способ в письме (PayPal, перевод с QR-кодом).','Karte, Apple/Google Pay u. a. Oder einen anderen Weg aus der E-Mail wählen (PayPal, Überweisung mit QR-Code).')+'</p>'):'';
+          document.getElementById('formCard').innerHTML='<h2 style="font-family:var(--serif)">'+T('Спасибо! Заявка отправлена ✅','Danke! Anmeldung gesendet ✅')+'</h2>'+payBtn
+            +'<p style="margin-top:10px">'+T('Мы отправили вам письмо со всеми способами оплаты (если его нет, проверьте «Спам»). После оплаты вы автоматически получите личный доступ к материалам и счёт.','Wir haben dir die E-Mail mit allen Zahlwegen geschickt (sonst bitte im Spam nachsehen). Nach der Zahlung bekommst du automatisch deinen persönlichen Zugang und die Rechnung.')+'</p>'
+            +'<p style="margin-top:14px;color:var(--muted);font-size:.9rem">'+T('Номер заявки: ','Anmelde-Nr.: ')+(res.j.id||'')+'</p>';
           window.scrollTo(0,0);
         } else { show('err',(res.j&&res.j.error)?res.j.error:T('Ошибка. Попробуйте ещё раз.','Fehler. Bitte erneut versuchen.')); send.disabled=false; }
       }).catch(function(){show('err',T('Ошибка сети. Попробуйте ещё раз.','Netzwerkfehler. Bitte erneut versuchen.'));send.disabled=false;});
