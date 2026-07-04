@@ -64,10 +64,9 @@
     <div class="hint"><span class="ru">Нет пароля? Напишите на <a href="mailto:training@expatscoaching.de">training@expatscoaching.de</a>.</span><span class="de">Kein Passwort? Schreib an <a href="mailto:training@expatscoaching.de">training@expatscoaching.de</a>.</span></div>
   </div>
 
-  <div id="driveCards"></div>
-
   <div class="card" id="listCard" style="display:none">
     <div id="list"></div>
+    <div class="hint" id="viewHint" style="display:none"><span class="ru">Материалы открываются в защищённом просмотре. Скачивание и печать отключены.</span><span class="de">Die Materialien öffnen sich in der geschützten Ansicht. Download und Druck sind deaktiviert.</span></div>
   </div>
 </div>
 
@@ -91,36 +90,20 @@
         if(!res.ok){loginMsg.className='msg err';loginMsg.textContent=res.j.error||T('Ошибка.','Fehler.');return;}
         try{sessionStorage.setItem('kurs_pw',pwInput.value);}catch(e){}
         loginMsg.className='msg';
-        var dc=document.getElementById('driveCards');dc.innerHTML='';
-        (res.j.drives||[]).forEach(function(d){
-          if(!d.url)return;
-          var tRu=d.t_ru||d.t_de||'Материалы курса', tDe=d.t_de||d.t_ru||'Kursmaterialien';
-          var card=document.createElement('div');card.className='card';card.style.borderLeft='4px solid var(--accent)';
-          card.innerHTML='<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">'
-            +'<div style="font-size:2rem">📂</div>'
-            +'<div style="flex:1;min-width:200px"><div style="font-weight:700"><span class="ru"></span><span class="de"></span></div>'
-            +'<div style="font-size:.85rem;color:var(--muted)"><span class="ru">Ссылку, пожалуйста, не передавайте.</span><span class="de">Bitte den Link nicht weitergeben.</span></div></div>'
-            +'<a class="btn" target="_blank" rel="noopener" style="text-decoration:none"><span class="ru">Открыть папку</span><span class="de">Ordner öffnen</span></a></div>';
-          card.querySelector('span.ru').textContent=tRu;
-          card.querySelector('span.de').textContent=tDe;
-          card.querySelector('a').href=d.url;
-          dc.appendChild(card);
-        });
         var lc=document.getElementById('listCard'),l=document.getElementById('list');
-        l.innerHTML='';
-        if(!res.j.files.length){
-          // Keine Server-Dateien: Karte nur zeigen, wenn es auch keinen Drive-Ordner gibt
-          if(res.j.drive){lc.style.display='none';return;}
-          lc.style.display='block';
-          l.innerHTML='<div style="color:var(--muted)">'+T('Материалы скоро появятся здесь.','Die Materialien erscheinen bald hier.')+'</div>';return;
-        }
-        lc.style.display='block';
+        lc.style.display='block';l.innerHTML='';
+        document.getElementById('viewHint').style.display=res.j.files.length?'block':'none';
+        if(!res.j.files.length){l.innerHTML='<div style="color:var(--muted)">'+T('Материалы скоро появятся здесь.','Die Materialien erscheinen bald hier.')+'</div>';return;}
+        var isAdmin=res.j.role==='admin';
         res.j.files.forEach(function(f){
           var ext=f.name.split('.').pop().toLowerCase();
           var d=document.createElement('div');d.className='file';
+          var btns='';
+          if(ext==='pdf'){btns+='<a class="btn" style="padding:8px 18px;font-size:.85rem;text-decoration:none" href="viewer.html?f='+encodeURIComponent(f.name)+'">👁 <span class="ru">Смотреть</span><span class="de">Ansehen</span></a>';}
+          if(isAdmin){btns+='<button class="btn" style="padding:8px 14px;font-size:.85rem;background:transparent;color:var(--ink);border-color:var(--ink)" data-dl="'+encodeURIComponent(f.name)+'">⬇</button>';}
           d.innerHTML='<div class="ico">'+(ICONS[ext]||'📄')+'</div>'
             +'<div class="nm">'+f.name+'<div class="meta">'+fmtSize(f.size)+' · '+f.mtime+'</div></div>'
-            +'<button class="btn" style="padding:8px 18px;font-size:.85rem" data-dl="'+encodeURIComponent(f.name)+'">⬇ <span class="ru">Скачать</span><span class="de">Laden</span></button>';
+            +'<div style="display:flex;gap:6px;flex-wrap:wrap">'+btns+'</div>';
           l.appendChild(d);
         });
         setLang(document.documentElement.lang); // span-Sichtbarkeit in neuen Knoten
