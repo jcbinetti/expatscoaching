@@ -64,16 +64,7 @@
     <div class="hint"><span class="ru">Нет пароля? Напишите на <a href="mailto:training@expatscoaching.de">training@expatscoaching.de</a>.</span><span class="de">Kein Passwort? Schreib an <a href="mailto:training@expatscoaching.de">training@expatscoaching.de</a>.</span></div>
   </div>
 
-  <div class="card" id="driveCard" style="display:none;border-left:4px solid var(--accent)">
-    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
-      <div style="font-size:2rem">📂</div>
-      <div style="flex:1;min-width:200px">
-        <div style="font-weight:700"><span class="ru">Материалы в Google Drive</span><span class="de">Materialien in Google Drive</span></div>
-        <div style="font-size:.85rem;color:var(--muted)"><span class="ru">Все презентации курса в одной папке. Ссылку, пожалуйста, не передавайте.</span><span class="de">Alle Kurs-Präsentationen in einem Ordner. Bitte den Link nicht weitergeben.</span></div>
-      </div>
-      <a class="btn" id="driveLink" href="#" target="_blank" rel="noopener" style="text-decoration:none"><span class="ru">Открыть папку</span><span class="de">Ordner öffnen</span></a>
-    </div>
-  </div>
+  <div id="driveCards"></div>
 
   <div class="card" id="listCard" style="display:none">
     <div id="list"></div>
@@ -100,7 +91,21 @@
         if(!res.ok){loginMsg.className='msg err';loginMsg.textContent=res.j.error||T('Ошибка.','Fehler.');return;}
         try{sessionStorage.setItem('kurs_pw',pwInput.value);}catch(e){}
         loginMsg.className='msg';
-        if(res.j.drive){document.getElementById('driveCard').style.display='block';document.getElementById('driveLink').href=res.j.drive;}
+        var dc=document.getElementById('driveCards');dc.innerHTML='';
+        (res.j.drives||[]).forEach(function(d){
+          if(!d.url)return;
+          var tRu=d.t_ru||d.t_de||'Материалы курса', tDe=d.t_de||d.t_ru||'Kursmaterialien';
+          var card=document.createElement('div');card.className='card';card.style.borderLeft='4px solid var(--accent)';
+          card.innerHTML='<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">'
+            +'<div style="font-size:2rem">📂</div>'
+            +'<div style="flex:1;min-width:200px"><div style="font-weight:700"><span class="ru"></span><span class="de"></span></div>'
+            +'<div style="font-size:.85rem;color:var(--muted)"><span class="ru">Ссылку, пожалуйста, не передавайте.</span><span class="de">Bitte den Link nicht weitergeben.</span></div></div>'
+            +'<a class="btn" target="_blank" rel="noopener" style="text-decoration:none"><span class="ru">Открыть папку</span><span class="de">Ordner öffnen</span></a></div>';
+          card.querySelector('span.ru').textContent=tRu;
+          card.querySelector('span.de').textContent=tDe;
+          card.querySelector('a').href=d.url;
+          dc.appendChild(card);
+        });
         var lc=document.getElementById('listCard'),l=document.getElementById('list');
         l.innerHTML='';
         if(!res.j.files.length){
