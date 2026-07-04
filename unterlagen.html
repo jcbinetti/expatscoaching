@@ -102,8 +102,14 @@
         loginMsg.className='msg';
         if(res.j.drive){document.getElementById('driveCard').style.display='block';document.getElementById('driveLink').href=res.j.drive;}
         var lc=document.getElementById('listCard'),l=document.getElementById('list');
-        lc.style.display='block';l.innerHTML='';
-        if(!res.j.files.length){l.innerHTML='<div style="color:var(--muted)">'+T('Материалы скоро появятся здесь.','Die Materialien erscheinen bald hier.')+'</div>';return;}
+        l.innerHTML='';
+        if(!res.j.files.length){
+          // Keine Server-Dateien: Karte nur zeigen, wenn es auch keinen Drive-Ordner gibt
+          if(res.j.drive){lc.style.display='none';return;}
+          lc.style.display='block';
+          l.innerHTML='<div style="color:var(--muted)">'+T('Материалы скоро появятся здесь.','Die Materialien erscheinen bald hier.')+'</div>';return;
+        }
+        lc.style.display='block';
         res.j.files.forEach(function(f){
           var ext=f.name.split('.').pop().toLowerCase();
           var d=document.createElement('div');d.className='file';
