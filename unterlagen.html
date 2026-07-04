@@ -79,6 +79,11 @@
 
   var pwInput=document.getElementById('pw'),loginMsg=document.getElementById('loginMsg');
   try{var sp=sessionStorage.getItem('kurs_pw');if(sp){pwInput.value=sp;}}catch(e){}
+  // Magic-Link: unterlagen.html?k=CODE -> automatisch anmelden, Code aus der URL entfernen
+  try{
+    var mk=new URLSearchParams(location.search).get('k');
+    if(mk){pwInput.value=mk.trim();history.replaceState(null,'',location.pathname);}
+  }catch(e){}
 
   var ICONS={pdf:'📄',ppt:'📊',pptx:'📊',doc:'📝',docx:'📝',xls:'📈',xlsx:'📈',zip:'🗜️',png:'🖼️',jpg:'🖼️',jpeg:'🖼️',mp3:'🎧',mp4:'🎬',txt:'📄'};
   function fmtSize(b){return b>1048576?(b/1048576).toFixed(1)+' MB':Math.max(1,Math.round(b/1024))+' KB';}
