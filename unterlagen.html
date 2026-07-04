@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Материалы тренинга · Kursmaterialien</title>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+  :root{
+    --bg:#FAF4EF; --card:#FFFFFF; --ink:#35454E; --muted:#7C8A91;
+    --accent:#6E9DB5; --accent-d:#517E96; --peach-soft:#F6E6D8; --line:#DCE3E5;
+    --sans:'Manrope',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6}
+  .de{display:none} html[lang="de"] .ru{display:none} html[lang="de"] .de{display:revert}
+  header{display:flex;justify-content:space-between;align-items:center;padding:16px clamp(18px,4vw,40px);border-bottom:1px solid var(--line)}
+  .brand{font-weight:700;font-size:1.25rem;color:var(--ink);text-decoration:none}
+  .nav-right{display:flex;gap:10px;align-items:center}
+  .back{text-decoration:none;color:var(--ink);font-size:.84rem;border:1.5px solid var(--ink);border-radius:999px;padding:7px 15px}
+  .lang{display:flex;gap:2px;border:1.5px solid var(--ink);border-radius:999px;padding:3px}
+  .lang button{border:0;background:none;cursor:pointer;font:inherit;font-size:.8rem;font-weight:700;padding:5px 11px;border-radius:999px;color:var(--ink)}
+  .lang button.active{background:var(--ink);color:#fff}
+  .wrap{max-width:640px;margin:0 auto;padding:clamp(24px,5vw,48px) 20px}
+  h1{font-weight:700;font-size:clamp(1.4rem,3vw,1.9rem);margin-bottom:6px}
+  .lead{color:var(--muted);margin-bottom:22px;font-size:.95rem}
+  .card{background:var(--card);border:1px solid var(--line);padding:clamp(18px,4vw,28px);margin-bottom:18px}
+  label{display:block;font-weight:600;font-size:.86rem;margin:0 0 5px}
+  input[type=password]{width:100%;border:1px solid #cdd6dd;border-radius:8px;padding:11px 13px;font:15px var(--sans);outline:none}
+  input[type=password]:focus{border-color:var(--accent)}
+  .btn{background:var(--accent);color:#fff;border:1.5px solid var(--accent-d);border-radius:999px;padding:11px 24px;font-weight:600;font-size:.95rem;cursor:pointer}
+  .btn:hover{background:var(--accent-d)}
+  .file{display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid var(--line)}
+  .file:last-child{border-bottom:0}
+  .file .ico{font-size:1.5rem;flex:0 0 auto}
+  .file .nm{flex:1;min-width:0;word-break:break-word;font-weight:600}
+  .file .meta{font-size:.78rem;color:var(--muted);font-weight:400}
+  .msg{margin-top:12px;padding:11px 14px;border-radius:8px;font-size:.9rem;display:none}
+  .msg.err{display:block;background:#fbeaea;color:#c0392b;border:1px solid #f1c6c6}
+  .hint{font-size:.82rem;color:var(--muted);margin-top:10px}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="index.html">Anna Leonenko</a>
+  <div class="nav-right">
+    <a href="training.html" class="back"><span class="ru">← К тренингу</span><span class="de">← Zum Training</span></a>
+    <div class="lang"><button data-lang="ru" class="active">РУ</button><button data-lang="de">DE</button></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <h1>📚 <span class="ru">Материалы тренинга</span><span class="de">Kursmaterialien</span></h1>
+  <p class="lead"><span class="ru">Презентации и материалы курса «Самозанятость в Германии по шагам». Пароль вы получили после оплаты.</span><span class="de">Präsentationen und Materialien zum Training «Selbstständigkeit in Deutschland Schritt für Schritt». Das Passwort hast du nach der Zahlung erhalten.</span></p>
+
+  <div class="card" id="loginCard">
+    <label><span class="ru">Пароль курса</span><span class="de">Kurs-Passwort</span></label>
+    <div style="display:flex;gap:10px">
+      <input id="pw" type="password" autocomplete="current-password" style="flex:1" />
+      <button class="btn" id="loginBtn"><span class="ru">Открыть</span><span class="de">Öffnen</span></button>
+    </div>
+    <div class="msg" id="loginMsg"></div>
+    <div class="hint"><span class="ru">Нет пароля? Напишите на <a href="mailto:training@expatscoaching.de">training@expatscoaching.de</a>.</span><span class="de">Kein Passwort? Schreib an <a href="mailto:training@expatscoaching.de">training@expatscoaching.de</a>.</span></div>
+  </div>
+
+  <div class="card" id="listCard" style="display:none">
+    <div id="list"></div>
+  </div>
+</div>
+
+<script>
+  var langBtns=document.querySelectorAll('.lang button');
+  function setLang(l){document.documentElement.lang=l;langBtns.forEach(function(b){b.classList.toggle('active',b.dataset.lang===l);});try{localStorage.setItem('alc_lang',l);}catch(e){}}
+  langBtns.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang);});});
+  try{var s=localStorage.getItem('alc_lang');if(s){setLang(s);}}catch(e){}
+  function T(ru,de){return document.documentElement.lang==='de'?de:ru;}
+
+  var pwInput=document.getElementById('pw'),loginMsg=document.getElementById('loginMsg');
+  try{var sp=sessionStorage.getItem('kurs_pw');if(sp){pwInput.value=sp;}}catch(e){}
+
+  var ICONS={pdf:'📄',ppt:'📊',pptx:'📊',doc:'📝',docx:'📝',xls:'📈',xlsx:'📈',zip:'🗜️',png:'🖼️',jpg:'🖼️',jpeg:'🖼️',mp3:'🎧',mp4:'🎬',txt:'📄'};
+  function fmtSize(b){return b>1048576?(b/1048576).toFixed(1)+' MB':Math.max(1,Math.round(b/1024))+' KB';}
+
+  function open_(){
+    fetch('unterlagen.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'list',password:pwInput.value})})
+      .then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j};});})
+      .then(function(res){
+        if(!res.ok){loginMsg.className='msg err';loginMsg.textContent=res.j.error||T('Ошибка.','Fehler.');return;}
+        try{sessionStorage.setItem('kurs_pw',pwInput.value);}catch(e){}
+        loginMsg.className='msg';
+        var lc=document.getElementById('listCard'),l=document.getElementById('list');
+        lc.style.display='block';l.innerHTML='';
+        if(!res.j.files.length){l.innerHTML='<div style="color:var(--muted)">'+T('Материалы скоро появятся здесь.','Die Materialien erscheinen bald hier.')+'</div>';return;}
+        res.j.files.forEach(function(f){
+          var ext=f.name.split('.').pop().toLowerCase();
+          var d=document.createElement('div');d.className='file';
+          d.innerHTML='<div class="ico">'+(ICONS[ext]||'📄')+'</div>'
+            +'<div class="nm">'+f.name+'<div class="meta">'+fmtSize(f.size)+' · '+f.mtime+'</div></div>'
+            +'<button class="btn" style="padding:8px 18px;font-size:.85rem" data-dl="'+encodeURIComponent(f.name)+'">⬇ <span class="ru">Скачать</span><span class="de">Laden</span></button>';
+          l.appendChild(d);
+        });
+        setLang(document.documentElement.lang); // span-Sichtbarkeit in neuen Knoten
+      })
+      .catch(function(){loginMsg.className='msg err';loginMsg.textContent=T('Ошибка сети.','Netzwerkfehler.');});
+  }
+  document.getElementById('loginBtn').addEventListener('click',open_);
+  pwInput.addEventListener('keydown',function(e){if(e.key==='Enter')open_();});
+  if(pwInput.value)open_();
+
+  document.getElementById('list').addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b||!b.dataset.dl)return;
+    var f=document.createElement('form');f.method='POST';f.action='unterlagen.php';f.style.display='none';
+    [['action','download'],['password',pwInput.value],['file',decodeURIComponent(b.dataset.dl)]].forEach(function(p){
+      var i=document.createElement('input');i.name=p[0];i.value=p[1];f.appendChild(i);});
+    document.body.appendChild(f);f.submit();setTimeout(function(){f.remove();},2000);
+  });
+</script>
+</body>
+</html>

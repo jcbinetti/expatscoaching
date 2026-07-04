@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Материалы · Verwaltung — Anna</title>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+  :root{
+    --bg:#FAF4EF; --card:#FFFFFF; --ink:#35454E; --muted:#7C8A91;
+    --accent:#6E9DB5; --accent-d:#517E96; --peach-soft:#F6E6D8; --line:#DCE3E5;
+    --sans:'Manrope',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6}
+  .de{display:none} html[lang="de"] .ru{display:none} html[lang="de"] .de{display:revert}
+  header{display:flex;justify-content:space-between;align-items:center;padding:16px clamp(18px,4vw,40px);border-bottom:1px solid var(--line)}
+  .brand{font-weight:700;font-size:1.25rem;color:var(--ink);text-decoration:none}
+  .lang{display:flex;gap:2px;border:1.5px solid var(--ink);border-radius:999px;padding:3px}
+  .lang button{border:0;background:none;cursor:pointer;font:inherit;font-size:.8rem;font-weight:700;padding:5px 11px;border-radius:999px;color:var(--ink)}
+  .lang button.active{background:var(--ink);color:#fff}
+  .wrap{max-width:680px;margin:0 auto;padding:clamp(24px,5vw,48px) 20px}
+  h1{font-weight:700;font-size:clamp(1.4rem,3vw,1.9rem);margin-bottom:6px}
+  .lead{color:var(--muted);margin-bottom:22px;font-size:.95rem}
+  .card{background:var(--card);border:1px solid var(--line);padding:clamp(18px,4vw,28px);margin-bottom:18px}
+  label{display:block;font-weight:600;font-size:.86rem;margin:0 0 5px}
+  input[type=password]{width:100%;border:1px solid #cdd6dd;border-radius:8px;padding:11px 13px;font:15px var(--sans);outline:none}
+  input[type=password]:focus{border-color:var(--accent)}
+  .btn{background:var(--accent);color:#fff;border:1.5px solid var(--accent-d);border-radius:999px;padding:11px 24px;font-weight:600;font-size:.95rem;cursor:pointer}
+  .btn:hover{background:var(--accent-d)} .btn:disabled{opacity:.5}
+  .btn-sm{padding:7px 14px;font-size:.82rem}
+  .btn-danger{background:#c0392b;border-color:#9d2f23}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .drop{border:2px dashed var(--accent);background:var(--peach-soft);padding:26px;text-align:center;border-radius:8px;cursor:pointer;transition:.15s}
+  .drop.over{background:#eeddc9}
+  .drop input{display:none}
+  .hint{font-size:.78rem;color:var(--muted);margin-top:8px}
+  table{width:100%;border-collapse:collapse;font-size:.92rem}
+  th{text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding:8px 6px;border-bottom:2px solid var(--line)}
+  td{padding:9px 6px;border-bottom:1px solid var(--line);vertical-align:middle;word-break:break-word}
+  .msg{margin-top:12px;padding:11px 14px;border-radius:8px;font-size:.9rem;display:none}
+  .msg.ok{display:block;background:#e7f1ee;color:#2f6b54;border:1px solid #bfe0d2}
+  .msg.err{display:block;background:#fbeaea;color:#c0392b;border:1px solid #f1c6c6}
+  .row-actions{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="wunsch.html">← <span class="ru">Кокпит</span><span class="de">Cockpit</span></a>
+  <div class="lang"><button data-lang="ru" class="active">РУ</button><button data-lang="de">DE</button></div>
+</header>
+
+<div class="wrap">
+  <h1>📚 <span class="ru">Материалы тренинга · Управление</span><span class="de">Trainings-Unterlagen · Verwaltung</span></h1>
+  <p class="lead"><span class="ru">Здесь вы загружаете презентации и материалы. Участники видят их на странице «Материалы» и скачивают с паролем курса.</span><span class="de">Hier lädst du Präsentationen und Materialien hoch. Teilnehmer sehen sie auf der Seite «Materialien» und laden sie mit dem Kurs-Passwort herunter.</span></p>
+
+  <div class="card">
+    <label><span class="ru">Ваш пароль (как в кокпите)</span><span class="de">Dein Passwort (wie im Cockpit)</span></label>
+    <div style="display:flex;gap:10px">
+      <input id="pw" type="password" autocomplete="current-password" style="flex:1" />
+      <button class="btn" id="loginBtn"><span class="ru">Войти</span><span class="de">Anmelden</span></button>
+    </div>
+    <div class="msg" id="loginMsg"></div>
+  </div>
+
+  <div id="panel" style="display:none">
+    <div class="card">
+      <div class="drop" id="drop">
+        <input id="fileInput" type="file" multiple accept=".pdf,.ppt,.pptx,.doc,.docx,.xls,.xlsx,.zip,.png,.jpg,.jpeg,.mp3,.mp4,.txt" />
+        <div style="font-size:1.6rem">⬆️</div>
+        <b><span class="ru">Перетащите файлы сюда или нажмите</span><span class="de">Dateien hierher ziehen oder klicken</span></b>
+        <div class="hint"><span class="ru">PDF, PowerPoint, Word, Excel, ZIP, фото, аудио, видео</span><span class="de">PDF, PowerPoint, Word, Excel, ZIP, Fotos, Audio, Video</span></div>
+      </div>
+      <div class="msg" id="upMsg"></div>
+    </div>
+
+    <div class="card">
+      <table>
+        <thead><tr><th><span class="ru">Файл</span><span class="de">Datei</span></th><th><span class="ru">Размер</span><span class="de">Größe</span></th><th><span class="ru">Дата</span><span class="de">Datum</span></th><th></th></tr></thead>
+        <tbody id="list"><tr><td colspan="4" style="color:var(--muted)">…</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  var langBtns=document.querySelectorAll('.lang button');
+  function setLang(l){document.documentElement.lang=l;langBtns.forEach(function(b){b.classList.toggle('active',b.dataset.lang===l);});try{localStorage.setItem('alc_lang',l);}catch(e){}}
+  langBtns.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang);});});
+  try{var s=localStorage.getItem('alc_lang');if(s){setLang(s);}}catch(e){}
+  function L(){return document.documentElement.lang;}
+  function T(ru,de){return L()==='de'?de:ru;}
+
+  var pwInput=document.getElementById('pw');
+  try{var sp=sessionStorage.getItem('unterlagen_pw');if(sp){pwInput.value=sp;}}catch(e){}
+
+  function api(payload){return fetch('unterlagen.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j};});});}
+  function show(el,k,t){el.className='msg '+k;el.textContent=t;}
+  function fmtSize(b){return b>1048576?(b/1048576).toFixed(1)+' MB':Math.max(1,Math.round(b/1024))+' KB';}
+
+  var loginMsg=document.getElementById('loginMsg'),upMsg=document.getElementById('upMsg');
+
+  function refresh(){
+    api({action:'list',password:pwInput.value}).then(function(res){
+      if(!res.ok){show(loginMsg,'err',res.j.error||'Fehler');return;}
+      if(res.j.role!=='admin'){show(loginMsg,'err',T('Это пароль курса. Нужен ваш пароль из кокпита.','Das ist das Kurs-Passwort. Bitte dein Cockpit-Passwort verwenden.'));return;}
+      try{sessionStorage.setItem('unterlagen_pw',pwInput.value);}catch(e){}
+      document.getElementById('panel').style.display='block';
+      loginMsg.className='msg';
+      var tb=document.getElementById('list');tb.innerHTML='';
+      if(!res.j.files.length){tb.innerHTML='<tr><td colspan="4" style="color:var(--muted)">'+T('Пока нет файлов.','Noch keine Dateien.')+'</td></tr>';return;}
+      res.j.files.forEach(function(f){
+        var tr=document.createElement('tr');
+        var dl='<button class="btn btn-sm btn-ghost" data-dl="'+encodeURIComponent(f.name)+'">⬇</button>';
+        var rm='<button class="btn btn-sm btn-danger" data-rm="'+encodeURIComponent(f.name)+'">✕</button>';
+        tr.innerHTML='<td>'+f.name+'</td><td>'+fmtSize(f.size)+'</td><td style="white-space:nowrap">'+f.mtime+'</td><td><div class="row-actions">'+dl+rm+'</div></td>';
+        tb.appendChild(tr);
+      });
+    }).catch(function(){show(loginMsg,'err',T('Ошибка сети.','Netzwerkfehler.'));});
+  }
+  document.getElementById('loginBtn').addEventListener('click',refresh);
+  pwInput.addEventListener('keydown',function(e){if(e.key==='Enter')refresh();});
+
+  // Download über verstecktes Formular (nativer Browser-Download)
+  function download(name){
+    var f=document.createElement('form');f.method='POST';f.action='unterlagen.php';f.style.display='none';
+    [['action','download'],['password',pwInput.value],['file',name]].forEach(function(p){
+      var i=document.createElement('input');i.name=p[0];i.value=p[1];f.appendChild(i);});
+    document.body.appendChild(f);f.submit();setTimeout(function(){f.remove();},2000);
+  }
+  document.getElementById('list').addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;
+    if(b.dataset.dl){download(decodeURIComponent(b.dataset.dl));}
+    if(b.dataset.rm){
+      var n=decodeURIComponent(b.dataset.rm);
+      if(!confirm(T('Удалить файл: ','Datei löschen: ')+n+' ?'))return;
+      api({action:'delete',password:pwInput.value,file:n}).then(function(res){
+        if(res.ok){show(upMsg,'ok',T('Удалено: ','Gelöscht: ')+n);refresh();}
+        else show(upMsg,'err',res.j.error||'Fehler');
+      });
+    }
+  });
+
+  // Upload (Klick + Drag&Drop, mehrere Dateien nacheinander)
+  var drop=document.getElementById('drop'),fi=document.getElementById('fileInput');
+  drop.addEventListener('click',function(){fi.click();});
+  ['dragover','dragenter'].forEach(function(ev){drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.add('over');});});
+  ['dragleave','drop'].forEach(function(ev){drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.remove('over');});});
+  drop.addEventListener('drop',function(e){uploadAll(e.dataTransfer.files);});
+  fi.addEventListener('change',function(){uploadAll(fi.files);fi.value='';});
+
+  function uploadAll(files){
+    var arr=Array.prototype.slice.call(files);
+    if(!arr.length)return;
+    var done=0,fail=0;
+    show(upMsg,'ok',T('Загрузка… ','Lade hoch… ')+'0/'+arr.length);
+    (function next(){
+      if(!arr.length){show(upMsg,fail?'err':'ok',T('Готово: ','Fertig: ')+done+(fail?(' · '+T('ошибок: ','Fehler: ')+fail):''));refresh();return;}
+      var f=arr.shift();
+      var fd=new FormData();fd.append('action','upload');fd.append('password',pwInput.value);fd.append('datei',f);
+      fetch('unterlagen.php',{method:'POST',body:fd}).then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j};});})
+        .then(function(res){if(res.ok){done++;}else{fail++;show(upMsg,'err',(res.j.error||'Fehler')+' ('+f.name+')');}
+          show(upMsg,fail?'err':'ok',T('Загрузка… ','Lade hoch… ')+done+'/'+(done+fail+arr.length));next();})
+        .catch(function(){fail++;next();});
+    })();
+  }
+</script>
+</body>
+</html>
